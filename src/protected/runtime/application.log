@@ -1,0 +1,2140 @@
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.ar.CActiveRecord] Persona.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.ar.CActiveRecord] Persona.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `persona` SET `id`=:yp0, `nombre`=:yp1, `apellido`=:yp2, `dni`=:yp3, `sexo`=:yp4 WHERE `persona`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:25:44 [trace] [system.CModule] Loading "format" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (16)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (57)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:28:59 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column2.php (22)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:29:02 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.ar.CActiveRecord] Persona.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.ar.CActiveRecord] Persona.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:02 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `persona` SET `id`=:yp0, `nombre`=:yp1, `apellido`=:yp2, `dni`=:yp3, `sexo`=:yp4 WHERE `persona`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.ar.CActiveRecord] Persona.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.ar.CActiveRecord] Persona.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `persona` SET `id`=:yp0, `nombre`=:yp1, `apellido`=:yp2, `dni`=:yp3, `sexo`=:yp4 WHERE `persona`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.ar.CActiveRecord] SituacionLaboral.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.ar.CActiveRecord] SituacionLaboral.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `situacion_laboral` SET `id`=:yp0, `trabaja`=:yp1, `jubilado_pensionado`=:yp2, `formal`=:yp3, `persona_id`=:yp4 WHERE `situacion_laboral`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:12 [trace] [system.CModule] Loading "format" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (16)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (57)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:29:19 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column2.php (22)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (16)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (57)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:31:54 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column2.php (22)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:31:58 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.ar.CActiveRecord] Persona.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.ar.CActiveRecord] Persona.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:58 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `persona` SET `id`=:yp0, `nombre`=:yp1, `apellido`=:yp2, `dni`=:yp3, `sexo`=:yp4 WHERE `persona`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.ar.CActiveRecord] SituacionLaboral.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.ar.CActiveRecord] SituacionLaboral.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `situacion_laboral` SET `id`=:yp0, `trabaja`=:yp1, `jubilado_pensionado`=:yp2, `formal`=:yp3, `persona_id`=:yp4 WHERE `situacion_laboral`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:31:59 [trace] [system.CModule] Loading "format" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (16)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (57)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:32:01 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column2.php (22)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (16)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (57)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:32:59 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column2.php (22)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (16)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (57)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:33:07 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column2.php (22)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.ar.CActiveRecord] Persona.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.ar.CActiveRecord] Persona.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `persona` SET `id`=:yp0, `nombre`=:yp1, `apellido`=:yp2, `dni`=:yp3, `sexo`=:yp4 WHERE `persona`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.ar.CActiveRecord] SituacionLaboral.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.ar.CActiveRecord] SituacionLaboral.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `situacion_laboral` SET `id`=:yp0, `trabaja`=:yp1, `jubilado_pensionado`=:yp2, `formal`=:yp3, `persona_id`=:yp4 WHERE `situacion_laboral`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:12 [trace] [system.CModule] Loading "format" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (16)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (57)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:33:15 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column2.php (22)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (110)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.ar.CActiveRecord] Persona.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.ar.CActiveRecord] Persona.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `persona` SET `id`=:yp0, `nombre`=:yp1, `apellido`=:yp2, `dni`=:yp3, `sexo`=:yp4 WHERE `persona`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.ar.CActiveRecord] SituacionLaboral.update()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.ar.CActiveRecord] SituacionLaboral.updateByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `situacion_laboral` SET `id`=:yp0, `trabaja`=:yp1, `jubilado_pensionado`=:yp2, `formal`=:yp3, `persona_id`=:yp4 WHERE `situacion_laboral`.`id`=2
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (111)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:33:19 [trace] [system.CModule] Loading "format" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\view.php (30)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (56)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (106)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (106)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (48)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (32)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (6)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (32)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (6)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+2015/02/01 23:35:30 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\models\LoginForm.php (71)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (94)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\models\LoginForm.php (71)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (94)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:32 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:35 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:35 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in C:\Program Files\XAMPP\htdocs\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\Program Files\XAMPP\htdocs\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 C:\Program Files\XAMPP\htdocs\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Program Files\XAMPP\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\Program Files\XAMPP\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Program Files\XAMPP\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Program Files\XAMPP\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Program Files\XAMPP\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Program Files\XAMPP\htdocs\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\Program Files\XAMPP\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('persona/admin')
+#9 C:\Program Files\XAMPP\htdocs\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\Program Files\XAMPP\htdocs\habitacional\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/habitacional/index.php?r=persona/admin
+HTTP_REFERER=http://localhost:8088/habitacional/index.php
+---
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "errorHandler" application component
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (2)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (45)
+2015/02/01 23:35:35 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (45)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (106)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (106)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (48)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (32)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (6)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (32)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (6)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+2015/02/01 23:35:40 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\models\LoginForm.php (71)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (94)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\models\LoginForm.php (71)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (94)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:35:59 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:07 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (150)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (150)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (150)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (150)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (15)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_search.php (12)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+2015/02/01 23:36:10 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/01 23:36:10 [trace] [system.CModule] Loading "format" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:55 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:55 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:55 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:55 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:55 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:55 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:55 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:28:56 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (106)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (106)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (48)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (32)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (6)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (32)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (6)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+2015/02/02 15:29:01 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\models\LoginForm.php (71)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (94)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\models\LoginForm.php (71)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (94)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:17 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:36 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:36 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:36 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:36 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:36 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:36 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:36 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:36 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in C:\Program Files\XAMPP\htdocs\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\Program Files\XAMPP\htdocs\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 C:\Program Files\XAMPP\htdocs\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Program Files\XAMPP\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\Program Files\XAMPP\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Program Files\XAMPP\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Program Files\XAMPP\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\Program Files\XAMPP\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Program Files\XAMPP\htdocs\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\Program Files\XAMPP\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('persona/admin')
+#9 C:\Program Files\XAMPP\htdocs\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\Program Files\XAMPP\htdocs\habitacional\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/habitacional/index.php?r=persona/admin
+HTTP_REFERER=http://localhost:8088/habitacional/index.php
+---
+2015/02/02 15:31:36 [trace] [system.CModule] Loading "errorHandler" application component
+2015/02/02 15:31:37 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (2)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (45)
+2015/02/02 15:31:37 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (45)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:44 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (106)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (106)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (28)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\site\login.php (48)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (32)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (6)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (32)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column1.php (6)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+2015/02/02 15:31:46 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (98)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\models\LoginForm.php (71)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (94)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\models\LoginForm.php (71)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\SiteController.php (94)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:54 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\index.php (20)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (142)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (150)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (150)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (150)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (150)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (15)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_search.php (12)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+2015/02/02 15:31:57 [trace] [system.db.ar.CActiveRecord] Persona.count()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM `persona` `t`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.db.ar.CActiveRecord] Persona.findAll()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` LIMIT 10
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "assetManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:31:57 [trace] [system.CModule] Loading "format" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\admin.php (55)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (157)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "log" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "request" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.web.filters.CFilterChain] Running filter PersonaController.filteraccessControl()
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "user" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "session" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.ar.CActiveRecord] Persona.findByPk()
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "db" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `persona`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `persona` `t` WHERE `t`.`id`=2 LIMIT 1
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (169)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (102)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.ar.CActiveRecord] lazy loading Persona.situacionLaboral
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `situacion_laboral`
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.db.CDbCommand] Querying SQL: SELECT `situacionLaboral`.`id` AS `t1_c0`, `situacionLaboral`.`trabaja` AS `t1_c1`, `situacionLaboral`.`jubilado_pensionado` AS `t1_c2`, `situacionLaboral`.`formal` AS `t1_c3`, `situacionLaboral`.`persona_id` AS `t1_c4` FROM `situacion_laboral` `situacionLaboral`  WHERE (`situacionLaboral`.`persona_id`=:ypl0)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+in C:\Program Files\XAMPP\htdocs\habitacional\index.php (13)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (16)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "clientScript" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\_form.php (57)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\persona\update.php (21)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
+2015/02/02 15:32:01 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\main.php (40)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\views\layouts\column2.php (22)
+in C:\Program Files\XAMPP\htdocs\habitacional\protected\controllers\PersonaController.php (117)
