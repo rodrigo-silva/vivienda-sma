@@ -1,0 +1,37 @@
+INSERT INTO pais VALUES ('1', 'Argentina');
+
+INSERT INTO provincia VALUES ('1', 'Buenos Aires');
+INSERT INTO provincia VALUES ('2', 'Capital Federal');
+INSERT INTO provincia VALUES ('3', 'Catamarca');
+INSERT INTO provincia VALUES ('4', 'Chaco');
+INSERT INTO provincia VALUES ('5', 'Chubut');
+INSERT INTO provincia VALUES ('6', 'Cordoba');
+INSERT INTO provincia VALUES ('7', 'Corrientes');
+INSERT INTO provincia VALUES ('8', 'Entre Rios');
+INSERT INTO provincia VALUES ('9', 'Formosa');
+INSERT INTO provincia VALUES ('10', 'Jujuy');
+INSERT INTO provincia VALUES ('11', 'La Pampa');
+INSERT INTO provincia VALUES ('12', 'La Rioja');
+INSERT INTO provincia VALUES ('13', 'Mendoza');
+INSERT INTO provincia VALUES ('14', 'Misiones');
+INSERT INTO provincia VALUES ('15', 'Neuquen');
+INSERT INTO provincia VALUES ('16', 'Ri Negro');
+INSERT INTO provincia VALUES ('17', 'Salta');
+INSERT INTO provincia VALUES ('18', 'San Juan');
+INSERT INTO provincia VALUES ('19', 'San Luis');
+INSERT INTO provincia VALUES ('20', 'Santa Cruz');
+INSERT INTO provincia VALUES ('21', 'Santa Fe');
+INSERT INTO provincia VALUES ('22', 'Santiago del Estero');
+INSERT INTO provincia VALUES ('23', 'Tierra del Fuego');
+INSERT INTO provincia VALUES ('24', 'Tucuman');
+
+INSERT INTO localidad VALUES ('7804', 'LA FORTUNA', '8370', '15');
+INSERT INTO localidad VALUES ('7805', 'LAGO LOLOG', '8370', '15');
+INSERT INTO localidad VALUES ('7806', 'LAS BANDURRIAS', '8370', '15');
+INSERT INTO localidad VALUES ('7807', 'LASCAR', '8370', '15');
+INSERT INTO localidad VALUES ('7808', 'LOLOG', '8370', '15');
+INSERT INTO localidad VALUES ('7809', 'VILLA LAGO MELIQUINA', '8370', '15');
+INSERT INTO localidad VALUES ('7810', 'QUENTRENQUEN', '8373', '15');
+INSERT INTO localidad VALUES ('7811', 'QUILA QUINA', '8370', '15');
+INSERT INTO localidad VALUES ('7812', 'QUINQUIMITREO', '8373', '15');
+INSERT INTO localidad VALUES ('7813', 'SAN MARTIN DE LOS ANDES', '8370', '15');

@@ -1,3 +1,5 @@
+INSERT INTO pais VALUES ('1', 'Argentina');
+
 INSERT INTO provincia VALUES ('1', 'Buenos Aires');
 INSERT INTO provincia VALUES ('2', 'Capital Federal');
 INSERT INTO provincia VALUES ('3', 'Catamarca');
