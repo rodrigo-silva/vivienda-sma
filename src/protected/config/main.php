@@ -10,14 +10,20 @@ return array(
 	'name'=>'Demanda Habitacional',
    'defaultController' => 'persona/index',
    'language' => 'es',
+   'aliases' => array(
+        'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap')
+    ),
 
 	// preloading 'log' component
 	'preload'=>array('log'),
 
 	// autoloading model and component classes
 	'import'=>array(
-		'application.models.*',
+      'application.models.*',
+		'application.models.forms.*',
 		'application.components.*',
+      'bootstrap.helpers.*',
+      'bootstrap.behaviors.*'
 	),
 
 	'modules'=>array(
@@ -28,6 +34,7 @@ return array(
 			'password'=>'admin',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+         'generatorPaths' => array('bootstrap.gii'),
 		),
 		
 	),
@@ -39,18 +46,22 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+      'bootstrap' => array(
+         'class' => 'bootstrap.components.TbApi',   
+      ),
 
 		// uncomment the following to enable URLs in path-format
-		/*
+		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+         'showScriptName' => false,
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		*/
+		
 
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),

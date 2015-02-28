@@ -31,6 +31,10 @@ class Solicitud extends CActiveRecord
 		return 'solicitud';
 	}
 
+   public function init() {
+      $this->estado_administrativo_solicitud_id = EstadoAdministrativoSolicitud::model()->findByAttributes(array('nombre'=>'Borrador'))->id;
+   }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -39,11 +43,11 @@ class Solicitud extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('numero, fecha, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'required'),
-			array('numero, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'numerical', 'integerOnly'=>true),
+			array('fecha, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id', 'required'),
+			array('tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, numero, fecha, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'safe', 'on'=>'search'),
+			array('id, fecha, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'safe', 'on'=>'search'),
 		);
 	}
 

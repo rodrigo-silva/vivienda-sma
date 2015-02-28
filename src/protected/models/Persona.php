@@ -33,10 +33,13 @@ class Persona extends CActiveRecord
       // will receive user inputs.
       return array(
          array('nombre, apellido', 'required'),
+         array('apellido', 'length', 'max'=>40),
          array('dni', 'numerical', 'integerOnly'=>true),
          array('nombre', 'length', 'max'=>60),
-         array('apellido', 'length', 'max'=>40),
-         array('sexo', 'length', 'max'=>1)
+         array('sexo', 'length', 'max'=>1),
+         array('fecha_nac', 'date', 'format'=>'yyyy-M-d', 'message'=>'Formato invalido'),
+
+         array('nombre, apellido, dni, sexo, fecha_nac, pais_nac_id, provincia_nac_id, localidad_nac_id, nacionalidad, condicionesEspeciales, situacionLaboral', 'safe')
       );
    }
 
@@ -52,9 +55,18 @@ class Persona extends CActiveRecord
         'vinculos' => array(self::HAS_MANY, 'Vinculo', 'persona_id'),
         'familiares' => array(self::HAS_MANY, 'Persona', array('familiar_id'=>'id'), 'through'=>'vinculos'),
         'condicionesEspeciales' => array(self::MANY_MANY, 'CondicionEspecial', 
-                                         'persona_condicion_especial(persona_id, condiciona_especial_id'),
+                                         'persona_condicion_especial(persona_id, condicion_especial_id)'),
         'grupoConviviente' => array(self::BELONGS_TO, 'GrupoConviviente', 'grupo_conviviente_id'),
         'domicilio' => array(self::HAS_ONE, 'Domicilio', array('domicilio_id' => 'id'), 'through'=>'grupoConviviente'),
+
+      );
+   }
+
+   /**
+    */
+   public function behaviors(){
+      return array('ESaveRelatedBehavior' => array(
+         'class' => 'application.components.ESaveRelatedBehavior')
       );
    }
 

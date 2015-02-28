@@ -1,3 +1,4 @@
+USE habitacional;
 INSERT INTO pais VALUES ('1', 'Argentina');
 
 INSERT INTO provincia VALUES ('1', 'Buenos Aires');
@@ -35,3 +36,14 @@ INSERT INTO localidad VALUES ('7810', 'QUENTRENQUEN', '8373', '15');
 INSERT INTO localidad VALUES ('7811', 'QUILA QUINA', '8370', '15');
 INSERT INTO localidad VALUES ('7812', 'QUINQUIMITREO', '8373', '15');
 INSERT INTO localidad VALUES ('7813', 'SAN MARTIN DE LOS ANDES', '8370', '15');
+
+INSERT INTO condicion_especial VALUES(NULL, 'Ex combatiente');
+INSERT INTO condicion_lote VALUES(NULL, 'Permiso comunidad');
+INSERT INTO tipo_solicitud VALUES(NULL, 'Vivienda');
+INSERT INTO tipo_solicitud VALUES(NULL, 'Lote');
+INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Borrador');
+INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Activa');
+INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Archivada');
+INSERT INTO tipo_vivienda VALUES(NULL, 'Casa Rodante');
+INSERT INTO tipo_vivienda VALUES(NULL, 'Pieza');
+INSERT INTO condicion_uso VALUES(NULL, 'Ocupada');

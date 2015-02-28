@@ -8,7 +8,7 @@
  * @property string $nombre
  *
  * The followings are the available model relations:
- * @property PersonaCondicionEspecial[] $personaCondicionEspecials
+ * @property Persona[] $personas
  */
 class CondicionEspecial extends CActiveRecord
 {
@@ -28,6 +28,7 @@ class CondicionEspecial extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('nombre', 'required'),
 			array('nombre', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -43,7 +44,8 @@ class CondicionEspecial extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			)
+			'personas' => array(self::MANY_MANY, 'Persona', 'persona_condicion_especial(condicion_especial_id, persona_id)'),
+		);
 	}
 
 	/**

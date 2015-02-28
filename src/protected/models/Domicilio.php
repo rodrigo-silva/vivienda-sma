@@ -33,8 +33,6 @@ class Domicilio extends CActiveRecord
       // NOTE: you should only define rules for those attributes that
       // will receive user inputs.
      return array(
-      array('provincia_id, localidad_id', 'required'),
-       array('provincia_id, localidad_id', 'numerical', 'integerOnly'=>true),
        array('calle', 'length', 'max'=>40),
        array('altura', 'length', 'max'=>10),
        array('piso, departamento, casa, lote', 'length', 'max'=>3),
@@ -45,14 +43,11 @@ class Domicilio extends CActiveRecord
   /**
    * @return array relational rules.
    */
-  public function relations()
-  {
-     return array(
-       'provincia' => array(self::BELONGS_TO, 'Provincia', 'provincia_id'),
-       'localidad' => array(self::BELONGS_TO, 'Localidad', 'localidad_id'),
-       );
-
-  }
+   public function relations()  {
+      array(
+         'grupoConviviente' => array(self::HAS_ONE, 'GrupoConviviente', 'domicilio_id'),
+      );
+   }
 
 
 
