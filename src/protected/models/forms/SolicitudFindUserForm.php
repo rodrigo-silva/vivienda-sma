@@ -28,6 +28,32 @@
          );
       }
 
+      /**
+       */
+      public function validate() {
+         if(parent::validate()) {
+            return $this->validateFieldPrescenceCombination();
+         } else {
+            return false;
+         }
+      }
+
+      /**
+       * Valida la prescencia exclusiva de los campos del form de entrada/busqueda.
+       */
+      private function validateFieldPrescenceCombination() {
+         if ($this->dni == null) {
+            if ($this->nombre == null && $this->apellido == null) {
+               $this->addError("general", "Debe especificar o bien DNI o Nombre y Apellido");
+               return false;
+            } else {
+               return true;
+            }
+         } else {
+            return true;
+         }
+      }
+
    }
 
 ?>

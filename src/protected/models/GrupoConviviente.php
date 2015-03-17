@@ -46,6 +46,7 @@ class GrupoConviviente extends CActiveRecord
 		return array(
 			'solicitudes' => array(self::HAS_MANY, 'Solicitud', 'grupo_conviviente_id'),
          'personas' => array(self::HAS_MANY, 'Persona', 'grupo_conviviente_id'),
+         'domicilio' => array(self::BELONGS_TO, 'Domicilio', 'domicilio_id')
 		);
 	}
 

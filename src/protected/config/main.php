@@ -10,6 +10,7 @@ return array(
 	'name'=>'Demanda Habitacional',
    'defaultController' => 'persona/index',
    'language' => 'es',
+   'timeZone' => 'America/Argentina/Buenos_Aires',
    'aliases' => array(
         'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap')
     ),
@@ -23,7 +24,8 @@ return array(
 		'application.models.forms.*',
 		'application.components.*',
       'bootstrap.helpers.*',
-      'bootstrap.behaviors.*'
+      'bootstrap.behaviors.*',
+      'bootstrap.components.*'
 	),
 
 	'modules'=>array(
@@ -76,13 +78,13 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning, trace',
+					'levels'=>'error, warning, info, trace',
 				),
 				// uncomment the following to show log messages on web pages
 				
 				array(
 					'class'=>'CWebLogRoute',
-               'levels'=>'info'
+               'levels'=>'error, warning, info, trace'
 				),
 				
 			),

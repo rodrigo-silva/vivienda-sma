@@ -63,14 +63,6 @@ class Persona extends CActiveRecord
    }
 
    /**
-    */
-   public function behaviors(){
-      return array('ESaveRelatedBehavior' => array(
-         'class' => 'application.components.ESaveRelatedBehavior')
-      );
-   }
-
-   /**
     * @return array customized attribute labels (name=>label)
     */
    public function attributeLabels()

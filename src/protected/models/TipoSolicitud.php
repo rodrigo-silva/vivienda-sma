@@ -33,7 +33,6 @@ class TipoSolicitud extends CActiveRecord
 		return array(
 			array('condicion_lote_id', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>30),
-			array('fecha', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nombre, fecha, condicion_lote_id', 'safe', 'on'=>'search'),

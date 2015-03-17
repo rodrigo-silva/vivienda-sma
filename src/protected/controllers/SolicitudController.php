@@ -14,11 +14,11 @@ class SolicitudController extends Controller {
       
       if ($request->isPostRequest) {
          $form->attributes = $request->getPost('SolicitudFindUserForm');
-         if ($form->validate() && $this->validateSolicitudFindUserForm($form)) {
-            $persona = Persona::model()->findByAttributes($form->getAttributes());
+         if ($form->validate()) {
+            $persona = $this->findPersona($form);
             if ($persona != null) {
                Yii::app()->user->setState(self::$PERSONA_KEY, $persona);
-               $this->redirect("buildSolicitud");
+               $this->redirect("solicitudBase");
             } else {
                $this->redirect("altaPersona");
             }
@@ -27,6 +27,7 @@ class SolicitudController extends Controller {
      
       $this->render('new', array('model'=> $form));
    }
+   
 
    /**
     * Crea una Persona y redirecciona para seguir con el flujo
@@ -39,7 +40,7 @@ class SolicitudController extends Controller {
          $form->attributes = $request->getPost('PersonaForm');
          if($form->validate()) {
             Yii::app()->user->setState(self::$PERSONA_KEY, PersonaManager::savePersona($form));
-            $this->redirect('domicilio');
+            $this->redirect('solicitudBase');
          }
       }
       $this->render('altaPersona', array('model'=>$form));
@@ -47,58 +48,132 @@ class SolicitudController extends Controller {
 
    /**
     */
-   public function actionDomicilio() {
-      $request = Yii::app()->request;
-      $form = new DomicilioForm;
+   public function actionSolicitudBase() {
+      $titular = $this->getTitularInSession();
 
+
+      $request = Yii::app()->request;
+      $form = new SolicitudBaseForm('post');
       if($request->isPostRequest) {
-         $form->attributes = $request->getPost('DomicilioForm');
+         $form->attributes = $request->getPost('SolicitudBaseForm');
          if($form->validate()) {
-            $searchForm = new DomicilioForm('findSame');
-            $searchForm->attributes = $request->getPost('DomicilioForm');
-            $domicilio = Domicilio::model()->with('grupoConviviente')->findByAttributes($searchForm->attributes);
-            if($domicilio == null) {
-               $domicilio = DomicilioManager::createDomicilio($form);
-            }
-            Yii::app()->user->setState(self::$DOMICILIO_KEY, $domicilio);
+            SolicitudManager::saveSolicitudBase($form, $titular);
+            $this->redirect('confeccionGrupoConviviente');  
          }
       }
-
-      $this->render('domicilio', array('model'=>$form));        
+      $this->render('solicitudBase', array('model'=>$form));        
    }
 
    /**
     */
-   public function actionBuildSolicitud() {
+   public function actionConfeccionGrupoConviviente() {
+      $this->getTitularInSession();
+      $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
+      $vinculosFemeninos = VinculosUtil::getVinculosFemeninos(); 
+      $vinculosMasculinos = array_combine($vinculosMasculinos, $vinculosMasculinos);
+      $vinculosFemeninos = array_combine($vinculosFemeninos, $vinculosFemeninos);
+     
+      $this->render('confeccionGrupoConviviente',
+         array('findPersonaForm'=> new SolicitudFindUserForm,
+               'vinculosFemeninosList' => $vinculosFemeninos,
+               'vinculosMasculinosList' => $vinculosMasculinos));
+   }
+
+   /**
+    */
+   public function action_getConviviente() {
+      $request = Yii::app()->request;
+      $form = new SolicitudFindUserForm;
+      $titular = Yii::app()->user->getState(self::$PERSONA_KEY);
+      
+      if ($request->isPostRequest) {
+         $form->attributes = $request->getPost('SolicitudFindUserForm');
+         if ($form->validate()) {
+            $persona = $this->findPersona($form);
+            if ($persona != null) {
+               if ($titular->dni == $persona->dni) {
+                  http_response_code(400);
+                  $form->addError("general", "El titular no debe agregarse a si mismo");
+               } else {
+                  header('Content-type: application/json');
+                  echo CJSON::encode($persona);
+                  Yii::app()->end();
+               }
+            } else {
+               $this->redirect("_altaPersona");
+            }
+         } else {
+            http_response_code(400);
+         }
+      }
+      $this->renderPartial('new', array('model'=> $form));
+   }
+
+   /**
+   */
+   public function action_altaPersona() {
+      $request = Yii::app()->request;
+      $form = new PersonaForm;
+
+      if($request->isPostRequest) {
+         $form->attributes = $request->getPost('PersonaForm');
+         if($form->validate()) {
+            header('Content-type: application/json');
+            echo CJSON::encode(PersonaManager::savePersona($form));
+            Yii::app()->end();
+         } else {
+            http_response_code(400);
+         }
+      }
+
+      $this->renderPartial('altaPersona', array('model'=>$form));
+   }
+
+   /**
+    */
+   public function actionnada() {
+      $request = Yii::app()->request;
+      $form = new SolicitudFindUserForm;
+      $form->dni = $request->getQuery('dni');
+      $form->nombre = $request->getQuery('nombre');
+      $form->apellido = $request->getQuery('apellido');
+      if($request->isPostRequest) {
+         $response = new CMap;
+         $response->copyFrom($form);
+         $response->add('vinculo', $request->getPost('vinculo'));
+         echo CJSON::encode($response);
+         Yii::app()->end();
+      }
+
+      $this->renderPartial('vincularConviviente', array('model'=>$form));
+   }
+
+   /**
+    * Busca persona para un formulario valido
+    */
+   private function findPersona($form) {
+      if (empty($form->dni)) {
+         $q = new CDbCriteria();
+         $q->addColumnCondition(
+            array('LOWER(nombre)'=>strtolower($form->nombre),
+                  'LOWER(apellido)'=> strtolower($form->apellido)));
+         return Persona::model()->find($q);
+      } else {
+         return Persona::model()->findByAttributes(array("dni" => $form->dni));
+      }
+   }
+
+   /**
+    * Devuelve el titular en session. Si no esta, vuelve al punto cero con un mensaje de error.
+    */
+   private function getTitularInSession() {
       $titular = Yii::app()->user->getState(self::$PERSONA_KEY);
       if ($titular == null) {
-         Yii::app()->user->setFlash('sessionError', "Se perdieron los datos de la persona solicitante durante la sesion." .
-                                                     "Por favor intente nuevamente");
+         Yii::app()->user->setFlash('sessionError', "No se encuentran datos del titular solicitante en sesion. Comience el proceso nuevamente.");
          $this->redirect('new');
       }
 
-      $request = Yii::app()->request;
-      if($request->isPostRequest) {
-
-      }
-      
-
-   }
-
-   /**
-    * Valida la prescencia exclusiva de los campos del form de entrada/busqueda.
-    */
-   private function validateSolicitudFindUserForm($form) {
-      if ($form->dni == null) {
-         if ($form->nombre == null && $form->apellido == null) {
-            $form->addError("general", "Debe especificar o bien DNI o Nombre y Apellido");
-            return false;
-         } else {
-            return true;
-         }
-      } else {
-         return true;
-      }
+      return $titular;
    }
 }
 ?>

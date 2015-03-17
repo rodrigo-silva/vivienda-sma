@@ -45,6 +45,7 @@ class Solicitud extends CActiveRecord
 		return array(
 			array('fecha, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id', 'required'),
 			array('tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'numerical', 'integerOnly'=>true),
+         array('tipo_solicitud_id, condicion_lote_id', 'safe', 'on'=>'new'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, fecha, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'safe', 'on'=>'search'),
@@ -65,6 +66,7 @@ class Solicitud extends CActiveRecord
 			'grupoConviviente' => array(self::BELONGS_TO, 'GrupoConviviente', 'grupo_conviviente_id'),
 			'titular' => array(self::BELONGS_TO, 'Persona', 'titular_id'),
 			'cotitular' => array(self::BELONGS_TO, 'Persona', 'cotitular_id'),
+         'estado' => array(self::BELONGS_TO, 'EstadoAdministrativoSolicitud', 'estado_administrativo_solicitud_id')
 		);
 	}
 

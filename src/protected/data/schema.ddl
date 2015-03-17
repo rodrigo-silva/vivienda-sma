@@ -145,7 +145,8 @@ CREATE TABLE solicitud (
    grupo_conviviente_id INTEGER NOT NULL,
    titular_id INTEGER NOT NULL,
    cotitular_id INTEGER NULL,
-   estado_administrativo_solicitud_id INTEGER NOT NULL
+   estado_administrativo_solicitud_id INTEGER NOT NULL,
+   UNIQUE(titular_id)
 ) ENGINE = InnoDB;
 
 #FOREIGN KEY'S

@@ -1,5 +1,7 @@
 <?php
    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm');
+   echo '<input type="hidden" value="alta_persona" name="formID">';
+
 
    echo $form->textFieldControlGroup($model, 'nombre');
    echo $form->textFieldControlGroup($model, 'apellido');
@@ -23,11 +25,8 @@
    echo TbHtml::submitButton('Crear');
    $this->endWidget();
 
-   Yii::app()->clientScript->registerScript('script',
-<<<JS
-       jQuery('#PersonaForm_fecha_nac').datepicker({dateFormat: "yy-mm-dd", changeYear:true, yearRange:"c-100:+0",
-                                                 defaultDate: "-50y"}).datepicker('widget').css('font-size', '13px');
-JS
-   , CClientScript::POS_READY);
-
 ?>
+<script type="text/javascript">
+   jQuery('#PersonaForm_fecha_nac').datepicker({dateFormat: "yy-mm-dd", changeYear:true, yearRange:"c-100:+0",
+                                                 defaultDate: "-50y"}).datepicker('widget').css('font-size', '13px');
+</script>

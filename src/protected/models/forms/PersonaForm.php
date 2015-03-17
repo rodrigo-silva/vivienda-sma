@@ -3,6 +3,7 @@
  * Formulario para crear una persona
  */
 class PersonaForm extends CFormModel {
+   public $formID = 'alta_persona';
 
    public $nombre;
    public $apellido;
