@@ -62,7 +62,8 @@ class Solicitud extends CActiveRecord
 		return array(
 			'solicitantes' => array(self::MANY_MANY, 'Persona', 'grupo_solicitante(solicitud_id, persona_id)'),
 			'tipoSolicitud' => array(self::BELONGS_TO, 'TipoSolicitud', 'tipo_solicitud_id'),
-			'viviendaActual' => array(self::BELONGS_TO, 'ViviendaActual', 'vivienda_actual_id'),
+         'condicionUso' => array(self::BELONGS_TO, 'CondicionUso', 'condicion_uso_id'),
+         'condicionAlquiler' => array(self::BELONGS_TO, 'CondicionAlquiler', 'condicion_alquiler_id'),
 			'grupoConviviente' => array(self::BELONGS_TO, 'GrupoConviviente', 'grupo_conviviente_id'),
 			'titular' => array(self::BELONGS_TO, 'Persona', 'titular_id'),
 			'cotitular' => array(self::BELONGS_TO, 'Persona', 'cotitular_id'),

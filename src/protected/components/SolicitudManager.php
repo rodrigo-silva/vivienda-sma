@@ -25,7 +25,7 @@ class SolicitudManager extends TransactionalManager {
                return $solicitud;
             }
          }
-         Yii:log(print_r($viviendaActual->errors, true), print_r($solicitud->errors, true));
+         TransactionalManager::logModelErrors(array($viviendaActual, $solicitud));
          throw new CHttpException(400, "Error de datos en la solicitud");
       };
 
@@ -45,7 +45,7 @@ class SolicitudManager extends TransactionalManager {
             return $domicilio;
          }
       }
-      Yii:log(print_r($domicilio->errors, true), 'error');
+      TransactionalManager::logModelErrors(array($domicilio));
       throw new CHttpException(400, "Error de datos en el domicilio");
       
    }

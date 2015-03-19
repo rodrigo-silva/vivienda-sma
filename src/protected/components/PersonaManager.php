@@ -11,18 +11,21 @@ class PersonaManager extends TransactionalManager {
    public static function savePersona($personaForm) {
       $clorure = function() use($personaForm){
          $persona=new Persona;
+         $economica = new SituacionEconomica;
          $laboral = new SituacionLaboral;
 
          $laboral->attributes = (array)$personaForm;         
-         $persona->attributes= (array)$personaForm;
-         $persona->situacionLaboral = $laboral;
+         $persona->attributes = (array)$personaForm;
+         $economica->attributes = (array)$personaForm;
+
          if($persona->save()) {
-            $laboral->persona_id = $persona->id;
-            if($laboral->save()) {
+            $economica->persona_id = $persona->id;
+            if($economica->save()) {
+               $laboral->situacion_economica_id = $economica->id;
                return $persona;
             }
          }
-         Yii::log(print_r($laboral->errors, true) . print_r($persona->errors, true), 'error');
+         TransactionalManager::logModelErrors(array($persona, $economica, $laboral));
          throw new CHttpException(400, 'Error en los datos al guardar Persona.');
       };
       

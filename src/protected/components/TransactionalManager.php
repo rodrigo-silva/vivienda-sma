@@ -17,4 +17,15 @@ abstract class TransactionalManager extends CComponent{
          throw new CHttpException(500, 'Error interno. Contacte al administrador');
       } 
    }
+
+   /**
+    * Logs error level message containing 'errors' from each model
+    */
+   public static function logModelErrors($models) {
+      $message = "Model errors:";
+      foreach ($models as $model) {
+         $message = $message . " ". print_r($model->errors, true);
+      }
+      Yii::log($message, 'error');
+   }
 }

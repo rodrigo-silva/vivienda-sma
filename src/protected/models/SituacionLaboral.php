@@ -45,7 +45,7 @@ class SituacionLaboral extends CActiveRecord
     {
         
         return array(
-            'persona' => array(self::BELONGS_TO, 'Persona', 'persona_id'),
+            'situacionEconomica' => array(self::BELONGS_TO, 'SituacionEconomica', 'situacion_economica_id'),
         );
     }
 

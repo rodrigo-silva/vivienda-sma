@@ -44,7 +44,7 @@ class CondicionAlquiler extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'viviendas' => array(self::HAS_MANY, 'ViviendaActual', 'condicion_alquiler_id'),
+			'solicitudes' => array(self::HAS_MANY, 'Solicitud', 'condicion_alquiler_id'),
 		);
 	}
 

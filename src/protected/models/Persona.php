@@ -51,7 +51,7 @@ class Persona extends CActiveRecord
       // NOTE: you may need to adjust the relation name and the related
       // class name for the relations automatically generated below.
       return array(
-        'situacionLaboral' => array(self::HAS_ONE, 'SituacionLaboral', 'persona_id'),
+        'situacionEconomica' => array(self::HAS_ONE, 'SituacionEconomica', 'persona_id'),
         'vinculos' => array(self::HAS_MANY, 'Vinculo', 'persona_id'),
         'familiares' => array(self::HAS_MANY, 'Persona', array('familiar_id'=>'id'), 'through'=>'vinculos'),
         'condicionesEspeciales' => array(self::MANY_MANY, 'CondicionEspecial', 

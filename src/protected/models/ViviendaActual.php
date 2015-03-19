@@ -30,14 +30,8 @@ class ViviendaActual extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
-			array('tipo_vivienda_id, condicion_uso_id', 'required'),
-			array('tipo_vivienda_id, condicion_uso_id, condicion_alquiler_id', 'numerical', 'integerOnly'=>true),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, tipo_vivienda_id, condicion_uso_id, condicion_alquiler_id', 'safe', 'on'=>'search'),
+			
 		);
 	}
 
@@ -49,10 +43,7 @@ class ViviendaActual extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'solicitudes' => array(self::HAS_MANY, 'Solicitud', 'vivienda_actual_id'),
 			'tipo' => array(self::BELONGS_TO, 'TipoVivienda', 'tipo_vivienda_id'),
-			'condicionUso' => array(self::BELONGS_TO, 'CondicionUso', 'condicion_uso_id'),
-			'condicionAlquiler' => array(self::BELONGS_TO, 'CondicionAlquiler', 'condicion_alquiler_id'),
 		);
 	}
 
