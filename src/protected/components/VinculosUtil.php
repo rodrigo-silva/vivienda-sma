@@ -16,7 +16,8 @@ class VinculosUtil extends CComponent {
                                   'Nieto'=>'Abuelo',
                                   'Primo'=>'Primo',
                                   'Cuñado'=>'Cuñado',
-                                  'Conyuge'=>'Conyuge');
+                                  'Conyuge'=>'Conyuge',
+                                  'Sin vinculo' => 'Sin vinculo');
    
    private static $vinculosFemeninos = array(
                                   'Abuela'=>'Nieta',
@@ -33,7 +34,8 @@ class VinculosUtil extends CComponent {
                                   'Nieto'=>'Abuela',
                                   'Primo'=>'Prima',
                                   'Cuñado'=>'Cuñada',
-                                  'Conyuge'=>'Conyuge');
+                                  'Conyuge'=>'Conyuge',
+                                  'Sin vinculo' => 'Sin vinculo');
 
 
    /**

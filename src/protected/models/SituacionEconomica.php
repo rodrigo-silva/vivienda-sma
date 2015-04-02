@@ -5,7 +5,7 @@ class SituacionEconomica extends CActiveRecord {
       return 'situacion_economica';
    }
 
-   public static function model(=__CLASS__) {
+   public static function model($className=__CLASS__) {
       return parent::model();
    }
 

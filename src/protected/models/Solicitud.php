@@ -43,12 +43,11 @@ class Solicitud extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fecha, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id', 'required'),
-			array('tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'numerical', 'integerOnly'=>true),
-         array('tipo_solicitud_id, condicion_lote_id', 'safe', 'on'=>'new'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, fecha, tipo_solicitud_id, vivienda_actual_id, grupo_conviviente_id, titular_id, cotitular_id', 'safe', 'on'=>'search'),
+			array('fecha, numero, tipo_solicitud_id, grupo_conviviente_id, titular_id', 'required'),
+			array('tipo_solicitud_id, numero, grupo_conviviente_id, titular_id, cotitular_id', 'numerical', 'integerOnly'=>true),
+         array('tipo_solicitud_id, tipo_vivienda_id, condicion_lote_id, condicion_uso_id,' .
+                'grupo_conviviente_id, titular_id', 'safe', 'on'=>'new'),
+			array('id, numero, fecha, tipo_solicitud_id, grupo_conviviente_id, titular_id, cotitular_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -81,7 +80,6 @@ class Solicitud extends CActiveRecord
 			'numero' => 'Numero',
 			'fecha' => 'Fecha',
 			'tipo_solicitud_id' => 'Tipo Solicitud',
-			'vivienda_actual_id' => 'Vivienda Actual',
 			'grupo_conviviente_id' => 'Grupo Conviviente',
 			'titular_id' => 'Titular',
 			'cotitular_id' => 'Cotitular',
@@ -110,7 +108,6 @@ class Solicitud extends CActiveRecord
 		$criteria->compare('numero',$this->numero);
 		$criteria->compare('fecha',$this->fecha,true);
 		$criteria->compare('tipo_solicitud_id',$this->tipo_solicitud_id);
-		$criteria->compare('vivienda_actual_id',$this->vivienda_actual_id);
 		$criteria->compare('grupo_conviviente_id',$this->grupo_conviviente_id);
 		$criteria->compare('titular_id',$this->titular_id);
 		$criteria->compare('cotitular_id',$this->cotitular_id);

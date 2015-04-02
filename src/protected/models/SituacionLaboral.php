@@ -31,10 +31,7 @@ class SituacionLaboral extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('trabaja, jubilado_pensionado, formal, persona_id', 'numerical', 'integerOnly'=>true),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
-            array('id, trabaja, jubilado_pensionado, formal, persona_id', 'safe', 'on'=>'search'),
+            array('relacion_dependencia, formal, ocupacion, tipo_situacion_laboral_id', 'safe'),
         );
     }
 

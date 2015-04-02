@@ -10,22 +10,30 @@ class SolicitudManager extends TransactionalManager {
          if ($domicilio == null) {
             $domicilio = SolicitudManager::createDomicilio($solicitudBaseForm);
          }
-        
-         $viviendaActual = new ViviendaActual;
-         $viviendaActual->attributes = (array)$solicitudBaseForm;
-         if($viviendaActual->save()) {
-            $solicitud = new Solicitud('new');
-            $solicitud->fecha = date('Y-m-d');
-            $solicitud->attributes = (array)$solicitudBaseForm;
-            
-            $solicitud->vivienda_actual_id = $viviendaActual->id;
-            $solicitud->titular_id = $titular->id;
-            $solicitud->grupo_conviviente_id = $domicilio->grupoConviviente->id;
-            if($solicitud->save()) {
-               return $solicitud;
+
+         
+         $solicitud = new Solicitud('new');
+         $solicitud->fecha = date('Y-m-d');
+         $solicitud->attributes = (array)$solicitudBaseForm;
+         $solicitud->titular_id = $titular->id;
+         $solicitud->grupo_conviviente_id = $domicilio->grupoConviviente->id;
+         
+         if($solicitudBaseForm->es_alquiler == 'true') {
+            $condicionAlquiler = new CondicionAlquiler;
+            $condicionAlquiler->attributes = (array)$solicitudBaseForm;
+            if($condicionAlquiler->save()) {
+               $solicitud->condicion_alquiler_id = $condicionAlquiler->id;
+            } else {
+               TransactionalManager::logModelErrors(array($condicionAlquiler));
+               throw new CHttpException(400, "Error de datos en la solicitud");
             }
          }
-         TransactionalManager::logModelErrors(array($viviendaActual, $solicitud));
+
+         $solicitud->numero = date("y") . strrev($titular->id) . (time() - strtotime(date('Y-m-d')));
+         if($solicitud->save()) {
+            return $solicitud;
+         }
+         TransactionalManager::logModelErrors(array($solicitud));
          throw new CHttpException(400, "Error de datos en la solicitud");
       };
 

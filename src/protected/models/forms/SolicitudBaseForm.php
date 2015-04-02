@@ -1,5 +1,14 @@
 <?php
 class SolicitudBaseForm extends CFormModel {
+   //datos de la solicitud
+   public $tipo_vivienda_id;
+   public $tipo_solicitud_id;
+   public $condicion_lote_id;
+   public $condicion_uso_id;
+   public $es_alquiler;
+   public $formal = 0;
+   public $costo_superior = 0;
+
    //Datos de domicilio
    public $calle;
    public $altura;
@@ -8,14 +17,6 @@ class SolicitudBaseForm extends CFormModel {
    public $casa;
    public $lote;
    public $observaciones;
-
-   //datos de la solicitud
-   public $tipo_solicitud_id;
-   public $condicion_lote_id;
-   public $tipo_vivienda_id;
-   public $condicion_uso_id;
-   public $formal = 0;
-   public $costo_superior = 0;
 
    /**
     */
@@ -53,7 +54,8 @@ class SolicitudBaseForm extends CFormModel {
       return array(
          array('calle', 'required', 'message'=>'Campo obligatorio'),
          array('altura', 'required', 'message'=>'Ingrese una indicacion de altura cualquiera'),
-         array('calle, altura, piso, departamento, casa, lote, observaciones,tipo_solicitud_id, condicion_lote_id, tipo_vivienda_id, condicion_uso_id, formal, costo_superior', 'safe', 'on'=>'post'),
+         array('calle, altura, piso, departamento, casa, lote, observaciones,tipo_solicitud_id, condicion_lote_id,'.
+               'tipo_vivienda_id, condicion_uso_id, formal, costo_superior, es_alquiler', 'safe', 'on'=>'post'),
       );
    }
 
@@ -69,7 +71,7 @@ class SolicitudBaseForm extends CFormModel {
          'tipo_solicitud_id' => 'Tipo de solicitud',
          'condicion_lote_id' => 'Condicion del Lote',
          'tipo_vivienda_id' => 'Tipo de vivienda',
-         'condicion_uso_id' => 'Condicion de uso',
+         'condicion_uso_id' => 'Condicion de uso de la vivienda actual',
          'formal' => 'Alquila de manera formal',
          'costo_superior' => 'Costo superior a la mitad de su ingreso',
       );

@@ -39,7 +39,8 @@ class Persona extends CActiveRecord
          array('sexo', 'length', 'max'=>1),
          array('fecha_nac', 'date', 'format'=>'yyyy-M-d', 'message'=>'Formato invalido'),
 
-         array('nombre, apellido, dni, sexo, fecha_nac, pais_nac_id, provincia_nac_id, localidad_nac_id, nacionalidad, condicionesEspeciales, situacionLaboral', 'safe')
+         array('nombre, apellido, dni, sexo, fecha_nac, pais_nac, provincia_nac, localidad_nac, nacionalidad,'.
+            ' condicionesEspeciales', 'safe')
       );
    }
 

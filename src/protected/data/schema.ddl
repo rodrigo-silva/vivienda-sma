@@ -4,24 +4,6 @@ CREATE DATABASE habitacional COLLATE = utf8_bin;
 
 USE habitacional;
 
-CREATE TABLE pais (
-   id INTEGER NOT NULL PRIMARY KEY,
-   nombre VARCHAR(40)
-) ENGINE = InnoDB;
-
-CREATE TABLE provincia (
-   id INTEGER NOT NULL PRIMARY KEY,
-   nombre VARCHAR(40)
-) ENGINE = InnoDB;
-
-CREATE TABLE localidad (
-   id INTEGER NOT NULL PRIMARY KEY,
-   nombre VARCHAR(40),
-   codigo_postal INTEGER NULL,
-   provincia_id INTEGER NOT NULL
-
-) ENGINE = InnoDB;
-
 # DE LA SOLICITUD ##################################
 
 CREATE TABLE persona (
@@ -33,9 +15,9 @@ CREATE TABLE persona (
    grupo_conviviente_id INTEGER NULL,
    #Nacimiento
    fecha_nac DATE NOT NULL,
-   pais_nac_id INTEGER NOT NULL,
-   provincia_nac_id INTEGER NOT NULL,
-   localidad_nac_id INTEGER NULL,
+   pais_nac VARCHAR(20) NOT NULL,
+   provincia_nac VARCHAR(30) NULL,
+   localidad_nac VARCHAR(50) NULL,
    nacionalidad VARCHAR(20),
    UNIQUE(nombre, apellido, dni)
 
@@ -51,14 +33,16 @@ CREATE TABLE situacion_economica (
 
 CREATE TABLE situacion_laboral (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   trabaja BIT(1),
-   jubilado_pensionado BIT(1),
-   programa_empleo BIT(1),
    relacion_dependencia BIT(1),
    formal BIT(1),
    ocupacion VARCHAR(30),
-   situacion_economica_id INTEGER NOT NULL
+   situacion_economica_id INTEGER NOT NULL,
+   tipo_situacion_laboral_id INTEGER NOT NULL
+) ENGINE = InnoDB;
 
+CREATE TABLE tipo_situacion_laboral (
+   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   descripcion VARCHAR(30) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE telefono (
@@ -92,8 +76,10 @@ CREATE TABLE condicion_especial (
 
 CREATE TABLE solicitud (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   numero INTEGER NOT NULL,
    fecha DATE NOT NULL,
    tipo_solicitud_id INTEGER NOT NULL,
+   tipo_vivienda_id INTEGER NOT NULL,
    condicion_lote_id INTEGER NULL,
    condicion_uso_id INTEGER NOT NULL,
    condicion_alquiler_id INTEGER NULL,
@@ -112,6 +98,11 @@ CREATE TABLE condicion_lote (
 CREATE TABLE tipo_solicitud (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
    nombre VARCHAR(30) NOT NULL
+) ENGINE = InnoDB;
+
+CREATE TABLE tipo_vivienda (
+   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   descripcion VARCHAR(40) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE condicion_uso (
@@ -157,8 +148,8 @@ CREATE TABLE domicilio (
 
 CREATE TABLE vivienda_actual (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   tipo_vivienda_id INTEGER NOT NULL,
-   domicilio_id INTEGER NOT NULL
+   domicilio_id INTEGER NOT NULL,
+   observaciones VARCHAR(250)
 ) ENGINE = InnoDB;
 
 CREATE TABLE vivienda_actual_banio(
@@ -171,11 +162,6 @@ CREATE TABLE vivienda_actual_servicio (
    vivienda_actual_id INTEGER NOT NULL,
    servicio_id INTEGER NOT NULL,
    PRIMARY KEY(vivienda_actual_id, servicio_id)
-) ENGINE = InnoDB;
-
-CREATE TABLE tipo_vivienda (
-   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   descripcion VARCHAR(40) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE banio (
@@ -199,14 +185,11 @@ CREATE TABLE tipo_servicio (
 
 
 #FOREIGN KEY'S
-ALTER TABLE persona ADD FOREIGN KEY (pais_nac_id) REFERENCES pais(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
-ALTER TABLE persona ADD FOREIGN KEY (provincia_nac_id) REFERENCES provincia(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
-ALTER TABLE persona ADD FOREIGN KEY (localidad_nac_id) REFERENCES localidad(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE persona ADD FOREIGN KEY (grupo_conviviente_id) REFERENCES grupo_conviviente(id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE situacion_economica ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE situacion_laboral ADD FOREIGN KEY (situacion_economica_id) REFERENCES situacion_economica(id) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE situacion_laboral ADD FOREIGN KEY (tipo_situacion_laboral_id) REFERENCES tipo_situacion_laboral(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE telefono ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE localidad ADD FOREIGN KEY (provincia_id) REFERENCES provincia(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE vinculo ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE vinculo ADD FOREIGN KEY (familiar_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE persona_condicion_especial ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
@@ -214,13 +197,13 @@ ALTER TABLE persona_condicion_especial ADD FOREIGN KEY (condicion_especial_id) R
 ALTER TABLE grupo_conviviente ADD FOREIGN KEY (domicilio_id) REFERENCES domicilio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE grupo_solicitante ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE grupo_solicitante ADD FOREIGN KEY (solicitud_id) REFERENCES solicitud(id) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE vivienda_actual ADD FOREIGN KEY (tipo_vivienda_id) REFERENCES tipo_vivienda(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE vivienda_actual ADD FOREIGN KEY (domicilio_id) REFERENCES domicilio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE servicio ADD FOREIGN KEY (tipo_servicio_id) REFERENCES tipo_servicio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE vivienda_actual_servicio ADD FOREIGN KEY (vivienda_actual_id) REFERENCES vivienda_actual(id) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE vivienda_actual_servicio ADD FOREIGN KEY (servicio) REFERENCES servicio(id) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE vivienda_actual_servicio ADD FOREIGN KEY (servicio_id) REFERENCES servicio(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE vivienda_actual_banio ADD FOREIGN KEY (vivienda_actual_id) REFERENCES vivienda_actual(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE vivienda_actual_banio ADD FOREIGN KEY (banio_id) REFERENCES banio(id) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE solicitud ADD FOREIGN KEY (tipo_vivienda_id) REFERENCES tipo_vivienda(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (condicion_uso_id) REFERENCES condicion_uso(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (condicion_alquiler_id) REFERENCES condicion_alquiler(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (tipo_solicitud_id) REFERENCES tipo_solicitud(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
@@ -229,3 +212,29 @@ ALTER TABLE solicitud ADD FOREIGN KEY (titular_id) REFERENCES persona(id) ON DEL
 ALTER TABLE solicitud ADD FOREIGN KEY (cotitular_id) REFERENCES persona(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (condicion_lote_id) REFERENCES condicion_lote(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (estado_administrativo_solicitud_id) REFERENCES estado_administrativo_solicitud(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+
+
+INSERT INTO condicion_especial VALUES(NULL, 'Ex combatiente');
+INSERT INTO condicion_especial VALUES(NULL, 'No vidente');
+
+INSERT INTO condicion_lote VALUES(NULL, 'Permiso comunidad');
+INSERT INTO condicion_lote VALUES(NULL, 'Cedido');
+
+INSERT INTO tipo_solicitud VALUES(NULL, 'Vivienda');
+INSERT INTO tipo_solicitud VALUES(NULL, 'Lote');
+
+INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Borrador');
+INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Activa');
+INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Archivada');
+
+INSERT INTO tipo_vivienda VALUES(NULL, 'Casa Rodante');
+INSERT INTO tipo_vivienda VALUES(NULL, 'Pieza');
+
+INSERT INTO condicion_uso VALUES(NULL, 'Ocupada');
+INSERT INTO condicion_uso VALUES(NULL, 'Alquilada');
+INSERT INTO condicion_uso VALUES(NULL, 'Prestada');
+
+INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Ocupado');
+INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Descupado');
+INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Jubilado o Pensionado');
+INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Programa Empleo');

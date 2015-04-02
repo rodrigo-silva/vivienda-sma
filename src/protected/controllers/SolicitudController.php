@@ -4,6 +4,7 @@ class SolicitudController extends Controller {
 
    private static $PERSONA_KEY = 'persona-solicitud';
    private static $DOMICILIO_KEY = 'domicilio-solicitud';
+   private static $SOLICITUD_KEY = 'solicitud';
 
    /**
     * Punto de entrada para crear una solicitud. Busca la Persona para asociar como titular. Si no existe redirecciona a crearla
@@ -35,7 +36,6 @@ class SolicitudController extends Controller {
    public function actionAltaPersona() {
       $request = Yii::app()->request;
       $form = new PersonaForm;
-
       if($request->isPostRequest) {
          $form->attributes = $request->getPost('PersonaForm');
          if($form->validate()) {
@@ -51,13 +51,12 @@ class SolicitudController extends Controller {
    public function actionSolicitudBase() {
       $titular = $this->getTitularInSession();
 
-
       $request = Yii::app()->request;
       $form = new SolicitudBaseForm('post');
       if($request->isPostRequest) {
          $form->attributes = $request->getPost('SolicitudBaseForm');
          if($form->validate()) {
-            SolicitudManager::saveSolicitudBase($form, $titular);
+            Yii::app()->user->setState(self::$SOLICITUD_KEY, SolicitudManager::saveSolicitudBase($form, $titular));
             $this->redirect('confeccionGrupoConviviente');  
          }
       }
@@ -67,7 +66,7 @@ class SolicitudController extends Controller {
    /**
     */
    public function actionConfeccionGrupoConviviente() {
-      $this->getTitularInSession();
+      $titular = $this->getTitularInSession();
       $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
       $vinculosFemeninos = VinculosUtil::getVinculosFemeninos(); 
       $vinculosMasculinos = array_combine($vinculosMasculinos, $vinculosMasculinos);
@@ -76,7 +75,11 @@ class SolicitudController extends Controller {
       $this->render('confeccionGrupoConviviente',
          array('findPersonaForm'=> new SolicitudFindUserForm,
                'vinculosFemeninosList' => $vinculosFemeninos,
-               'vinculosMasculinosList' => $vinculosMasculinos));
+               'vinculosMasculinosList' => $vinculosMasculinos,
+               'titular' => $titular,
+               'solicitud' => Yii::app()->user->getState(self::$SOLICITUD_KEY)
+         )
+      );
    }
 
    /**
