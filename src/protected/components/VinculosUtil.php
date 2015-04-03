@@ -1,7 +1,7 @@
 <?php
 
 class VinculosUtil extends CComponent {
-   private static $vinculosMasculinos = array(
+   public static $vinculosMasculinos = array(
                                   'Abuela'=>'Nieto',
                                   'Madre'=>'Hijo',
                                   'Hermana'=>'Hermano',
@@ -19,7 +19,7 @@ class VinculosUtil extends CComponent {
                                   'Conyuge'=>'Conyuge',
                                   'Sin vinculo' => 'Sin vinculo');
    
-   private static $vinculosFemeninos = array(
+   public static $vinculosFemeninos = array(
                                   'Abuela'=>'Nieta',
                                   'Madre'=>'Hija',
                                   'Hermana'=>'Hermana',
@@ -56,14 +56,14 @@ class VinculosUtil extends CComponent {
     * Dado un valor de vinculo, ej 'Madre' devuelve el retrogrado, 'Hijo'
     */
    public static function getVinculoMasculinoRetrogrado($vinculo) {
-      return self::$vinculosMasculinos($vinculo);
+      return self::$vinculosMasculinos[$vinculo];
    }
 
    /**
     * Dado un valor de vinculo, ej 'Padre' devuelve el retrogrado, 'Hija'
     */
    public static function getVinculoFemeninoRetrogrado($vinculo) {
-     return self::$vinculosFemeninos($vinculo);  
+     return self::$vinculosFemeninos[$vinculo];  
    }
 
 }

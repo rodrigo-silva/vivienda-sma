@@ -54,7 +54,7 @@ CREATE TABLE telefono (
 ) ENGINE = InnoDB;
 
 CREATE TABLE vinculo (
-   tipo VARCHAR(20),
+   vinculo VARCHAR(20),
    persona_id INTEGER NOT NULL,
    familiar_id INTEGER NOT NULL,
    PRIMARY KEY(persona_id, familiar_id)

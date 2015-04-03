@@ -77,8 +77,7 @@ class SolicitudController extends Controller {
       if ($request->isPostRequest) {
          $form = new ConfeccionGrupoConvivienteForm;
          $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
-         // SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud, $titular);
-         CVarDumper::dump($form, 10, true);
+         CVarDumper::dump(SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud, $titular), 10, true);
       }
      
       $this->render('confeccionGrupoConviviente',

@@ -52,7 +52,7 @@
          <label for="">Detalles del ba&ntilde;o:</label>
          <?php echo TbHtml::dropDownList('interno','', array('Externo', 'Interno')); ?>
          <?php echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo')); ?>      
-         <?php echo TbHtml::checkBox('letrina', true, array('label'=>'Es Letrina')); ?>
+         <?php echo TbHtml::checkBox('letrina', false, array('label'=>'Es Letrina')); ?>
       </div>
    </div>
 </div>

@@ -10,7 +10,7 @@ abstract class TransactionalManager extends CComponent{
          return $result;
       } catch (Exception $e) {
          $transaction->rollBack();
-         Yii::log("Exception en " . $e->getFile() . " : " . $e->getLine() . ' | ' . $e->getMessage());
+         Yii::log("Exception en " . $e->getFile() . " : " . $e->getLine() . ' | ' . $e->getMessage() . '|' . $e->getTraceAsString());
          if($e instanceof CHttpException) {
             throw $e;
          }

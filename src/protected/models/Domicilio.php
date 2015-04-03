@@ -50,7 +50,8 @@ class Domicilio extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-         'grupoConviviente' => array(self::HAS_ONE, 'GrupoConviviente', 'domicilio_id')
+         'grupoConviviente' => array(self::HAS_ONE, 'GrupoConviviente', 'domicilio_id'),
+         'viviendaActual' => array(self::HAS_ONE, 'ViviendaActual', 'domicilio_id')
 		);
 	}
 
