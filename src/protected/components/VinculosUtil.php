@@ -8,14 +8,14 @@ class VinculosUtil extends CComponent {
                                   'Hija'=>'Padre',
                                   'Nieta'=>'Abuelo',
                                   'Prima'=>'Primo',
-                                  'Cuñada'=>'Cuñado',
+                                  // 'Cuñada'=>'Cuñado',
                                   'Abuelo'=>'Nieto',
                                   'Padre'=>'Hijo',
                                   'Hermano'=>'Hermano',
                                   'Hijo'=>'Padre',
                                   'Nieto'=>'Abuelo',
                                   'Primo'=>'Primo',
-                                  'Cuñado'=>'Cuñado',
+                                  // 'Cuñado'=>'Cuñado',
                                   'Conyuge'=>'Conyuge',
                                   'Sin vinculo' => 'Sin vinculo');
    
@@ -26,14 +26,14 @@ class VinculosUtil extends CComponent {
                                   'Hija'=>'Madre',
                                   'Nieta'=>'Abuela',
                                   'Prima'=>'Prima',
-                                  'Cuñada'=>'Cuñada',
+                                  // 'Cuñada'=>'Cuñada',
                                   'Abuelo'=>'Nieta',
                                   'Padre'=>'Hija',
                                   'Hermano'=>'Hermana',
                                   'Hijo'=>'Madre',
                                   'Nieto'=>'Abuela',
                                   'Primo'=>'Prima',
-                                  'Cuñado'=>'Cuñada',
+                                  // 'Cuñado'=>'Cuñada',
                                   'Conyuge'=>'Conyuge',
                                   'Sin vinculo' => 'Sin vinculo');
 

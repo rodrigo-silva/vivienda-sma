@@ -66,18 +66,27 @@ class SolicitudController extends Controller {
    /**
     */
    public function actionConfeccionGrupoConviviente() {
+      $request = Yii::app()->request;
+      
       $titular = $this->getTitularInSession();
+      $solicitud = Yii::app()->user->getState(self::$SOLICITUD_KEY);
       $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
       $vinculosFemeninos = VinculosUtil::getVinculosFemeninos(); 
       $vinculosMasculinos = array_combine($vinculosMasculinos, $vinculosMasculinos);
       $vinculosFemeninos = array_combine($vinculosFemeninos, $vinculosFemeninos);
+      if ($request->isPostRequest) {
+         $form = new ConfeccionGrupoConvivienteForm;
+         $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
+         // SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud, $titular);
+         CVarDumper::dump($form, 10, true);
+      }
      
       $this->render('confeccionGrupoConviviente',
          array('findPersonaForm'=> new SolicitudFindUserForm,
                'vinculosFemeninosList' => $vinculosFemeninos,
                'vinculosMasculinosList' => $vinculosMasculinos,
                'titular' => $titular,
-               'solicitud' => Yii::app()->user->getState(self::$SOLICITUD_KEY)
+               'solicitud' => $solicitud
          )
       );
    }
