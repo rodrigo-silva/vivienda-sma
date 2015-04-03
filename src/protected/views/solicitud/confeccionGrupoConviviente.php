@@ -37,8 +37,8 @@
          echo "<tr>";
             echo CHtml::tag('td', array(), $value);
             echo CHtml::tag('td', array('class' =>'servicio-disponible', 'servicio-id'=>"$key"), TbHtml::checkBox('', false));
-            echo CHtml::tag('td', array(), TbHtml::checkBox('', false));
-            echo CHtml::tag('td', array(), TbHtml::checkBox('', false));
+            echo CHtml::tag('td', array('class' =>'servicio-medidor'), TbHtml::checkBox('', false));
+            echo CHtml::tag('td', array('class' =>'servicio-compartido'), TbHtml::checkBox('', false));
          echo "</tr>";
       }?>
    </tbody>
@@ -84,13 +84,13 @@
    </thead>
    <tbody>
       <tr>
-         <th><?php echo "$titular->nombre"?></th>
-         <th><?php echo "$titular->apellido"?></th>
-         <th class="dni"><?php echo "$titular->dni"?></th>
-         <th><?php echo ""?></th>
-         <th><?php echo "Si"?></th>
-         <th><?php echo "Titular"?></th>
-         <th><?php echo  ""?></th>
+         <td><?php echo "$titular->nombre"?></td>
+         <td><?php echo "$titular->apellido"?></td>
+         <td class="dni"><?php echo "$titular->dni"?></td>
+         <td><?php echo ""?></td>
+         <td><?php echo "Si"?></td>
+         <td><?php echo "Titular"?></td>
+         <td><?php echo  ""?></td>
       </tr>
    </tbody>
 </table>
@@ -208,8 +208,54 @@
    }
 
    function onSubmit() {
+      var values = []
       //servicios
-      jQuery('#servicios-table tbody tr').each(function(i,e){})
+      var arrayIndex = 0
+      jQuery('#servicios-table tbody tr').each(function(i,e) {
+         if(jQuery(e).find('td.servicio-disponible input').prop('checked')) {
+            var baseName = 'Form[servicios][' + (arrayIndex++) + ']'
+            var id = jQuery(e).find('td.servicio-disponible').attr('servicio-id')
+            var medidor = jQuery(e).find('td.servicio-medidor input').prop('checked') ? 1 : 0;
+            var compartido = jQuery(e).find('td.servicio-compartido input').prop('checked') ? 1 : 0;
+            values.push({name: baseName + '[tipo_servicio_id]', value: id})
+            values.push({name: baseName + '[medidor]', value: medidor})
+            values.push({name: baseName + '[compartido]', value: compartido})
+         }
+      });
+
+      //banios
+      jQuery('#banios-container .controls').each(function(i,e) {
+         var interno = jQuery(e).find('select#interno').val()
+         var completo = jQuery(e).find('select#completo').val()
+         var letrina = jQuery(e).find(':checkbox').prop('checked') ? 1 : 0;
+
+         var baseName = 'Form[banios][' + i + ']'
+         values.push({name: baseName + '[interno]', value: interno})
+         values.push({name: baseName + '[completo]', value: completo})
+         values.push({name: baseName + '[letrina]', value: letrina})
+
+      });
+      
+      values.push({name: 'Form[observaciones]', value: jQuery('textarea').val()})
+
+      //convivientes
+      jQuery('#grupo-conviviente tbody tr').each(function(i, trEl) {
+         if(i > 0) {
+            var baseName = 'Form[convivientes][' + (i-1) + ']'
+            var dni = jQuery(trEl).find('td.dni').text();
+            var vinculo = jQuery(trEl).find("select").val();
+            var solicitante = jQuery(trEl).find(":checkbox").prop('checked') ? 1 : 0;
+            var cotitular = jQuery(trEl).find(":radio").prop('checked') ? 1 : 0;
+
+            values.push({name: baseName + '[dni]', value: dni})
+            values.push({name: baseName + '[vinculo]', value: vinculo})
+            values.push({name: baseName + '[solicitante]', value: solicitante})
+            values.push({name: baseName + '[cotitular]', value: cotitular})
+               
+         }
+      });
+
+      console.dir(values)
    }
 
    isPresent = function(dni) {
