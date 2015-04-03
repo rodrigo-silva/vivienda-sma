@@ -123,7 +123,8 @@ CREATE TABLE estado_administrativo_solicitud (
 
 CREATE TABLE grupo_conviviente (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   domicilio_id INTEGER NOT NULL
+   domicilio_id INTEGER NOT NULL,
+   UNIQUE(domicilio_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE grupo_solicitante (
@@ -180,7 +181,7 @@ CREATE TABLE servicio (
 
 CREATE TABLE tipo_servicio (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   descripcion VARCHAR(10)
+   descripcion VARCHAR(30)
 ) ENGINE = InnoDB;
 
 
@@ -238,3 +239,9 @@ INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Ocupado');
 INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Descupado');
 INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Jubilado o Pensionado');
 INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Programa Empleo');
+
+INSERT INTO tipo_servicio VALUES (NULL, 'Luz');
+INSERT INTO tipo_servicio VALUES (NULL, 'Gas');
+INSERT INTO tipo_servicio VALUES (NULL, 'Agua');
+INSERT INTO tipo_servicio VALUES (NULL, 'Telefono');
+INSERT INTO tipo_servicio VALUES (NULL, 'Servicio de cable');

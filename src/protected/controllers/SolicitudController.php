@@ -97,6 +97,16 @@ class SolicitudController extends Controller {
                if ($titular->dni == $persona->dni) {
                   http_response_code(400);
                   $form->addError("general", "El titular no debe agregarse a si mismo");
+               } elseif (!is_null($persona->grupo_conviviente_id)) {
+                  if (Yii::app()->user->getState(self::$SOLICITUD_KEY)->grupoConviviente->domicilio->id == $persona->domicilio->id) {
+                     header('Content-type: application/json');
+                     echo CJSON::encode($persona);
+                     Yii::app()->end();
+                  } else {
+                     http_response_code(400);
+                     $calle = $persona->domicilio->calle;
+                     $form->addError("general", "$persona->nombre $persona->apellido figura en domicilio de la calle $calle. Debe desvincularlo de este domicilio para agregarlo a este grupo conviviente. Puede modificar la solicitud mas tarde.");
+                  }
                } else {
                   header('Content-type: application/json');
                   echo CJSON::encode($persona);
@@ -132,23 +142,11 @@ class SolicitudController extends Controller {
       $this->renderPartial('altaPersona', array('model'=>$form));
    }
 
+
    /**
     */
-   public function actionnada() {
-      $request = Yii::app()->request;
-      $form = new SolicitudFindUserForm;
-      $form->dni = $request->getQuery('dni');
-      $form->nombre = $request->getQuery('nombre');
-      $form->apellido = $request->getQuery('apellido');
-      if($request->isPostRequest) {
-         $response = new CMap;
-         $response->copyFrom($form);
-         $response->add('vinculo', $request->getPost('vinculo'));
-         echo CJSON::encode($response);
-         Yii::app()->end();
-      }
-
-      $this->renderPartial('vincularConviviente', array('model'=>$form));
+   public function getServicios() {
+      return CHtml::listData(TipoServicio::model()->findAll(), 'id', 'descripcion');
    }
 
    /**

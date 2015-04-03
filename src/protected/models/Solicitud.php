@@ -66,7 +66,8 @@ class Solicitud extends CActiveRecord
 			'grupoConviviente' => array(self::BELONGS_TO, 'GrupoConviviente', 'grupo_conviviente_id'),
 			'titular' => array(self::BELONGS_TO, 'Persona', 'titular_id'),
 			'cotitular' => array(self::BELONGS_TO, 'Persona', 'cotitular_id'),
-         'estado' => array(self::BELONGS_TO, 'EstadoAdministrativoSolicitud', 'estado_administrativo_solicitud_id')
+         'estado' => array(self::BELONGS_TO, 'EstadoAdministrativoSolicitud', 'estado_administrativo_solicitud_id'),
+         'domicilio' => array(self::HAS_ONE, 'Domicilio', array('domicilio_id' => 'id'), 'through'=>'grupoConviviente'),
 		);
 	}
 
