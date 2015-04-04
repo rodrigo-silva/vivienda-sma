@@ -25,7 +25,8 @@ return array(
 		'application.components.*',
       'bootstrap.helpers.*',
       'bootstrap.behaviors.*',
-      'bootstrap.components.*'
+      'bootstrap.components.*',
+      'bootstrap.widgets.*'
 	),
 
 	'modules'=>array(

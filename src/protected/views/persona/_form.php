@@ -1,59 +1,76 @@
 <?php
-/* @var $this PersonaController */
-/* @var $model Persona */
-/* @var $form CActiveForm */
+   $provincias = array('Buenos Aires' => 'Buenos Aires','Capital Federal' => 'Capital Federal','Catamarca' => 'Catamarca','Chaco' => 'Chaco','Chubut' => 'Chubut','Cordoba' => 'Cordoba','Corrientes' => 'Corrientes','Entre Rios' => 'Entre Rios','Formosa' => 'Formosa','Jujuy' => 'Jujuy','La Pampa' => 'La Pampa','La Rioja' => 'La Rioja','Mendoza' => 'Mendoza','Misiones' => 'Misiones','Neuquen' => 'Neuquen','Ri Negro' => 'Ri Negro','Salta' => 'Salta','San Juan' => 'San Juan','San Luis' => 'San Luis','Santa Cruz' => 'Santa Cruz','Santa Fe' => 'Santa Fe','Santiago del Estero' => 'Santiago del Estero','Tierra del Fuego' => 'Tierra del Fuego','Tucuman' => 'Tucuman');
+   
+   $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array('layout' => TbHtml::FORM_LAYOUT_HORIZONTAL));
+   echo '<fieldset>';
+   echo '<legend>Datos Personales</legend>';
+   echo $form->textFieldControlGroup($model, 'nombre');
+   echo $form->textFieldControlGroup($model, 'apellido');
+   echo $form->textFieldControlGroup($model, 'dni');
+   echo $form->dropDownListControlGroup($model, 'sexo', array('M'=>'Masculino', 'F'=>'Femenino'));
+   
+   echo $form->textFieldControlGroup($model, 'fecha_nac', array('readonly'=>''));
+   echo $form->dropDownListControlGroup($model, 'nacionalidad', array('Argentino/a'=>'Argentino/a', 'Extranjero/a'=>'Extranjero/a'),  array('id'=>'nacionalidad-combo'));
+   echo $form->textFieldControlGroup($model, 'pais_nac', array('groupOptions'=>array('id'=>'input-pais-nac')));
+   echo $form->dropDownListControlGroup($model, 'provincia_nac',$provincias, array('groupOptions'=>array('id'=>'input-provincias-nac')));
+   echo $form->textFieldControlGroup($model, 'localidad_nac', array('groupOptions'=>array('id'=>'input-localidad-nac')));
+
+   echo $form->textFieldControlGroup($model, 'telefono', array('prepend' => '02972', 'span'=>2));
+   echo $form->textFieldControlGroup($model, 'celular_prefijo');
+   echo $form->textFieldControlGroup($model, 'celular', array('prepend' => '15', 'span'=>2));
+   echo $form->inlineCheckBoxListControlGroup($model, 'condicionesEspeciales', $model->getCondicionesEspeciales());
+   echo '</fieldset>';
+   
+   echo '<fieldset>';
+   echo '<legend>Situacion Economica</legend>';
+   echo $form->textFieldControlGroup($model, 'ingresos_alimentos', array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end"));
+   echo $form->textFieldControlGroup($model, 'ingresos_subsidio', array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end"));
+   echo $form->dropDownListControlGroup($model, 'tipo_situacion_laboral_id', $model->getSituacionesLaborales(), array('id'=>"situacion-laboral-combo"));
+   
+   echo '<div id="detalle-ocupacion-container">'; 
+      echo $form->inlineRadioButtonListControlGroup($model, 'relacion_dependencia', array('Cuenta propista', 'Relacion de Dependencia'));
+      echo $form->inlineRadioButtonListControlGroup($model, 'formal', array('No', 'Si'));
+      echo $form->textFieldControlGroup($model, 'ingresos_laborales', array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end"));
+      echo $form->textFieldControlGroup($model, 'ocupacion');
+   echo '</div>'; 
+   echo '</fieldset>';
+
+
+   echo TbHtml::submitButton('Guardar');
+   $this->endWidget();
+
 ?>
+<script type="text/javascript">
+   //Calendario
+   jQuery('#PersonaForm_fecha_nac').datepicker({dateFormat: "yy-mm-dd", changeYear:true, yearRange:"c-100:+0",
+                                                 defaultDate: "-30y"}).datepicker('widget').css('font-size', '13px');
+   jQuery('#PersonaForm_fecha_nac').attr("readonly", "true");
 
-<div class="form">
+   // Nacionalidad
+   jQuery('#nacionalidad-combo').change(function(){
+      if($(this).find('option:selected').text().toUpperCase() == 'ARGENTINO/A') {
+         jQuery('#input-pais-nac').hide();
+         jQuery('#input-pais-nac input').val("Argentina")
+         jQuery('#input-provincias-nac').show()
+         jQuery('#input-localidad-nac').show()
+      } else {
+         jQuery('#input-pais-nac input').val("")
+         jQuery('#input-pais-nac').show();
+         jQuery('#input-provincias-nac').hide()
+         jQuery('#input-localidad-nac').hide()
+         jQuery('#PersonaForm_provincia_nac').val("")
+      }
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'persona-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+   });
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary(array($model, $laboral)); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'nombre'); ?>
-		<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>60)); ?>
-		<?php echo $form->error($model,'nombre'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'apellido'); ?>
-		<?php echo $form->textField($model,'apellido',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'apellido'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'dni'); ?>
-		<?php echo $form->textField($model,'dni'); ?>
-		<?php echo $form->error($model,'dni'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'sexo'); ?>
-		<?php echo $form->dropDownList($model,'sexo',array("M"=>"Masculino", "F"=>"Femenino")); ?>
-		<?php echo $form->error($model,'sexo'); ?>
-	</div>
-
-   <div class="row">
-      <?php echo $form->labelEx($laboral,'trabaja'); ?>
-      <?php echo $form->dropDownList($laboral,'trabaja', array(0=>"No", 1=>'Si')); ?>
-      <?php echo $form->error($laboral,'trabaja'); ?>
-   </div>
-	
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
+   //situacion laboral
+   jQuery('#situacion-laboral-combo').change(function(){
+      if($(this).find('option:selected').text().toUpperCase() == 'OCUPADO') {
+         jQuery('#detalle-ocupacion-container').show()
+      } else {
+         jQuery('#detalle-ocupacion-container').hide()
+      }
+   });
+   jQuery('#situacion-laboral-combo').trigger('change')
+   jQuery('#nacionalidad-combo').trigger('change')
+</script>

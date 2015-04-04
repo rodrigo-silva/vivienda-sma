@@ -9,36 +9,28 @@ class PersonaManager extends TransactionalManager {
    /**
     */
    public static function savePersona($personaForm) {
-      $clorure = function() use($personaForm){
-         $persona=new Persona;
-         $economica = new SituacionEconomica;
-         $laboral = new SituacionLaboral;
-         $telFijo = new Telefono;
-         $telCel = new Telefono;
+      $closure = function() use($personaForm){
+         if (is_null($personaForm->persona_id)) {
+            $persona = new Persona;
+            $economica = new SituacionEconomica;
+            $laboral = new SituacionLaboral;
+         } else {
+            $persona=Persona::model()->findByPk($personaForm->persona_id);
+            $economica = $persona->situacionEconomica;
+            $laboral = $persona->situacionEconomica->situacionLaboral;
+         }
 
          $laboral->attributes = (array)$personaForm;         
          $persona->attributes = (array)$personaForm;
          $economica->attributes = (array)$personaForm;
          
-         $telFijo->prefijo = $personaForm->telefonoFijoPre;
-         $telFijo->numero = $personaForm->telefonoFijo;
-         $telCel->prefijo = $personaForm->telefonoCelularPre;
-         $telCel->numero = $personaForm->telefonoCelular;
-
          if($persona->save()) {
-            $telFijo->persona_id = $persona->id;
-            $telCel->persona_id = $persona->id;
-            if($telFijo->validate()){
-               $telFijo->save();
-            }
-            if($telCel->validate()){
-               $telCel->save();
-            }
 
             $economica->persona_id = $persona->id;
             if($economica->save()) {
                $laboral->situacion_economica_id = $economica->id;
                if($laboral->save()) {
+                  Yii::app()->db->createCommand()->delete('persona_condicion_especial', 'persona_id=:id', array(':id'=>$persona->id));
                   if($personaForm->condicionesEspeciales != NULL) {
                      foreach($personaForm->condicionesEspeciales as $key => $value) {
                         Yii::app()->db->createCommand()->insert('persona_condicion_especial',
@@ -55,7 +47,7 @@ class PersonaManager extends TransactionalManager {
          throw new CHttpException(400, 'Error en los datos al guardar Persona.');
       };
       
-      return parent::doInTransaction($clorure);
+      return parent::doInTransaction($closure);
    }
 
 }

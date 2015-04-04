@@ -3,12 +3,6 @@
 class PersonaController extends Controller
 {
 	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/column2';
-
-	/**
 	 * @return array action filters
 	 */
 	public function filters()
@@ -60,60 +54,45 @@ class PersonaController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
-		$persona=new Persona;
-      $laboral = new SituacionLaboral;
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Persona'], $_POST['SituacionLaboral']))
-		{
-			$persona->attributes=$_POST['Persona'];
-         $laboral->attributes = $_POST['SituacionLaboral'];
-
-         if($persona->validate() && $laboral->validate()) {
-			   if($persona->save(false)) {
-               $laboral->persona_id = $persona->id;
-               if($laboral->save(false)) {
-                  $this->redirect(array('view','id'=>$persona->id));
-               } else {
-                  $persona->delete();
-               }
-            }
-
+	public function actionCreate() {
+		$request = Yii::app()->request;
+      $form = new PersonaForm("new");
+      if($request->isPostRequest) {
+         $form->attributes = $request->getPost('PersonaForm');
+         if($form->validate()) {
+            PersonaManager::savePersona($form);
+            $this->redirect('admin');
          }
-         
-		}
-
-		$this->render('create',array(
-			'model'=>$persona, 'laboral' => $laboral
-		));
+      }
+      $this->render('create', array('model'=>$form));
 	}
 
 	/**
 	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * If update is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
+	public function actionUpdate($id) {
+      $model=Persona::model()->with(
+         array('condicionesEspeciales', 'situacionEconomica', 'situacionEconomica.situacionLaboral'))->findByPk($id);
+      if($model===null)
+         throw new CHttpException(404,'Esta intentando actualizar una Persona inexistente en el sistema');
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Persona']))
-		{
-			$model->attributes=$_POST['Persona'];
-         $model->situacionLaboral->attributes = $_POST['SituacionLaboral'];
-			if($model->save() && $model->situacionLaboral->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+      $form = new PersonaForm;
+      $request = Yii::app()->request;
+      if($request->isPostRequest) {
+         $form->attributes = $request->getPost('PersonaForm');
+         $form->persona_id = $model->id;
+         if($form->validate()) {
+            PersonaManager::savePersona($form);
+         }
+      } else {
+         $form->attributes = $model->attributes;
+         $form->attributes = $model->situacionEconomica->attributes;
+         $form->attributes = $model->situacionEconomica->situacionLaboral->attributes;
+         $form->condicionesEspeciales = array_map(function($e){return $e->id;}, $model->condicionesEspeciales);
+      }
+      $this->render('update', array('model'=>$form));
 	}
 
 	/**
@@ -121,39 +100,28 @@ class PersonaController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	public function actionDelete($id) {
+      $persona = Persona::model()->with(array('solicitud', 'cotitularidad'))->findByPk($id);
+      if (is_null($persona->solicitud) && is_null($persona->cotitularidad)) {
+         $persona->delete();
+      } else {
+         http_response_code(400);
+         header('Content-type: application/json');
+         echo CJSON::encode(array('error'=>"No se puede eliminar la persona $persona->nombre $persona->apellido por estar vinculada a solicitudes."));
+         Yii::app()->end();
+      }
 	}
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Persona');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
+	
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
-	{
+	public function actionAdmin() {
 		$model=new Persona('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Persona']))
 			$model->attributes=$_GET['Persona'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		$this->render('admin',array('model'=>$model,));
 	}
 
 	/**
@@ -169,18 +137,5 @@ class PersonaController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param Persona $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='persona-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
 	}
 }

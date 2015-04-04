@@ -43,7 +43,7 @@
        */
       private function validateFieldPrescenceCombination() {
          if ($this->dni == null) {
-            if ($this->nombre == null && $this->apellido == null) {
+            if ($this->nombre == null || $this->apellido == null) {
                $this->addError("general", "Debe especificar o bien DNI o Nombre y Apellido");
                return false;
             } else {

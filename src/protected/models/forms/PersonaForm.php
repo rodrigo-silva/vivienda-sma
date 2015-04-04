@@ -3,6 +3,7 @@
  * Formulario para crear una persona
  */
 class PersonaForm extends CFormModel {
+   public $persona_id;
    public $nombre;
    public $apellido;
    public $dni;
@@ -13,10 +14,10 @@ class PersonaForm extends CFormModel {
    public $localidad_nac;
    public $nacionalidad;
    
-   public $telefonoFijoPre = 2972;
-   public $telefonoFijo;
-   public $telefonoCelularPre = 2972;
-   public $telefonoCelular;
+   public $celular_prefijo;
+   public $telefono_prefijo = 2972;
+   public $celular;
+   public $telefono;
 
    public $tipo_situacion_laboral_id;
 
@@ -37,15 +38,16 @@ class PersonaForm extends CFormModel {
    public function rules() {
       return array(
          array('nombre, apellido, dni, sexo, fecha_nac, pais_nac, provincia_nac, localidad_nac, nacionalidad,' .
-                'telefonoFijoPre, telefonoFijo, telefonoCelularPre, telefonoCelular,' .
+                'celular_prefijo, telefono_prefijo, celular, telefono,' .
                 'ingresos_laborales, ingresos_alimentos, ingresos_subsidio, relacion_dependencia, formal, ocupacion,' .
                 'condicionesEspeciales, tipo_situacion_laboral_id', 'safe'),
-         array('nombre, apellido, sexo, fecha_nac, pais_nac, nacionalidad',
+         array('nombre, apellido, dni, sexo, fecha_nac, pais_nac, nacionalidad',
                'required', 'message'=> "Campo obligatorio"),
-         array('dni, telefonoFijoPre, telefonoFijo, telefonoCelularPre, telefonoCelular,' . 
+         array('dni, celular_prefijo, telefono_prefijo, celular, telefono,' . 
                'ingresos_laborales, ingresos_alimentos, ingresos_subsidio',
                'numerical', 'integerOnly'=>true, 'allowEmpty'=>true, 'message'=>'Utilice solo numeros.'),
-         array('fecha_nac', 'date', 'format'=>'yyyy-M-d', 'message'=>'Formato invalido')
+         array('fecha_nac', 'date', 'format'=>'yyyy-M-d', 'message'=>'Formato invalido'),
+         array('dni', 'unique', 'className' => 'Persona', 'attributeName' => 'dni', 'message' => 'DNI existente en base de datos ', 'on'=>'new')
       );
    }
 
@@ -63,9 +65,9 @@ class PersonaForm extends CFormModel {
          'provincia_nac' => 'Provincia',
          'localidad_nac' => 'Localidad',
          'nacionalidad' => 'Nacionalidad',
-         'telefonoFijo' => 'Telefono Fijo',
-         'telefonoCelularPre' => 'Prefijo Celular',
-         'telefonoCelular' => 'Celular',
+         'telefono' => 'Telefono Fijo',
+         'celular_prefijo' => 'Prefijo Celular',
+         'celular' => 'Celular',
          'formal' => 'De manera formal o registrada',
          'condicionesEspeciales' => 'Condiciones Especiales',
          'relacion_dependencia' => 'Modalidad de trabajo',
@@ -77,10 +79,10 @@ class PersonaForm extends CFormModel {
     * @Override
     */
    public function beforeValidate() {
-      $this->telefonoFijo = str_replace('-', '', $this->telefonoFijo);
-      $this->telefonoCelular = str_replace('-', '', $this->telefonoCelular);
+      $this->telefono = str_replace('-', '', $this->telefono);
+      $this->celular = str_replace('-', '', $this->celular);
       $this->dni = str_replace('.', '', $this->dni);
-      
+
       return parent::beforeValidate();
    }
 

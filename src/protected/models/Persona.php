@@ -38,9 +38,8 @@ class Persona extends CActiveRecord
          array('nombre', 'length', 'max'=>60),
          array('sexo', 'length', 'max'=>1),
          array('fecha_nac', 'date', 'format'=>'yyyy-M-d', 'message'=>'Formato invalido'),
-
          array('nombre, apellido, dni, sexo, fecha_nac, pais_nac, provincia_nac, localidad_nac, nacionalidad,'.
-            ' condicionesEspeciales', 'safe')
+            ' condicionesEspeciales, telefono, telefono_prefijo, celular, celular_prefijo', 'safe')
       );
    }
 
@@ -59,7 +58,8 @@ class Persona extends CActiveRecord
                                          'persona_condicion_especial(persona_id, condicion_especial_id)'),
         'grupoConviviente' => array(self::BELONGS_TO, 'GrupoConviviente', 'grupo_conviviente_id'),
         'domicilio' => array(self::HAS_ONE, 'Domicilio', array('domicilio_id' => 'id'), 'through'=>'grupoConviviente'),
-
+        'solicitud' => array(self::HAS_ONE, 'Solicitud', 'titular_id'),
+        'cotitularidad' => array(self::HAS_ONE, 'Solicitud', 'cotitular_id'),
       );
    }
 

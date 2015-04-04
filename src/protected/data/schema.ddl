@@ -19,6 +19,10 @@ CREATE TABLE persona (
    provincia_nac VARCHAR(30) NULL,
    localidad_nac VARCHAR(50) NULL,
    nacionalidad VARCHAR(20),
+   celular_prefijo INTEGER NULL,
+   telefono_prefijo INTEGER NULL,
+   celular INTEGER NULL,
+   telefono INTEGER NULL,
    UNIQUE(nombre, apellido, dni)
 
 ) ENGINE = InnoDB;
@@ -43,14 +47,6 @@ CREATE TABLE situacion_laboral (
 CREATE TABLE tipo_situacion_laboral (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
    descripcion VARCHAR(30) NOT NULL
-) ENGINE = InnoDB;
-
-CREATE TABLE telefono (
-   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   prefijo INTEGER NOT NULL,
-   numero INTEGER NOT NULL,
-   persona_id INTEGER NOT NULL
-   
 ) ENGINE = InnoDB;
 
 CREATE TABLE vinculo (
@@ -190,7 +186,6 @@ ALTER TABLE persona ADD FOREIGN KEY (grupo_conviviente_id) REFERENCES grupo_conv
 ALTER TABLE situacion_economica ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE situacion_laboral ADD FOREIGN KEY (situacion_economica_id) REFERENCES situacion_economica(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE situacion_laboral ADD FOREIGN KEY (tipo_situacion_laboral_id) REFERENCES tipo_situacion_laboral(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
-ALTER TABLE telefono ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE vinculo ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE vinculo ADD FOREIGN KEY (familiar_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE persona_condicion_especial ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
