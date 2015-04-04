@@ -1,3 +1,7 @@
 span.icon-remove {
    cursor: pointer;
 }
+
+div.grid-view table tr.filters input {
+   width: 90%;
+}

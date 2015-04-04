@@ -6,6 +6,9 @@ class SolicitudController extends Controller {
    private static $DOMICILIO_KEY = 'domicilio-solicitud';
    private static $SOLICITUD_KEY = 'solicitud';
 
+   public function actionView($id) {
+      // CVarDumper::dump(Solicitud::model()->find('numero=:nro', array(':nro'=>$numero)), 10, true);
+   }
    /**
     * Punto de entrada para crear una solicitud. Busca la Persona para asociar como titular. Si no existe redirecciona a crearla
     */
@@ -77,7 +80,9 @@ class SolicitudController extends Controller {
       if ($request->isPostRequest) {
          $form = new ConfeccionGrupoConvivienteForm;
          $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
-         CVarDumper::dump(SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud, $titular), 10, true);
+         SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud, $titular);
+         Yii::app()->user->setState(self::$PERSONA_KEY, NULL);
+         Yii::app()->user->setState(self::$SOLICITUD_KEY, NULL);
       }
      
       $this->render('confeccionGrupoConviviente',

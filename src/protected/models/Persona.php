@@ -103,7 +103,7 @@ class Persona extends CActiveRecord
       $criteria->compare('sexo',$this->sexo,true);
 
       return new CActiveDataProvider($this, array(
-         'criteria'=>$criteria,
+         'criteria'=>$criteria
       ));
    }
 

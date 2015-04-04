@@ -24,7 +24,6 @@ $this->menu=array(
 		'nombre',
 		'apellido',
 		'dni',
-		'sexo',
-      array('label'=> "Trabaja", 'value'=>$model->situacionLaboral->trabaja == 0?'No':'Si')
+		'sexo'
 	),
 )); ?>
