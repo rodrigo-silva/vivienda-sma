@@ -231,7 +231,7 @@ INSERT INTO condicion_uso VALUES(NULL, 'Alquilada');
 INSERT INTO condicion_uso VALUES(NULL, 'Prestada');
 
 INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Ocupado');
-INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Descupado');
+INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Desocupado');
 INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Jubilado o Pensionado');
 INSERT INTO tipo_situacion_laboral VALUES (NULL, 'Programa Empleo');
 

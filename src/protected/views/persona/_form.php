@@ -72,5 +72,7 @@
       }
    });
    jQuery('#situacion-laboral-combo').trigger('change')
+   var nacionalidad = jQuery('#input-pais-nac input').val()
    jQuery('#nacionalidad-combo').trigger('change')
+   var nacionalidad = jQuery('#input-pais-nac input').val(nacionalidad)
 </script>

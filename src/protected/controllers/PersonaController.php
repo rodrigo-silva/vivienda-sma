@@ -125,7 +125,8 @@ class PersonaController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Persona']))
 			$model->attributes=$_GET['Persona'];
-		$this->render('admin',array('model'=>$model,));
+		
+      $this->render('admin',array('model'=>$model,));
 	}
 
 	/**
