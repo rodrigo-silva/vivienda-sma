@@ -1,8 +1,8 @@
 <?php
    $titular = $solicitud->titular;
    //HIDDEN dropdown list
-   echo TbHtml::dropDownList('vinculo', '', $vinculosFemeninosList, array('id'=>'vinculos-femeninos-combo', 'class'=>'hide'));
-   echo TbHtml::dropDownList('vinculo', '', $vinculosMasculinosList, array('id'=>'vinculos-masculinos-combo', 'class'=>'hide'));
+   echo TbHtml::dropDownList('vinculo', '', $vinculosFemeninosList, array('class'=>'vinculos-femeninos-combo hide'));
+   echo TbHtml::dropDownList('vinculo', '', $vinculosMasculinosList, array('class'=>'vinculos-masculinos-combo hide'));
    $this->widget('bootstrap.widgets.TbModal', array(
       'id' => 'convivienteModal',
       'header' => 'Confeccion grupo conviviente',
@@ -12,8 +12,6 @@
    )); 
    $domicilioCompleto = $solicitud->domicilio->calle . " " . $solicitud->domicilio->altura;
 ?>
-
-
 
 
 <?php echo CHtml::tag('legend', array(), "Detalles de la vivienda en domicilio $domicilioCompleto" ); ?>
@@ -33,12 +31,12 @@
    </thead>
    <tbody>
       <?php
-      $solicitudServicios = is_null($solicitud->domicilio->viviendaActual) ? array() : array_map(function($el){return ((array)$el->attributes);}, $solicitud->domicilio->viviendaActual->servicios);
+      $servicios = $confeccionGrupoConvivienteForm->servicios;
       foreach ($this->getServicios() as $key => $value) {
-         $index = array_search($key, array_column($solicitudServicios, 'tipo_servicio_id'));
+         $index = array_search($key, array_column($servicios, 'tipo_servicio_id'));
          $disponible = is_integer($index) ? true : false;
-         $medidor = is_integer($index) ? $solicitudServicios[$index]['medidor'] : false;
-         $compartido = is_integer($index) ? $solicitudServicios[$index]['compartido'] : false;
+         $medidor = is_integer($index) ? $servicios[$index]['medidor'] : false;
+         $compartido = is_integer($index) ? $servicios[$index]['compartido'] : false;
          echo "<tr>";
             echo CHtml::tag('td', array(), $value);
             echo CHtml::tag('td', array('class' =>'servicio-disponible', 'servicio-id'=>"$key"), TbHtml::checkBox('', $disponible));
@@ -53,25 +51,19 @@
 
 <h4>Detalles sanitarios</h4>
 <div id="banios-container">
-   <div class="control-group form-inline">
-      <div class="controls">
-         <label for="">Detalles del ba&ntilde;o:</label>
-         <?php
-            if(is_null($solicitud->domicilio->viviendaActual)) {
-               echo TbHtml::dropDownList('interno','', array('Externo', 'Interno'));
-               echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo'));
-               echo TbHtml::checkBox('letrina', false, array('label'=>'Es Letrina'));
-            } else {
-               foreach ($solicitud->domicilio->viviendaActual->banios as $key => $value) {
-                  echo TbHtml::dropDownList('interno','', array('Externo', 'Interno'), array('options'=>array($value->interno => array('selected'=>true))));
-                  echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo'), array('options'=>array($value->completo => array('selected'=>true))));
-                  echo TbHtml::checkBox('letrina', $value->es_letrina, array('label'=>'Es Letrina'));
-                  if($key) echo '<span class="icon-remove"></span>';
-               }
-            }
-         ?>
-      </div>
-   </div>
+   <?php
+      foreach ($confeccionGrupoConvivienteForm->banios as $key => $value) {
+         echo '<div class="control-group form-inline">';
+            echo '<div class="controls">';
+               echo '<label for="">Detalles del ba&ntilde;o:</label>';
+                     echo TbHtml::dropDownList('interno','', array('Externo', 'Interno'), array('options'=>array($value['interno'] => array('selected'=>true))));
+                     echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo'), array('options'=>array($value['completo'] => array('selected'=>true))));
+                     echo TbHtml::checkBox('es_letrina', $value['es_letrina'], array('label'=>'Es Letrina'));
+                     if($key) echo '<span class="icon-remove"></span>';
+            echo '</div>';
+         echo '</div>';
+      }
+   ?>
 </div>
 <?php echo TbHtml::button('Agregar ba&ntilde;o', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'id'=>'add-banio-btn',
       'size' => TbHtml::BUTTON_SIZE_MINI)
@@ -79,12 +71,10 @@
 ?>
 
 <h4>Observaciones generales</h4>
-<?php echo TbHtml::textArea('', '', array('rows' => 3, 'cols'=>8)); ?>
-
+<textarea cols="30" rows="10" id="vivienda-actual-textarea"><?php echo $confeccionGrupoConvivienteForm->observaciones ?></textarea>
 
 <?php
    echo CHtml::tag('legend', array(), "Grupo conviviente en domicilio $domicilioCompleto");
-   CVarDumper::dump($solicitud->solicitantes, 10, true);
 ?>
 <div id="advice-container"></div>
 <table class="table table-striped" id="grupo-conviviente">
@@ -109,6 +99,25 @@
          <td><?php echo "Titular"?></td>
          <td><?php echo  ""?></td>
       </tr>
+      <?php
+         foreach ($confeccionGrupoConvivienteForm->convivientes as $key => $value) {
+            if($value['sexo'] == 'M') {
+               $vinculos = TbHtml::dropDownList('vinculo', '', $vinculosMasculinosList, array('class'=>'vinculos-masculinos-combo', 'options'=>array($value['vinculo'] => array('selected'=>true))));
+            } else {
+               $vinculos = TbHtml::dropDownList('vinculo', '', $vinculosFemeninosList, array('class'=>'vinculos-femeninos-combo', 'options'=>array($value['vinculo'] => array('selected'=>true))));
+
+            }
+            echo "<tr>";
+               echo CHtml::tag('td', array(), $value['nombre']);
+               echo CHtml::tag('td', array(), $value['apellido']);
+               echo CHtml::tag('td', array('class' => 'dni'), $value['dni']);
+               echo CHtml::tag('td', array(), $vinculos);
+               echo CHtml::tag('td', array(), TbHtml::checkBox('', $value['solicitante']));
+               echo CHtml::tag('td', array(), TbHtml::radioButton('cotitular', $value['cotitular']));
+               echo CHtml::tag('td', array(), TbHtml::tag('span', array('class'=>'icon-remove')));
+            echo "</tr>";
+         }
+       ?>
    </tbody>
 </table>
 <div>
@@ -130,11 +139,11 @@
    //some wide used vars
    var addedDnis = []
    var findPersonaForm = jQuery('#convivienteModal form').clone();
-   var vinculosMasculinosCombo = jQuery('#vinculos-masculinos-combo');
-   var vinculosFemeninosCombo = jQuery('#vinculos-femeninos-combo');
+   var vinculosMasculinosCombo = jQuery('.vinculos-masculinos-combo.hide');
+   var vinculosFemeninosCombo = jQuery('.vinculos-femeninos-combo.hide');
    var detalleBanio = jQuery('.control-group.form-inline').clone();
 
-   //init findPersonaForm
+   //init 
    jQuery('#convivienteModal form').submit(function(e){e.preventDefault();});
    jQuery('#convivienteModal form button').click(onFindPersonaClick);
    jQuery('td.servicio-disponible').click(onClickServicioDisponible);
@@ -145,8 +154,16 @@
       jQuery(this).parents('.control-group').remove();
    });
 
+   jQuery('#grupo-conviviente .icon-remove').click(function(){
+      removeDni($(this).parent().siblings(".dni").text())
+      $(this).parents('tr').remove()
+    })
+   jQuery("#grupo-conviviente .dni").each(function(){
+      addedDnis.push(jQuery(this).text())
+   })
 
 
+   //Callbacks
    function onFindPersonaClick() {
       if(isPresent(jQuery('#convivienteModal form').find('input#SolicitudFindUserForm_dni').val()))  {
          jQuery('#advice-container').attr('class', 'alert alert-error').text("El DNI ya existe en la lista")
@@ -255,11 +272,11 @@
          var baseName = 'ConfeccionGrupoConvivienteForm[banios][' + i + ']'
          values.push({name: baseName + '[interno]', value: interno})
          values.push({name: baseName + '[completo]', value: completo})
-         values.push({name: baseName + '[letrina]', value: letrina})
+         values.push({name: baseName + '[es_letrina]', value: letrina})
 
       });
       
-      values.push({name: 'ConfeccionGrupoConvivienteForm[observaciones]', value: jQuery('textarea').val()})
+      values.push({name: 'ConfeccionGrupoConvivienteForm[observaciones]', value: jQuery('#vivienda-actual-textarea').val()})
 
       //convivientes
       jQuery('#grupo-conviviente tbody tr').each(function(i, trEl) {
@@ -310,7 +327,7 @@
 
    function submit(values) {
       var form = jQuery('<form/>', {
-      action: '/Solicitud/confeccionGrupoConviviente',
+      action: <?php echo "'$confeccionGrupoConvivienteForm->action'" ?>,
       method: 'POST'
       });
       jQuery.each(values, function() {
@@ -323,7 +340,9 @@
       form.appendTo('body').submit();
    } 
 
-    jQuery('td.servicio-disponible').trigger('click')
+
+   //Triggering events for dynamic content
+   jQuery('td.servicio-disponible').trigger('click')
 </script>
 
 <?php //hack FF por el datepicker + modal - Solo implemente una parte, que es, volar la funcion de 'enforce'

@@ -14,33 +14,42 @@ class SolicitudController extends Controller {
     *
     */
    public function actionUpdate($id) {
-      $model = Solicitud::model()->with(
+      $solicitud = Solicitud::model()->with(
          array('domicilio', 'domicilio.viviendaActual.servicios', 'domicilio.viviendaActual.banios',
                'condicionUso'))->findByPk($id);
-      if($model===null)
+      if($solicitud===null) {
          throw new CHttpException(404,'Esta intentando actualizar una Solicitud inexistente en el sistema');
+      }
+
+      Yii::app()->user->setState(self::$PERSONA_KEY, $solicitud->titular);
+      Yii::app()->user->setState(self::$SOLICITUD_KEY, $solicitud);
+
       $request = Yii::app()->request;
       $baseForm = new SolicitudBaseForm('post');
-      
+      $grupoConvivienteForm = new ConfeccionGrupoConvivienteForm;
+      $grupoConvivienteForm->action = $request->url;
       if ($request->isPostRequest) {
          if( !is_null($request->getPost('SolicitudBaseForm')) ) { //update base
             $baseForm->attributes = $request->getPost('SolicitudBaseForm');
             if($baseForm->validate()) {
-               if($this->canUpdateDomicilio($baseForm, $model)) {
-                  SolicitudManager::updateSolicitudBase($baseForm, $model);
+               if($this->canUpdateDomicilio($baseForm, $solicitud)) {
+                  SolicitudManager::updateSolicitudBase($baseForm, $solicitud);
                } else {
                   Yii::app()->user->setFlash('generalError', 'Los nuevos valores para el domicilio, configuran un domicilio existente en el sistema, el cual ya posee configuraciones de Grupo conviviente y detalles de la vivienda.');
                }
             }
-         } else if(!is_null($request->getPost('SolicitudBaseForm'))) {
-
+         } else if(!is_null($request->getPost('ConfeccionGrupoConvivienteForm'))) {
+            $grupoConvivienteForm->attributes = $request->getPost('ConfeccionGrupoConvivienteForm');
+            SolicitudManager::updateGrupoConvivienteInfo($grupoConvivienteForm, $solicitud);
+            $this->redirect($request->url);
          }
       } else { //GET
-         $baseForm->attributes = $model->attributes;
-         $baseForm->attributes = $model->domicilio->attributes;
-         if (!is_null($model->condicionAlquiler)) {
-            $baseForm->attributes = $model->condicionAlquiler->attributes;
+         $baseForm->attributes = $solicitud->attributes;
+         $baseForm->attributes = $solicitud->domicilio->attributes;
+         if (!is_null($solicitud->condicionAlquiler)) {
+            $baseForm->attributes = $solicitud->condicionAlquiler->attributes;
          }
+         $this->populateGrupoConvivienteForm($grupoConvivienteForm, $solicitud);
       }
       $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
       $vinculosMasculinos = array_combine($vinculosMasculinos, $vinculosMasculinos);
@@ -49,9 +58,10 @@ class SolicitudController extends Controller {
       $this->render('update',
          array('baseForm' => $baseForm,
                'findPersonaForm'=> new SolicitudFindUserForm,
+               'confeccionGrupoConvivienteForm' => $grupoConvivienteForm,
                'vinculosFemeninosList' => $vinculosFemeninosList,
                'vinculosMasculinosList' => $vinculosMasculinos,
-               'solicitud' => $model
+               'solicitud' => $solicitud
          )
       );
 
@@ -119,12 +129,13 @@ class SolicitudController extends Controller {
    public function actionConfeccionGrupoConviviente() {
       $request = Yii::app()->request;
       $solicitud = Yii::app()->user->getState(self::$SOLICITUD_KEY);
+      $form = new ConfeccionGrupoConvivienteForm;
       
       if ($request->isPostRequest) {
-         $form = new ConfeccionGrupoConvivienteForm;
          $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
          SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud);
          Yii::app()->user->setState(self::$SOLICITUD_KEY, NULL);
+         $this->redirect('/solicitud/admin');
       }
 
       $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
@@ -134,6 +145,7 @@ class SolicitudController extends Controller {
      
       $this->render('confeccionGrupoConviviente',
          array('findPersonaForm'=> new SolicitudFindUserForm,
+               'confeccionGrupoConvivienteForm' => $form,
                'vinculosFemeninosList' => $vinculosFemeninos,
                'vinculosMasculinosList' => $vinculosMasculinos,
                'solicitud' => $solicitud
@@ -252,6 +264,48 @@ class SolicitudController extends Controller {
       $found = Domicilio::model()->find($q);
 
       return is_null($found) || ($found->id == $model->id);
-   }  
+   }
+
+   /**
+    */
+   private function populateGrupoConvivienteForm($form, $solicitud) {
+      if(!is_null($solicitud->domicilio->viviendaActual)) {
+         $form->servicios =  array_map( function($el) { return ((array)$el->attributes); },
+                                        $solicitud->domicilio->viviendaActual->servicios );
+         $form->banios =  array_map( function($el) { return ((array)$el->attributes); },
+                                        $solicitud->domicilio->viviendaActual->banios );
+         $form->observaciones = $solicitud->domicilio->viviendaActual->observaciones;
+      }
+
+      $convivientes = array();
+      $solicitantesDnis = array_map(function($el){return $el->dni;}, $solicitud->solicitantes);
+      $vinculos = array_map(function($el){return $el->attributes;}, $solicitud->titular->vinculos);
+      
+      foreach ($solicitud->grupoConviviente->personas as $key => $value) {
+         if($value->dni == $solicitud->titular->dni) continue;
+         $unConviviente = array();
+         $unConviviente['dni'] = $value->dni;
+         $unConviviente['nombre'] = $value->nombre;
+         $unConviviente['apellido'] = $value->apellido;
+         $unConviviente['sexo'] = $value->sexo;
+
+         $unConviviente["solicitante"] = is_integer(array_search($value->dni, $solicitantesDnis)) ? 1 : 0;
+         $unConviviente["cotitular"] = $value->dni == $solicitud->cotitular->dni ? 1 : 0;
+         $index = array_search($value->id, array_column($vinculos, 'familiar_id'));
+         if (is_integer($index)) {
+            if($value->sexo == 'M') {
+               $unConviviente["vinculo"] = VinculosUtil::getVinculoMasculinoRetrogrado($vinculos[$index]['vinculo']);
+            } else {
+               $unConviviente["vinculo"] = VinculosUtil::getVinculoFemeninoRetrogrado($vinculos[$index]['vinculo']);
+            }
+         } else {
+            $unConviviente["vinculo"] = "Sin vinculo";
+         }
+
+         array_push($convivientes, $unConviviente);
+      }
+
+      $form->convivientes = $convivientes;
+   }
 }
 ?>

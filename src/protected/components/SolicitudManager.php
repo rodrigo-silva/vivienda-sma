@@ -12,6 +12,9 @@ class SolicitudManager extends TransactionalManager {
             $domicilio = SolicitudManager::createDomicilio($solicitudBaseForm);
          }
 
+         $titular->grupo_conviviente_id = $domicilio->grupoConviviente->id;
+         $titular->save();
+
          $solicitud = new Solicitud;
          $solicitud->fecha = date('Y-m-d');
          $solicitud->attributes = (array)$solicitudBaseForm;
@@ -92,7 +95,7 @@ class SolicitudManager extends TransactionalManager {
             $banio = new Banio;
             $banio->interno = $value['interno'];
             $banio->completo = $value['completo'];
-            $banio->es_letrina = $value['letrina'];
+            $banio->es_letrina = $value['es_letrina'];
             if(!$banio->save()) {
                TransactionalManager::logModelErrors(array($banio));
                throw new CHttpException(400, "Error de datos en la solicitud");
@@ -123,6 +126,100 @@ class SolicitudManager extends TransactionalManager {
          Persona::model()->updateAll(array('grupo_conviviente_id'=>NULL, 'grupo_conviviente_id=:id', 
                                      array(':id' =>$solicitud->grupoConviviente->id)));
          Yii::app()->db->createCommand()->delete('grupo_solicitante', 'solicitud_id=:id', array(':id'=>$solicitud->id));
+         
+         //convivientes
+         foreach ($form->convivientes as $value) {
+            $conviviente = Persona::model()->find('dni=:dni', array(':dni' =>$value['dni']));
+            $conviviente->grupo_conviviente_id = $solicitud->grupoConviviente->id;
+            $conviviente->update();
+
+            if($value['solicitante'] == 1) {
+               Yii::app()->db->createCommand()->insert('grupo_solicitante',
+                                           array('persona_id'=>$conviviente->id, 'solicitud_id' => $solicitud->id));
+            }
+            if($value['cotitular'] == 1) {
+               $solicitud->cotitular_id = $conviviente->id;
+               $solicitud->update();
+            }
+            if ($value['vinculo'] != "Sin vinculo") {
+               Yii::app()->db->createCommand()->insert('vinculo',
+                                              array('persona_id'=>$conviviente->id,
+                                                    'familiar_id' => $solicitud->titular->id,
+                                                    'vinculo'=>$value['vinculo']));
+               if($solicitud->titular->sexo == 'M') {
+                  $retrogrado = VinculosUtil::getVinculoMasculinoRetrogrado($value['vinculo']);
+               } else {
+                  $retrogrado = VinculosUtil::getVinculoFemeninoRetrogrado($value['vinculo']);
+               }
+               Yii::app()->db->createCommand()->insert('vinculo',
+                                              array('persona_id'=>$solicitud->titular->id,
+                                                    'familiar_id' => $conviviente->id,
+                                                    'vinculo'=>$retrogrado));
+               
+            }
+         }
+
+         return $solicitud;
+      };
+
+      return parent::doInTransaction($closure);
+   }
+
+      /**
+    *
+    */
+   public static function updateGrupoConvivienteInfo($form, $solicitud) {
+      $closure = function() use($form, $solicitud) {
+         //vivienda actual
+         $solicitud->domicilio->viviendaActual->observaciones = $form->observaciones;
+         $solicitud->domicilio->viviendaActual->save();
+
+         //Banios
+         foreach ($solicitud->domicilio->viviendaActual->banios as $key => $value) {
+            $value->delete();
+         }
+         foreach ($form->banios as $value) {
+            $banio = new Banio;
+            $banio->interno = $value['interno'];
+            $banio->completo = $value['completo'];
+            $banio->es_letrina = $value['es_letrina'];
+            if(!$banio->save()) {
+               TransactionalManager::logModelErrors(array($banio));
+               throw new CHttpException(400, "Error de datos en la solicitud");
+            }
+            Yii::app()->db->createCommand()->insert('vivienda_actual_banio',
+                                           array('vivienda_actual_id'=>$solicitud->domicilio->viviendaActual->id, 'banio_id' => $banio->id));
+
+         }
+
+         //servicios
+         if(!is_null($solicitud->domicilio->viviendaActual->servicios)) {
+            foreach ($solicitud->domicilio->viviendaActual->servicios as $key => $value) {
+               $value->delete();
+            }
+         }
+         if(!is_null($form->servicios)) {
+            foreach ($form->servicios as $value) {
+               $servicio = new Servicio;
+               $servicio->tipo_servicio_id = $value['tipo_servicio_id'];
+               $servicio->medidor = $value['medidor'];
+               $servicio->compartido = $value['compartido'];
+
+               if(!$servicio->save()) {
+                  TransactionalManager::logModelErrors(array($servicio));
+                  throw new CHttpException(400, "Error de datos en la solicitud");
+               }
+               Yii::app()->db->createCommand()->insert('vivienda_actual_servicio',
+                                              array('vivienda_actual_id'=>$solicitud->domicilio->viviendaActual->id, 'servicio_id' => $servicio->id));
+            }
+         }
+
+         // limpiar grupos
+         Persona::model()->updateAll(array('grupo_conviviente_id'=>NULL, 'grupo_conviviente_id=:id', 
+                                     array(':id' =>$solicitud->grupoConviviente->id)));
+         Yii::app()->db->createCommand()->delete('grupo_solicitante', 'solicitud_id=:id', array(':id'=>$solicitud->id));
+         Yii::app()->db->createCommand()->delete('vinculo', 'persona_id=:id', array(':id'=>$solicitud->titular->id));
+         Yii::app()->db->createCommand()->delete('vinculo', 'familiar_id=:id', array(':id'=>$solicitud->titular->id));
          
          //convivientes
          foreach ($form->convivientes as $value) {
