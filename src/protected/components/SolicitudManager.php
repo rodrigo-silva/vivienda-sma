@@ -1,6 +1,7 @@
 <?php
 
 class SolicitudManager extends TransactionalManager {
+   
    /**
     */
    public static function saveSolicitudBase($solicitudBaseForm, $titular) {
@@ -11,8 +12,7 @@ class SolicitudManager extends TransactionalManager {
             $domicilio = SolicitudManager::createDomicilio($solicitudBaseForm);
          }
 
-         
-         $solicitud = new Solicitud('new');
+         $solicitud = new Solicitud;
          $solicitud->fecha = date('Y-m-d');
          $solicitud->attributes = (array)$solicitudBaseForm;
          $solicitud->titular_id = $titular->id;
@@ -41,10 +41,43 @@ class SolicitudManager extends TransactionalManager {
    }
 
    /**
+    */
+   public static function updateSolicitudBase($solicitudBaseForm, $solicitud) {
+      $closure = function() use($solicitudBaseForm, $solicitud) {
+         $oldCondicionAlquiler = $solicitud->condicionAlquiler;
+
+         $solicitud->attributes = (array)$solicitudBaseForm;
+         $solicitud->domicilio->attributes = (array)$solicitudBaseForm;
+
+         if($solicitudBaseForm->es_alquiler == 'true') {
+            $condicionAlquiler = new CondicionAlquiler;
+            $condicionAlquiler->attributes = (array)$solicitudBaseForm;
+            if($condicionAlquiler->save()) {
+               $solicitud->condicion_alquiler_id = $condicionAlquiler->id;
+            } else {
+               TransactionalManager::logModelErrors(array($condicionAlquiler));
+               throw new CHttpException(400, "Error de datos en la solicitud");
+            }
+         } else {
+            $solicitud->condicion_alquiler_id = NULL;
+         }
+
+         if($solicitud->save() && $solicitud->domicilio->save()) {
+            if (!is_null($oldCondicionAlquiler)) $oldCondicionAlquiler->delete();
+            return $solicitud;
+         }
+         TransactionalManager::logModelErrors(array($solicitud));
+         throw new CHttpException(400, "Error de datos en la solicitud");
+      };
+
+      return parent::doInTransaction($closure);      
+   }
+
+   /**
     *
     */
-   public static function saveGrupoConvivienteInfo($form, $solicitud, $titular) {
-      $closure = function() use($form, $solicitud, $titular) {
+   public static function saveGrupoConvivienteInfo($form, $solicitud) {
+      $closure = function() use($form, $solicitud) {
          //vivienda actual
          $viviendaActual = new ViviendaActual;
          $viviendaActual->observaciones = $form->observaciones;
@@ -69,19 +102,21 @@ class SolicitudManager extends TransactionalManager {
 
          }
 
-         //servicios
-         foreach ($form->servicios as $value) {
-            $servicio = new Servicio;
-            $servicio->tipo_servicio_id = $value['tipo_servicio_id'];
-            $servicio->medidor = $value['medidor'];
-            $servicio->compartido = $value['compartido'];
+         if(!is_null($form->servicios)) {
+            //servicios
+            foreach ($form->servicios as $value) {
+               $servicio = new Servicio;
+               $servicio->tipo_servicio_id = $value['tipo_servicio_id'];
+               $servicio->medidor = $value['medidor'];
+               $servicio->compartido = $value['compartido'];
 
-            if(!$servicio->save()) {
-               TransactionalManager::logModelErrors(array($servicio));
-               throw new CHttpException(400, "Error de datos en la solicitud");
+               if(!$servicio->save()) {
+                  TransactionalManager::logModelErrors(array($servicio));
+                  throw new CHttpException(400, "Error de datos en la solicitud");
+               }
+               Yii::app()->db->createCommand()->insert('vivienda_actual_servicio',
+                                              array('vivienda_actual_id'=>$viviendaActual->id, 'servicio_id' => $servicio->id));
             }
-            Yii::app()->db->createCommand()->insert('vivienda_actual_servicio',
-                                           array('vivienda_actual_id'=>$viviendaActual->id, 'servicio_id' => $servicio->id));
          }
 
          // limpiar grupos
@@ -106,15 +141,15 @@ class SolicitudManager extends TransactionalManager {
             if ($value['vinculo'] != "Sin vinculo") {
                Yii::app()->db->createCommand()->insert('vinculo',
                                               array('persona_id'=>$conviviente->id,
-                                                    'familiar_id' => $titular->id,
+                                                    'familiar_id' => $solicitud->titular->id,
                                                     'vinculo'=>$value['vinculo']));
-               if($titular->sexo == 'M') {
+               if($solicitud->titular->sexo == 'M') {
                   $retrogrado = VinculosUtil::getVinculoMasculinoRetrogrado($value['vinculo']);
                } else {
                   $retrogrado = VinculosUtil::getVinculoFemeninoRetrogrado($value['vinculo']);
                }
                Yii::app()->db->createCommand()->insert('vinculo',
-                                              array('persona_id'=>$titular->id,
+                                              array('persona_id'=>$solicitud->titular->id,
                                                     'familiar_id' => $conviviente->id,
                                                     'vinculo'=>$retrogrado));
                

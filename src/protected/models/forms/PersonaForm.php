@@ -3,6 +3,7 @@
  * Formulario para crear una persona
  */
 class PersonaForm extends CFormModel {
+   public $id;
    public $persona_id;
    public $nombre;
    public $apellido;
@@ -47,7 +48,8 @@ class PersonaForm extends CFormModel {
                'ingresos_laborales, ingresos_alimentos, ingresos_subsidio',
                'numerical', 'integerOnly'=>true, 'allowEmpty'=>true, 'message'=>'Utilice solo numeros.'),
          array('fecha_nac', 'date', 'format'=>'yyyy-M-d', 'message'=>'Formato invalido'),
-         array('dni', 'unique', 'className' => 'Persona', 'attributeName' => 'dni', 'message' => 'DNI existente en base de datos ', 'on'=>'new')
+         array('dni', 'unique', 'className' => 'Persona', 'attributeName' => 'dni', 'message' => 'DNI existente en base de datos',
+               'on' => array('dniUpdate', 'new'))
       );
    }
 

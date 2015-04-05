@@ -1,4 +1,5 @@
 <?php
+   $titular = $solicitud->titular;
    //HIDDEN dropdown list
    echo TbHtml::dropDownList('vinculo', '', $vinculosFemeninosList, array('id'=>'vinculos-femeninos-combo', 'class'=>'hide'));
    echo TbHtml::dropDownList('vinculo', '', $vinculosMasculinosList, array('id'=>'vinculos-masculinos-combo', 'class'=>'hide'));
@@ -10,7 +11,6 @@
       'onShow' => 'js:function(){resetAdvice()}'
    )); 
    $domicilioCompleto = $solicitud->domicilio->calle . " " . $solicitud->domicilio->altura;
-   echo CHtml::tag('div', array('class'=>'alert alert-success'), "Se ha creado la solicitud numero $solicitud->numero, en estado {$solicitud->estado->nombre}");
 ?>
 
 
@@ -32,12 +32,18 @@
       </tr>
    </thead>
    <tbody>
-      <?php foreach ($this->getServicios() as $key => $value) {
+      <?php
+      $solicitudServicios = is_null($solicitud->domicilio->viviendaActual) ? array() : array_map(function($el){return ((array)$el->attributes);}, $solicitud->domicilio->viviendaActual->servicios);
+      foreach ($this->getServicios() as $key => $value) {
+         $index = array_search($key, array_column($solicitudServicios, 'tipo_servicio_id'));
+         $disponible = is_integer($index) ? true : false;
+         $medidor = is_integer($index) ? $solicitudServicios[$index]['medidor'] : false;
+         $compartido = is_integer($index) ? $solicitudServicios[$index]['compartido'] : false;
          echo "<tr>";
             echo CHtml::tag('td', array(), $value);
-            echo CHtml::tag('td', array('class' =>'servicio-disponible', 'servicio-id'=>"$key"), TbHtml::checkBox('', false));
-            echo CHtml::tag('td', array('class' =>'servicio-medidor'), TbHtml::checkBox('', false));
-            echo CHtml::tag('td', array('class' =>'servicio-compartido'), TbHtml::checkBox('', false));
+            echo CHtml::tag('td', array('class' =>'servicio-disponible', 'servicio-id'=>"$key"), TbHtml::checkBox('', $disponible));
+            echo CHtml::tag('td', array('class' =>'servicio-medidor'), TbHtml::checkBox('', $medidor));
+            echo CHtml::tag('td', array('class' =>'servicio-compartido'), TbHtml::checkBox('', $compartido));
          echo "</tr>";
       }?>
    </tbody>
@@ -50,9 +56,20 @@
    <div class="control-group form-inline">
       <div class="controls">
          <label for="">Detalles del ba&ntilde;o:</label>
-         <?php echo TbHtml::dropDownList('interno','', array('Externo', 'Interno')); ?>
-         <?php echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo')); ?>      
-         <?php echo TbHtml::checkBox('letrina', false, array('label'=>'Es Letrina')); ?>
+         <?php
+            if(is_null($solicitud->domicilio->viviendaActual)) {
+               echo TbHtml::dropDownList('interno','', array('Externo', 'Interno'));
+               echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo'));
+               echo TbHtml::checkBox('letrina', false, array('label'=>'Es Letrina'));
+            } else {
+               foreach ($solicitud->domicilio->viviendaActual->banios as $key => $value) {
+                  echo TbHtml::dropDownList('interno','', array('Externo', 'Interno'), array('options'=>array($value->interno => array('selected'=>true))));
+                  echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo'), array('options'=>array($value->completo => array('selected'=>true))));
+                  echo TbHtml::checkBox('letrina', $value->es_letrina, array('label'=>'Es Letrina'));
+                  if($key) echo '<span class="icon-remove"></span>';
+               }
+            }
+         ?>
       </div>
    </div>
 </div>
@@ -67,6 +84,7 @@
 
 <?php
    echo CHtml::tag('legend', array(), "Grupo conviviente en domicilio $domicilioCompleto");
+   CVarDumper::dump($solicitud->solicitantes, 10, true);
 ?>
 <div id="advice-container"></div>
 <table class="table table-striped" id="grupo-conviviente">
@@ -122,6 +140,12 @@
    jQuery('td.servicio-disponible').click(onClickServicioDisponible);
    jQuery('#add-banio-btn').click(onAddDetalleBanio);
    jQuery('#submit-borrador-btn').click(onSubmit);
+
+   jQuery('#banios-container .icon-remove').click(function(){
+      jQuery(this).parents('.control-group').remove();
+   });
+
+
 
    function onFindPersonaClick() {
       if(isPresent(jQuery('#convivienteModal form').find('input#SolicitudFindUserForm_dni').val()))  {
@@ -300,5 +324,12 @@
    } 
 
     jQuery('td.servicio-disponible').trigger('click')
-
 </script>
+
+<?php //hack FF por el datepicker + modal - Solo implemente una parte, que es, volar la funcion de 'enforce'
+// http://jsfiddle.net/surjithctly/93eTU/16/
+//http://stackoverflow.com/questions/21059598/implementing-jquery-datepicker-in-bootstrap-modal
+Yii::app()->clientScript->registerScript('script', <<<JS
+   jQuery.fn.modal.Constructor.prototype.enforceFocus = function(){};
+JS
+, CClientScript::POS_READY);?>

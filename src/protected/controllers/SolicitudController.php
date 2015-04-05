@@ -7,7 +7,54 @@ class SolicitudController extends Controller {
    private static $SOLICITUD_KEY = 'solicitud';
 
    public function actionView($id) {
-      // CVarDumper::dump(Solicitud::model()->find('numero=:nro', array(':nro'=>$numero)), 10, true);
+      $this->render("");
+   }
+
+   /**
+    *
+    */
+   public function actionUpdate($id) {
+      $model = Solicitud::model()->with(
+         array('domicilio', 'domicilio.viviendaActual.servicios', 'domicilio.viviendaActual.banios',
+               'condicionUso'))->findByPk($id);
+      if($model===null)
+         throw new CHttpException(404,'Esta intentando actualizar una Solicitud inexistente en el sistema');
+      $request = Yii::app()->request;
+      $baseForm = new SolicitudBaseForm('post');
+      
+      if ($request->isPostRequest) {
+         if( !is_null($request->getPost('SolicitudBaseForm')) ) { //update base
+            $baseForm->attributes = $request->getPost('SolicitudBaseForm');
+            if($baseForm->validate()) {
+               if($this->canUpdateDomicilio($baseForm, $model)) {
+                  SolicitudManager::updateSolicitudBase($baseForm, $model);
+               } else {
+                  Yii::app()->user->setFlash('generalError', 'Los nuevos valores para el domicilio, configuran un domicilio existente en el sistema, el cual ya posee configuraciones de Grupo conviviente y detalles de la vivienda.');
+               }
+            }
+         } else if(!is_null($request->getPost('SolicitudBaseForm'))) {
+
+         }
+      } else { //GET
+         $baseForm->attributes = $model->attributes;
+         $baseForm->attributes = $model->domicilio->attributes;
+         if (!is_null($model->condicionAlquiler)) {
+            $baseForm->attributes = $model->condicionAlquiler->attributes;
+         }
+      }
+      $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
+      $vinculosMasculinos = array_combine($vinculosMasculinos, $vinculosMasculinos);
+      $vinculosFemeninosList = array_combine(VinculosUtil::getVinculosFemeninos(), VinculosUtil::getVinculosFemeninos());
+     
+      $this->render('update',
+         array('baseForm' => $baseForm,
+               'findPersonaForm'=> new SolicitudFindUserForm,
+               'vinculosFemeninosList' => $vinculosFemeninosList,
+               'vinculosMasculinosList' => $vinculosMasculinos,
+               'solicitud' => $model
+         )
+      );
+
    }
    /**
     * Punto de entrada para crear una solicitud. Busca la Persona para asociar como titular. Si no existe redirecciona a crearla
@@ -38,7 +85,7 @@ class SolicitudController extends Controller {
     */
    public function actionAltaPersona() {
       $request = Yii::app()->request;
-      $form = new PersonaForm;
+      $form = new PersonaForm("new");
       if($request->isPostRequest) {
          $form->attributes = $request->getPost('PersonaForm');
          if($form->validate()) {
@@ -60,6 +107,7 @@ class SolicitudController extends Controller {
          $form->attributes = $request->getPost('SolicitudBaseForm');
          if($form->validate()) {
             Yii::app()->user->setState(self::$SOLICITUD_KEY, SolicitudManager::saveSolicitudBase($form, $titular));
+            Yii::app()->user->setState(self::$PERSONA_KEY, NULL);
             $this->redirect('confeccionGrupoConviviente');  
          }
       }
@@ -70,26 +118,24 @@ class SolicitudController extends Controller {
     */
    public function actionConfeccionGrupoConviviente() {
       $request = Yii::app()->request;
-      
-      $titular = $this->getTitularInSession();
       $solicitud = Yii::app()->user->getState(self::$SOLICITUD_KEY);
+      
+      if ($request->isPostRequest) {
+         $form = new ConfeccionGrupoConvivienteForm;
+         $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
+         SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud);
+         Yii::app()->user->setState(self::$SOLICITUD_KEY, NULL);
+      }
+
       $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
       $vinculosFemeninos = VinculosUtil::getVinculosFemeninos(); 
       $vinculosMasculinos = array_combine($vinculosMasculinos, $vinculosMasculinos);
       $vinculosFemeninos = array_combine($vinculosFemeninos, $vinculosFemeninos);
-      if ($request->isPostRequest) {
-         $form = new ConfeccionGrupoConvivienteForm;
-         $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
-         SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud, $titular);
-         Yii::app()->user->setState(self::$PERSONA_KEY, NULL);
-         Yii::app()->user->setState(self::$SOLICITUD_KEY, NULL);
-      }
      
       $this->render('confeccionGrupoConviviente',
          array('findPersonaForm'=> new SolicitudFindUserForm,
                'vinculosFemeninosList' => $vinculosFemeninos,
                'vinculosMasculinosList' => $vinculosMasculinos,
-               'titular' => $titular,
                'solicitud' => $solicitud
          )
       );
@@ -139,7 +185,7 @@ class SolicitudController extends Controller {
    */
    public function action_altaPersona() {
       $request = Yii::app()->request;
-      $form = new PersonaForm;
+      $form = new PersonaForm("new");
 
       if($request->isPostRequest) {
          $form->attributes = $request->getPost('PersonaForm');
@@ -189,5 +235,23 @@ class SolicitudController extends Controller {
 
       return $titular;
    }
+
+   /**
+    */
+   private function canUpdateDomicilio($baseForm, $model) {
+      $q = new CDbCriteria();
+      $q->addColumnCondition(array(
+            'LOWER(calle)' => strtolower($baseForm->calle),
+            'LOWER(altura)' => strtolower($baseForm->altura),
+            'LOWER(piso)' => strtolower($baseForm->piso),
+            'LOWER(departamento)' => strtolower($baseForm->departamento),
+            'LOWER(casa)' => strtolower($baseForm->casa),
+            'LOWER(lote)' => strtolower($baseForm->lote),
+      ));
+
+      $found = Domicilio::model()->find($q);
+
+      return is_null($found) || ($found->id == $model->id);
+   }  
 }
 ?>

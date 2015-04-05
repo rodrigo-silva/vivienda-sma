@@ -78,20 +78,24 @@ class PersonaController extends Controller
       if($model===null)
          throw new CHttpException(404,'Esta intentando actualizar una Persona inexistente en el sistema');
 
-      $form = new PersonaForm;
       $request = Yii::app()->request;
       if($request->isPostRequest) {
+         $form = $model->dni != $request->getPost('PersonaForm')['dni'] ? new PersonaForm('dniUpdate') : new PersonaForm;
          $form->attributes = $request->getPost('PersonaForm');
          $form->persona_id = $model->id;
+         $form->id = $model->id;
          if($form->validate()) {
             PersonaManager::savePersona($form);
+            $this->redirect("/persona/admin");
          }
       } else {
+         $form = new PersonaForm;
          $form->attributes = $model->attributes;
          $form->attributes = $model->situacionEconomica->attributes;
          $form->attributes = $model->situacionEconomica->situacionLaboral->attributes;
          $form->condicionesEspeciales = array_map(function($e){return $e->id;}, $model->condicionesEspeciales);
       }
+
       $this->render('update', array('model'=>$form));
 	}
 
@@ -117,7 +121,7 @@ class PersonaController extends Controller
 	 * Manages all models.
 	 */
 	public function actionAdmin() {
-		$model=new Persona('search');
+		$model=new Persona();
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Persona']))
 			$model->attributes=$_GET['Persona'];

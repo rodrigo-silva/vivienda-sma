@@ -23,7 +23,7 @@ CREATE TABLE persona (
    telefono_prefijo INTEGER NULL,
    celular INTEGER NULL,
    telefono INTEGER NULL,
-   UNIQUE(nombre, apellido, dni)
+   UNIQUE(dni)
 
 ) ENGINE = InnoDB;
 
