@@ -105,8 +105,8 @@ class PersonaController extends Controller
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete($id) {
-      $persona = Persona::model()->with(array('solicitud', 'cotitularidad'))->findByPk($id);
-      if (is_null($persona->solicitud) && is_null($persona->cotitularidad)) {
+      $persona = Persona::model()->with(array('titularidad', 'cotitularidad'))->findByPk($id);
+      if (is_null($persona->titularidad) && is_null($persona->cotitularidad)) {
          $persona->delete();
       } else {
          http_response_code(400);

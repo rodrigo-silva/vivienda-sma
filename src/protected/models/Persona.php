@@ -58,7 +58,8 @@ class Persona extends CActiveRecord
                                          'persona_condicion_especial(persona_id, condicion_especial_id)'),
         'grupoConviviente' => array(self::BELONGS_TO, 'GrupoConviviente', 'grupo_conviviente_id'),
         'domicilio' => array(self::HAS_ONE, 'Domicilio', array('domicilio_id' => 'id'), 'through'=>'grupoConviviente'),
-        'solicitud' => array(self::HAS_ONE, 'Solicitud', 'titular_id'),
+        'titularidad' => array(self::HAS_ONE, 'Solicitud', 'titular_id'),
+        'solicitud' => array(self::BELONGS_TO, 'Solicitud', 'solicitud_id'),
         'cotitularidad' => array(self::HAS_ONE, 'Solicitud', 'cotitular_id'),
       );
    }

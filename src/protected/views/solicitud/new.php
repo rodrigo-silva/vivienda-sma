@@ -1,14 +1,18 @@
-    <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm'); ?>
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm'); ?>
 
-    <?php echo $form->errorSummary($model, ''); ?>
-    <?php if(Yii::app()->user->hasFlash('sessionError')){
-            echo TbHtml::alert(TbHtml::ALERT_COLOR_ERROR, Yii::app()->user->getFlash('sessionError'));
-          }
-    ?>
-    
-    <?php echo $form->textFieldControlGroup($model, 'dni'); ?>
-    <?php echo $form->textFieldControlGroup($model, 'nombre'); ?>
-    <?php echo $form->textFieldControlGroup($model, 'apellido'); ?>
-    
-    <?php echo TbHtml::submitButton('Siguiente'); ?>
-    <?php $this->endWidget(); ?>
+<?php echo $form->errorSummary($model, ''); ?>
+<?php if(Yii::app()->user->hasFlash('sessionError')){
+      echo TbHtml::alert(TbHtml::ALERT_COLOR_ERROR, Yii::app()->user->getFlash('sessionError'));
+    }
+?>
+<?php if(Yii::app()->user->hasFlash('warning')){
+      echo TbHtml::alert(TbHtml::ALERT_COLOR_WARNING, Yii::app()->user->getFlash('warning'));
+    }
+?>
+
+<?php echo $form->textFieldControlGroup($model, 'dni'); ?>
+<?php echo $form->textFieldControlGroup($model, 'nombre'); ?>
+<?php echo $form->textFieldControlGroup($model, 'apellido'); ?>
+
+<?php echo TbHtml::submitButton('Siguiente'); ?>
+<?php $this->endWidget(); ?>

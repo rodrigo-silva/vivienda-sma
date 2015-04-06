@@ -35,7 +35,7 @@ class SolicitudController extends Controller {
                if($this->canUpdateDomicilio($baseForm, $solicitud)) {
                   SolicitudManager::updateSolicitudBase($baseForm, $solicitud);
                } else {
-                  Yii::app()->user->setFlash('generalError', 'Los nuevos valores para el domicilio, configuran un domicilio existente en el sistema, el cual ya posee configuraciones de Grupo conviviente y detalles de la vivienda.');
+                  Yii::app()->user->setFlash('generalError', "Los nuevos valores para el domicilio, configuran un domicilio existente en el sistema, el cual ya posee configuraciones de Grupo conviviente y detalles de la vivienda.");
                }
             }
          } else if(!is_null($request->getPost('ConfeccionGrupoConvivienteForm'))) {
@@ -78,8 +78,17 @@ class SolicitudController extends Controller {
          if ($form->validate()) {
             $persona = $this->findPersona($form);
             if ($persona != null) {
-               Yii::app()->user->setState(self::$PERSONA_KEY, $persona);
-               $this->redirect("solicitudBase");
+               if($persona->solicitud_id == null) {
+                  Yii::app()->user->setState(self::$PERSONA_KEY, $persona);
+                  if($persona->grupo_conviviente_id == null) {
+                     $this->redirect("solicitudBase");
+                  } else {
+                     Yii::app()->user->setState(self::$DOMICILIO_KEY, $persona->domicilio);
+                     $this->redirect('grupoExistente');
+                  }
+               } else {
+                  Yii::app()->user->setFlash('warning', "$persona->nombre $persona->apellido figura vinculado/a a la solicitud numero ". $persona->solicitud->numero. ". Debe desvincularse para generar una solicitud en su nombre." );
+               }
             } else {
                $this->redirect("altaPersona");
             }
@@ -116,12 +125,43 @@ class SolicitudController extends Controller {
       if($request->isPostRequest) {
          $form->attributes = $request->getPost('SolicitudBaseForm');
          if($form->validate()) {
-            Yii::app()->user->setState(self::$SOLICITUD_KEY, SolicitudManager::saveSolicitudBase($form, $titular));
-            Yii::app()->user->setState(self::$PERSONA_KEY, NULL);
-            $this->redirect('confeccionGrupoConviviente');  
+            $domicilio = $this->findDomicilio($form);
+            if(is_null($domicilio)) {
+               Yii::app()->user->setState(self::$SOLICITUD_KEY, SolicitudManager::saveSolicitudBase($form, $titular));
+               Yii::app()->user->setState(self::$PERSONA_KEY, NULL);
+               $this->redirect('confeccionGrupoConviviente');  
+            } else {
+               Yii::app()->user->setState(self::$DOMICILIO_KEY, $domicilio);
+               $this->redirect('grupoExistente');
+            }
          }
       }
       $this->render('solicitudBase', array('model'=>$form));        
+   }
+
+   /**
+    */
+   public function actionGrupoExistente() {
+      $request = Yii::app()->request;
+      $titular = $this->getTitularInSession();
+      if($request->isPostRequest) {
+         if($request->getPost('desvincular')) {
+            $titular->grupo_conviviente_id = NULL;
+            $titular->save();
+            $this->redirect('solicitudBase');
+         } else {
+            $form = new SolicitudBaseForm('post');
+            $form->attributes = Yii::app()->user->getState(self::$DOMICILIO_KEY)->attributes;
+            $form->tipo_vivienda_id = 1;
+            $form->tipo_solicitud_id = 1;
+            $form->condicion_lote_id = 1;
+            $form->condicion_uso_id = 1;
+            $form->es_alquiler = 0;
+            $solicitud = SolicitudManager::saveSolicitudBase($form, $titular);
+            $this->redirect('/solicitud/update/' . $solicitud->id);
+         }
+      }
+      $this->render("grupoExistente", array("titular" => $titular, 'domicilio' =>Yii::app()->user->getState(self::$DOMICILIO_KEY)));
    }
 
    /**
@@ -251,6 +291,14 @@ class SolicitudController extends Controller {
    /**
     */
    private function canUpdateDomicilio($baseForm, $model) {
+      $found = $this->findDomicilio($baseForm);
+
+      return is_null($found) || ($found->id == $model->domicilio->id);
+   }
+
+   /**
+    */
+   private function findDomicilio($baseForm) {
       $q = new CDbCriteria();
       $q->addColumnCondition(array(
             'LOWER(calle)' => strtolower($baseForm->calle),
@@ -261,9 +309,7 @@ class SolicitudController extends Controller {
             'LOWER(lote)' => strtolower($baseForm->lote),
       ));
 
-      $found = Domicilio::model()->find($q);
-
-      return is_null($found) || ($found->id == $model->id);
+      return Domicilio::model()->find($q);
    }
 
    /**
@@ -278,9 +324,7 @@ class SolicitudController extends Controller {
       }
 
       $convivientes = array();
-      $solicitantesDnis = array_map(function($el){return $el->dni;}, $solicitud->solicitantes);
       $vinculos = array_map(function($el){return $el->attributes;}, $solicitud->titular->vinculos);
-      
       foreach ($solicitud->grupoConviviente->personas as $key => $value) {
          if($value->dni == $solicitud->titular->dni) continue;
          $unConviviente = array();
@@ -289,8 +333,8 @@ class SolicitudController extends Controller {
          $unConviviente['apellido'] = $value->apellido;
          $unConviviente['sexo'] = $value->sexo;
 
-         $unConviviente["solicitante"] = is_integer(array_search($value->dni, $solicitantesDnis)) ? 1 : 0;
-         $unConviviente["cotitular"] = $value->dni == $solicitud->cotitular->dni ? 1 : 0;
+         $unConviviente["solicitante"] = !is_null($value->solicitud_id) && $value->solicitud_id == $solicitud->id? 1 : 0;
+         $unConviviente["cotitular"] = !is_null($solicitud->cotitular) && $value->dni == $solicitud->cotitular->dni ? 1 : 0;
          $index = array_search($value->id, array_column($vinculos, 'familiar_id'));
          if (is_integer($index)) {
             if($value->sexo == 'M') {

@@ -13,6 +13,7 @@ CREATE TABLE persona (
    dni INTEGER NULL,
    sexo CHAR(1) NOT NULL,
    grupo_conviviente_id INTEGER NULL,
+   solicitud_id INTEGER NULL,
    #Nacimiento
    fecha_nac DATE NOT NULL,
    pais_nac VARCHAR(20) NOT NULL,
@@ -123,12 +124,6 @@ CREATE TABLE grupo_conviviente (
    UNIQUE(domicilio_id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE grupo_solicitante (
-   persona_id INTEGER NOT NULL,
-   solicitud_id INTEGER NOT NULL,
-   PRIMARY KEY(persona_id, solicitud_id)
-) ENGINE = InnoDB;
-
 CREATE TABLE domicilio (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
    calle VARCHAR(40) NULL,
@@ -183,6 +178,7 @@ CREATE TABLE tipo_servicio (
 
 #FOREIGN KEY'S
 ALTER TABLE persona ADD FOREIGN KEY (grupo_conviviente_id) REFERENCES grupo_conviviente(id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE persona ADD FOREIGN KEY (solicitud_id) REFERENCES solicitud(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE situacion_economica ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE situacion_laboral ADD FOREIGN KEY (situacion_economica_id) REFERENCES situacion_economica(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE situacion_laboral ADD FOREIGN KEY (tipo_situacion_laboral_id) REFERENCES tipo_situacion_laboral(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
@@ -191,8 +187,6 @@ ALTER TABLE vinculo ADD FOREIGN KEY (familiar_id) REFERENCES persona(id) ON DELE
 ALTER TABLE persona_condicion_especial ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE persona_condicion_especial ADD FOREIGN KEY (condicion_especial_id) REFERENCES condicion_especial(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE grupo_conviviente ADD FOREIGN KEY (domicilio_id) REFERENCES domicilio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
-ALTER TABLE grupo_solicitante ADD FOREIGN KEY (persona_id) REFERENCES persona(id) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE grupo_solicitante ADD FOREIGN KEY (solicitud_id) REFERENCES solicitud(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE vivienda_actual ADD FOREIGN KEY (domicilio_id) REFERENCES domicilio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE servicio ADD FOREIGN KEY (tipo_servicio_id) REFERENCES tipo_servicio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE vivienda_actual_servicio ADD FOREIGN KEY (vivienda_actual_id) REFERENCES vivienda_actual(id) ON DELETE CASCADE ON UPDATE NO ACTION;

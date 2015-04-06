@@ -12,8 +12,6 @@ class SolicitudManager extends TransactionalManager {
             $domicilio = SolicitudManager::createDomicilio($solicitudBaseForm);
          }
 
-         $titular->grupo_conviviente_id = $domicilio->grupoConviviente->id;
-         $titular->save();
 
          $solicitud = new Solicitud;
          $solicitud->fecha = date('Y-m-d');
@@ -34,9 +32,14 @@ class SolicitudManager extends TransactionalManager {
 
          $solicitud->numero = date("y") . strrev($titular->id) . (time() - strtotime(date('Y-m-d')));
          if($solicitud->save()) {
-            return $solicitud;
+            $titular->grupo_conviviente_id = $domicilio->grupoConviviente->id;
+            $titular->solicitud_id = $solicitud->id;
+            if($titular->save()) {
+               return $solicitud;
+            }
          }
-         TransactionalManager::logModelErrors(array($solicitud));
+         
+         TransactionalManager::logModelErrors(array($solicitud, $titular));
          throw new CHttpException(400, "Error de datos en la solicitud");
       };
 
@@ -125,18 +128,16 @@ class SolicitudManager extends TransactionalManager {
          // limpiar grupos
          Persona::model()->updateAll(array('grupo_conviviente_id'=>NULL, 'grupo_conviviente_id=:id', 
                                      array(':id' =>$solicitud->grupoConviviente->id)));
-         Yii::app()->db->createCommand()->delete('grupo_solicitante', 'solicitud_id=:id', array(':id'=>$solicitud->id));
          
          //convivientes
          foreach ($form->convivientes as $value) {
             $conviviente = Persona::model()->find('dni=:dni', array(':dni' =>$value['dni']));
             $conviviente->grupo_conviviente_id = $solicitud->grupoConviviente->id;
-            $conviviente->update();
-
             if($value['solicitante'] == 1) {
-               Yii::app()->db->createCommand()->insert('grupo_solicitante',
-                                           array('persona_id'=>$conviviente->id, 'solicitud_id' => $solicitud->id));
+               $conviviente->solicitud_id = $solicitud->id;
             }
+            $conviviente->update();
+            
             if($value['cotitular'] == 1) {
                $solicitud->cotitular_id = $conviviente->id;
                $solicitud->update();
@@ -215,25 +216,25 @@ class SolicitudManager extends TransactionalManager {
          }
 
          // limpiar grupos
-         Persona::model()->updateAll(array('grupo_conviviente_id'=>NULL, 'grupo_conviviente_id=:id', 
-                                     array(':id' =>$solicitud->grupoConviviente->id)));
-         Yii::app()->db->createCommand()->delete('grupo_solicitante', 'solicitud_id=:id', array(':id'=>$solicitud->id));
+         Persona::model()->updateAll(array('grupo_conviviente_id'=>NULL), 'grupo_conviviente_id=:id AND id !=:titularId', 
+                                     array(':id' =>$solicitud->grupoConviviente->id, ':titularId'=>$solicitud->titular->id));
+         Persona::model()->updateAll(array('solicitud_id'=>NULL), 'solicitud_id=:id AND id !=:titularId', array(':id' =>$solicitud->id, ':titularId'=>$solicitud->titular->id));
+
          Yii::app()->db->createCommand()->delete('vinculo', 'persona_id=:id', array(':id'=>$solicitud->titular->id));
          Yii::app()->db->createCommand()->delete('vinculo', 'familiar_id=:id', array(':id'=>$solicitud->titular->id));
          
          //convivientes
+         $solicitud->cotitular_id = NULL;
          foreach ($form->convivientes as $value) {
             $conviviente = Persona::model()->find('dni=:dni', array(':dni' =>$value['dni']));
             $conviviente->grupo_conviviente_id = $solicitud->grupoConviviente->id;
+            if($value['solicitante'] == 1) {
+               $conviviente->solicitud_id = $solicitud->id;
+            }
             $conviviente->update();
 
-            if($value['solicitante'] == 1) {
-               Yii::app()->db->createCommand()->insert('grupo_solicitante',
-                                           array('persona_id'=>$conviviente->id, 'solicitud_id' => $solicitud->id));
-            }
             if($value['cotitular'] == 1) {
                $solicitud->cotitular_id = $conviviente->id;
-               $solicitud->update();
             }
             if ($value['vinculo'] != "Sin vinculo") {
                Yii::app()->db->createCommand()->insert('vinculo',
@@ -253,6 +254,7 @@ class SolicitudManager extends TransactionalManager {
             }
          }
 
+         $solicitud->update();
          return $solicitud;
       };
 

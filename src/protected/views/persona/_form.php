@@ -53,8 +53,13 @@
          jQuery('#input-pais-nac input').val("Argentina")
          jQuery('#input-provincias-nac').show()
          jQuery('#input-localidad-nac').show()
+         if(! jQuery("#PersonaForm_provincia_nac").val()) {
+            jQuery("#PersonaForm_provincia_nac").val("Buenos Aires")
+         }
       } else {
-         jQuery('#input-pais-nac input').val("")
+         if (jQuery('#input-pais-nac input').val() == "Argentina"){
+            jQuery('#input-pais-nac input').val("")
+         }
          jQuery('#input-pais-nac').show();
          jQuery('#input-provincias-nac').hide()
          jQuery('#input-localidad-nac').hide()
@@ -71,8 +76,7 @@
          jQuery('#detalle-ocupacion-container').hide()
       }
    });
+
    jQuery('#situacion-laboral-combo').trigger('change')
-   var nacionalidad = jQuery('#input-pais-nac input').val()
    jQuery('#nacionalidad-combo').trigger('change')
-   var nacionalidad = jQuery('#input-pais-nac input').val(nacionalidad)
 </script>
