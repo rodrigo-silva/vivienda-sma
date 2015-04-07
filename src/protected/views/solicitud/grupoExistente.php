@@ -9,7 +9,7 @@ Usted puede, o bien utilizar estos datos prexistentes o desvincular a $titular->
 generar asi una solicitud completamente nueva.
 EOD
  ); ?>
-<?php echo TbHtml::button('Desvincular', array('color' =>TbHtml::BUTTON_COLOR_WARNING, 'size' => TbHtml::BUTTON_SIZE_LARGE, 'id'=>'desvincular-btn'));?>
+<?php echo TbHtml::button("Desvincular / Cambiar domicilio", array('color' =>TbHtml::BUTTON_COLOR_WARNING, 'size' => TbHtml::BUTTON_SIZE_LARGE, 'id'=>'desvincular-btn'));?>
 <?php echo TbHtml::button('Utilizar datos', array('color' =>TbHtml::BUTTON_COLOR_DANGER, 'size' => TbHtml::BUTTON_SIZE_LARGE, 'id'=>'continuar-btn'));?>
 <form action="" class="hide" method="POST">
    <input type="hidden" name="desvincular">

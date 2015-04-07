@@ -6,8 +6,13 @@ class SolicitudController extends Controller {
    private static $DOMICILIO_KEY = 'domicilio-solicitud';
    private static $SOLICITUD_KEY = 'solicitud';
 
-   public function actionView($id) {
-      $this->render("");
+   public function actionAdmin() {
+      $model=new Solicitud();
+      $model->unsetAttributes();  // clear any default values
+      if(isset($_GET['Solicitud']))
+         $model->attributes=$_GET['Solicitud'];
+      
+      $this->render('admin',array('model'=>$model,));
    }
 
    /**
@@ -198,7 +203,7 @@ class SolicitudController extends Controller {
    public function action_getConviviente() {
       $request = Yii::app()->request;
       $form = new SolicitudFindUserForm;
-      $titular = Yii::app()->user->getState(self::$PERSONA_KEY);
+      $titular = Yii::app()->user->getState(self::$SOLICITUD_KEY)->titular;
       
       if ($request->isPostRequest) {
          $form->attributes = $request->getPost('SolicitudFindUserForm');
@@ -208,6 +213,8 @@ class SolicitudController extends Controller {
                if ($titular->dni == $persona->dni) {
                   http_response_code(400);
                   $form->addError("general", "El titular no debe agregarse a si mismo");
+               } elseif (!is_null($persona->solicitud_id)){
+                  Yii::app()->user->setFlash('warning', "$persona->nombre $persona->apellido figura vinculado/a a la solicitud numero ". $persona->solicitud->numero. ". Debe desvincularse para agregarse aqui." );
                } elseif (!is_null($persona->grupo_conviviente_id)) {
                   if (Yii::app()->user->getState(self::$SOLICITUD_KEY)->grupoConviviente->domicilio->id == $persona->domicilio->id) {
                      header('Content-type: application/json');
@@ -333,7 +340,14 @@ class SolicitudController extends Controller {
          $unConviviente['apellido'] = $value->apellido;
          $unConviviente['sexo'] = $value->sexo;
 
-         $unConviviente["solicitante"] = !is_null($value->solicitud_id) && $value->solicitud_id == $solicitud->id? 1 : 0;
+         if(is_null($value->solicitud_id)) {
+            $unConviviente["solicitante"] =  0;
+            $unConviviente["solicitante_foraneo"] = !is_null($value->cotitularidad) &&  $value->cotitularidad != $solicitud->id ? 1: 0;
+         } else {
+            $unConviviente["solicitante"] = $value->solicitud_id == $solicitud->id? 1 : 0;
+            $unConviviente["solicitante_foraneo"] = $value->solicitud_id != $solicitud->id? 1 : 0;
+         }
+
          $unConviviente["cotitular"] = !is_null($solicitud->cotitular) && $value->dni == $solicitud->cotitular->dni ? 1 : 0;
          $index = array_search($value->id, array_column($vinculos, 'familiar_id'));
          if (is_integer($index)) {

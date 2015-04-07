@@ -24,8 +24,8 @@
    <thead>
       <tr>
          <th>Servicio</th>
-         <th>Disponible</th>
-         <th><?php echo TbHtml::tooltip("Posee medidor", "#", "No indicar si esta 'colgado' del servicio.")?></th>
+         <th><?php echo TbHtml::tooltip("Disponible", "#", "Marcar los servicios que estan disponibles en el domicilio")?></th>
+         <th><?php echo TbHtml::tooltip("Posee medidor", "#", "Solo indicar si se sabe con veracidad que el servicio dispone de un medidor")?></th>
          <th><?php echo TbHtml::tooltip("Es compartido", "#", "En el caso que pague en forma conjunta con otros vecinos")?></th>
       </tr>
    </thead>
@@ -112,9 +112,15 @@
                echo CHtml::tag('td', array(), $value['apellido']);
                echo CHtml::tag('td', array('class' => 'dni'), $value['dni']);
                echo CHtml::tag('td', array(), $vinculos);
-               echo CHtml::tag('td', array(), TbHtml::checkBox('', $value['solicitante']));
-               echo CHtml::tag('td', array(), TbHtml::radioButton('cotitular', $value['cotitular']));
-               echo CHtml::tag('td', array(), TbHtml::tag('span', array('class'=>'icon-remove')));
+               if($value['solicitante_foraneo']) {
+                  echo CHtml::tag('td', array(), TbHtml::tooltip('No aplica', '#', "Figura como solicitante en otra solicitud. No puede ser solicitante aqui."));
+                  echo CHtml::tag('td', array(), TbHtml::tooltip('No aplica', '#',"Figura como solicitante en otra solicitud. No puede ser cotitular."));
+                  echo CHtml::tag('td', array(), TbHtml::tooltip('', '#',"Figura como solicitante en otra solicitud. No puede ser removida del grupo.", array('class'=>'icon-lock')));
+               } else {
+                  echo CHtml::tag('td', array(), TbHtml::checkBox('', $value['solicitante']));
+                  echo CHtml::tag('td', array(), TbHtml::radioButton('cotitular', $value['cotitular']));
+                  echo CHtml::tag('td', array(), TbHtml::tag('span', array('class'=>'icon-remove')));
+               }
             echo "</tr>";
          }
        ?>

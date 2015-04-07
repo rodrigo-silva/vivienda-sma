@@ -104,13 +104,8 @@ class Solicitud extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('numero',$this->numero);
-		$criteria->compare('fecha',$this->fecha,true);
-		$criteria->compare('tipo_solicitud_id',$this->tipo_solicitud_id);
-		$criteria->compare('grupo_conviviente_id',$this->grupo_conviviente_id);
-		$criteria->compare('titular_id',$this->titular_id);
-		$criteria->compare('cotitular_id',$this->cotitular_id);
+		$criteria->compare('numero',$this->numero, true);
+		$criteria->compare('fecha',$this->fecha, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

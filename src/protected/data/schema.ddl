@@ -234,3 +234,10 @@ INSERT INTO tipo_servicio VALUES (NULL, 'Gas');
 INSERT INTO tipo_servicio VALUES (NULL, 'Agua');
 INSERT INTO tipo_servicio VALUES (NULL, 'Telefono');
 INSERT INTO tipo_servicio VALUES (NULL, 'Servicio de cable');
+
+INSERT INTO `persona` (`id`, `nombre`, `apellido`, `dni`, `sexo`, `grupo_conviviente_id`, `solicitud_id`, `fecha_nac`, `pais_nac`, `provincia_nac`, `localidad_nac`, `nacionalidad`, `celular_prefijo`, `telefono_prefijo`, `celular`, `telefono`) VALUES
+(1, 'Rodrigo', 'Silva', 28985263, 'M', NULL, NULL, '1985-04-01', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL),
+(2, 'Maria Lujan', 'Minasian', 30409109, 'F', NULL, NULL, '1985-04-08', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL),
+(3, 'Sebastian', 'Silva Minasian', 52640255, 'M', NULL, NULL, '1985-04-01', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL),
+(4, 'Fernando', 'Alvarez', 10200300, 'M', NULL, NULL, '1985-04-01', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL),
+(5, 'Miguel', 'Angel', 20300400, 'M', NULL, NULL, '1985-04-03', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL);
