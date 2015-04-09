@@ -45,10 +45,10 @@
    jQuery('#condicion-uso-combo').change(function() {
       if($(this).find('option:selected').text().indexOf('Alqui') > -1) {
          jQuery('#alquiler-container').show()
-         jQuery('#es-alquiler').val(true);
+         jQuery('#es-alquiler').val(1);
       } else {
          jQuery('#alquiler-container').hide()
-         jQuery('#es-alquiler').val(false);
+         jQuery('#es-alquiler').val(0);
       }
    });
 

@@ -6,6 +6,14 @@ class SolicitudController extends Controller {
    private static $DOMICILIO_KEY = 'domicilio-solicitud';
    private static $SOLICITUD_KEY = 'solicitud';
 
+   /**
+    * @Override
+    */
+   public function init() {
+      $this->defaultAction = 'admin';
+      parent::init();
+   }
+
    public function actionAdmin() {
       $model=new Solicitud();
       $model->unsetAttributes();  // clear any default values
@@ -14,6 +22,7 @@ class SolicitudController extends Controller {
       
       $this->render('admin',array('model'=>$model,));
    }
+
 
    /**
     *
@@ -260,6 +269,24 @@ class SolicitudController extends Controller {
       $this->renderPartial('altaPersona', array('model'=>$form));
    }
 
+   /**
+    */
+   public function actionArchivar($id) {
+      $request = Yii::app()->request;
+      $model = new ArchivarForm;
+      $model->numero = $id;
+      
+      if($request->isPostRequest) {
+         $model->attributes = $request->getPost('ArchivarForm');
+         if($model->validate()) {
+            SolicitudManager::archivarSolicitud($model);
+            $this->redirect("/solicitud/admin");
+         }
+      }
+
+      $this->render("archivar", array('model'=>$model));
+   }
+
 
    /**
     */
@@ -342,7 +369,7 @@ class SolicitudController extends Controller {
 
          if(is_null($value->solicitud_id)) {
             $unConviviente["solicitante"] =  0;
-            $unConviviente["solicitante_foraneo"] = !is_null($value->cotitularidad) &&  $value->cotitularidad != $solicitud->id ? 1: 0;
+            $unConviviente["solicitante_foraneo"] = !is_null($value->cotitularidad) &&  $value->cotitularidad->id != $solicitud->id ? 1: 0;
          } else {
             $unConviviente["solicitante"] = $value->solicitud_id == $solicitud->id? 1 : 0;
             $unConviviente["solicitante_foraneo"] = $value->solicitud_id != $solicitud->id? 1 : 0;

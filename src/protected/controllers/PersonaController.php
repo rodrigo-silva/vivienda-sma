@@ -2,7 +2,12 @@
 
 class PersonaController extends Controller
 {
-	/**
+	
+   public function init() {
+      $this->defaultAction = 'admin';
+      parent::init();
+   }
+   /**
 	 * @return array action filters
 	 */
 	public function filters()

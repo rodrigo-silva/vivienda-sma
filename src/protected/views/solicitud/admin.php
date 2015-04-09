@@ -8,7 +8,14 @@
       'fecha',
       array(
          'class'=>'TbButtonColumn',
-         'template' =>"{view}{update}"
+         'template' =>"{view}{update}{archivar}",
+         'buttons' => array(
+            'archivar' => array(
+               'label' => 'Archivar',
+               'icon' => TbHtml::ICON_FILE,
+               'url' => '"/solicitud/archivar/".$data->numero'
+            )
+         )
       ),
    ),
 )); ?>

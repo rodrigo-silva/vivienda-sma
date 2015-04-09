@@ -44,8 +44,8 @@ class ViviendaActual extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'tipo' => array(self::BELONGS_TO, 'TipoVivienda', 'tipo_vivienda_id'),
-         'banios' => array(self::MANY_MANY, 'Banio', 'vivienda_actual_banio(vivienda_actual_id, banio_id)'),
-         'servicios' => array(self::MANY_MANY, 'Servicio', 'vivienda_actual_servicio(vivienda_actual_id, servicio_id)'),
+         'banios' => array(self::HAS_MANY, 'Banio', 'vivienda_actual_id'),
+         'servicios' => array(self::HAS_MANY, 'Servicio', 'vivienda_actual_id'),
 		);
 	}
 

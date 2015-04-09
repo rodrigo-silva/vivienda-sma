@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Demanda Habitacional',
-   'defaultController' => 'persona/index',
+   'defaultController' => 'solicitud/admin',
    'language' => 'es',
    'timeZone' => 'America/Argentina/Buenos_Aires',
    'aliases' => array(
@@ -21,7 +21,8 @@ return array(
 	// autoloading model and component classes
 	'import'=>array(
       'application.models.*',
-		'application.models.forms.*',
+      'application.models.forms.*',
+		'application.models.archivo.*',
 		'application.components.*',
       'bootstrap.helpers.*',
       'bootstrap.behaviors.*',

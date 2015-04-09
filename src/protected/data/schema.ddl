@@ -144,36 +144,76 @@ CREATE TABLE vivienda_actual (
    observaciones VARCHAR(250)
 ) ENGINE = InnoDB;
 
-CREATE TABLE vivienda_actual_banio(
-  vivienda_actual_id INTEGER NOT NULL,
-  banio_id INTEGER NOT NULL,
-  PRIMARY KEY(vivienda_actual_id, banio_id)
-) ENGINE = InnoDB;
-
-CREATE TABLE vivienda_actual_servicio (
-   vivienda_actual_id INTEGER NOT NULL,
-   servicio_id INTEGER NOT NULL,
-   PRIMARY KEY(vivienda_actual_id, servicio_id)
-) ENGINE = InnoDB;
 
 CREATE TABLE banio (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
    interno BIT(1) NOT NULL,
    completo BIT(1) NOT NULL,
-   es_letrina BIT(1) NOT NULL
+   es_letrina BIT(1) NOT NULL,
+   vivienda_actual_id INTEGER NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE servicio (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
    medidor BIT(1) NOT NULL,
    compartido BIT(1) NOT NULL,
-   tipo_servicio_id INTEGER NOT NULL
+   tipo_servicio_id INTEGER NOT NULL,
+   vivienda_actual_id INTEGER NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE tipo_servicio (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
    descripcion VARCHAR(30)
 ) ENGINE = InnoDB;
+
+# DEL ARCHIVO ##############################################333
+CREATE TABLE solicitud_archivo (
+   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   numero INTEGER NOT NULL,
+   fecha DATE NOT NULL,
+   tipo_solicitud_id INTEGER NOT NULL,
+   tipo_vivienda_id INTEGER NOT NULL,
+   condicion_lote_id INTEGER NULL,
+   condicion_uso_id INTEGER NOT NULL,
+   condicion_alquiler_id INTEGER NULL,
+   titular_id INTEGER NOT NULL,
+   cotitular_id INTEGER NULL,
+   estado_administrativo_solicitud_id INTEGER NOT NULL,
+   domicilio_id INTEGER NOT NULL,
+   observaciones_vivienda VARCHAR(250),
+   tipo_resolucion_id INTEGER NOT NULL,
+   comentarios VARCHAR(250),
+   UNIQUE(numero)
+) ENGINE = InnoDB;
+
+CREATE TABLE conviviente_archivo(
+   solicitud_archivo_id INTEGER NOT NULL,
+   persona_id INTEGER NOT NULL,
+   es_solicitante BIT(1),
+   PRIMARY KEY(solicitud_archivo_id, persona_id, es_solicitante)
+) ENGINE = InnoDB;
+
+CREATE TABLE banio_archivo (
+   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   interno BIT(1) NOT NULL,
+   completo BIT(1) NOT NULL,
+   es_letrina BIT(1) NOT NULL,
+   solicitud_archivo_id INTEGER NOT NULL
+) ENGINE = InnoDB;
+
+CREATE TABLE servicio_archivo (
+   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   medidor BIT(1) NOT NULL,
+   compartido BIT(1) NOT NULL,
+   tipo_servicio_id INTEGER NOT NULL,
+   solicitud_archivo_id INTEGER NOT NULL
+) ENGINE = InnoDB;
+
+CREATE TABLE tipo_resolucion (
+   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   descripcion VARCHAR(20)
+) ENGINE = InnoDB;
+
 
 
 #FOREIGN KEY'S
@@ -189,10 +229,8 @@ ALTER TABLE persona_condicion_especial ADD FOREIGN KEY (condicion_especial_id) R
 ALTER TABLE grupo_conviviente ADD FOREIGN KEY (domicilio_id) REFERENCES domicilio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE vivienda_actual ADD FOREIGN KEY (domicilio_id) REFERENCES domicilio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE servicio ADD FOREIGN KEY (tipo_servicio_id) REFERENCES tipo_servicio(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
-ALTER TABLE vivienda_actual_servicio ADD FOREIGN KEY (vivienda_actual_id) REFERENCES vivienda_actual(id) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE vivienda_actual_servicio ADD FOREIGN KEY (servicio_id) REFERENCES servicio(id) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE vivienda_actual_banio ADD FOREIGN KEY (vivienda_actual_id) REFERENCES vivienda_actual(id) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE vivienda_actual_banio ADD FOREIGN KEY (banio_id) REFERENCES banio(id) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE banio ADD FOREIGN KEY (vivienda_actual_id) REFERENCES vivienda_actual(id) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE servicio ADD FOREIGN KEY (vivienda_actual_id) REFERENCES vivienda_actual(id) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (tipo_vivienda_id) REFERENCES tipo_vivienda(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (condicion_uso_id) REFERENCES condicion_uso(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (condicion_alquiler_id) REFERENCES condicion_alquiler(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
@@ -202,7 +240,16 @@ ALTER TABLE solicitud ADD FOREIGN KEY (titular_id) REFERENCES persona(id) ON DEL
 ALTER TABLE solicitud ADD FOREIGN KEY (cotitular_id) REFERENCES persona(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (condicion_lote_id) REFERENCES condicion_lote(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 ALTER TABLE solicitud ADD FOREIGN KEY (estado_administrativo_solicitud_id) REFERENCES estado_administrativo_solicitud(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
-
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (tipo_vivienda_id) REFERENCES tipo_vivienda(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (condicion_uso_id) REFERENCES condicion_uso(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (condicion_alquiler_id) REFERENCES condicion_alquiler(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (tipo_solicitud_id) REFERENCES tipo_solicitud(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (titular_id) REFERENCES persona(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (cotitular_id) REFERENCES persona(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (condicion_lote_id) REFERENCES condicion_lote(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (estado_administrativo_solicitud_id) REFERENCES estado_administrativo_solicitud(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE solicitud_archivo ADD FOREIGN KEY (tipo_resolucion_id) REFERENCES tipo_resolucion(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
+ALTER TABLE banio_archivo ADD FOREIGN KEY (solicitud_archivo_id) REFERENCES solicitud_archivo(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 
 INSERT INTO condicion_especial VALUES(NULL, 'Ex combatiente');
 INSERT INTO condicion_especial VALUES(NULL, 'No vidente');
@@ -234,6 +281,10 @@ INSERT INTO tipo_servicio VALUES (NULL, 'Gas');
 INSERT INTO tipo_servicio VALUES (NULL, 'Agua');
 INSERT INTO tipo_servicio VALUES (NULL, 'Telefono');
 INSERT INTO tipo_servicio VALUES (NULL, 'Servicio de cable');
+INSERT INTO tipo_resolucion VALUES (NULL, 'Adjudicado');
+INSERT INTO tipo_resolucion VALUES (NULL, 'Rechazado');
+INSERT INTO tipo_resolucion VALUES (NULL, 'Invalida');
+INSERT INTO tipo_resolucion VALUES (NULL, 'Caducada');
 
 INSERT INTO `persona` (`id`, `nombre`, `apellido`, `dni`, `sexo`, `grupo_conviviente_id`, `solicitud_id`, `fecha_nac`, `pais_nac`, `provincia_nac`, `localidad_nac`, `nacionalidad`, `celular_prefijo`, `telefono_prefijo`, `celular`, `telefono`) VALUES
 (1, 'Rodrigo', 'Silva', 28985263, 'M', NULL, NULL, '1985-04-01', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL),
@@ -241,3 +292,13 @@ INSERT INTO `persona` (`id`, `nombre`, `apellido`, `dni`, `sexo`, `grupo_convivi
 (3, 'Sebastian', 'Silva Minasian', 52640255, 'M', NULL, NULL, '1985-04-01', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL),
 (4, 'Fernando', 'Alvarez', 10200300, 'M', NULL, NULL, '1985-04-01', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL),
 (5, 'Miguel', 'Angel', 20300400, 'M', NULL, NULL, '1985-04-03', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL);
+
+INSERT INTO situacion_economica (`id`, `ingresos_laborales`, `ingresos_alimentos`, `ingresos_subsidio`, `persona_id`) VALUES
+(1, 0,0,0,1), (2, 0,0,0,2), (3, 0,0,0,3), (4, 0,0,0,4), (5, 0,0,0,5);
+
+INSERT INTO situacion_laboral (`id`,`relacion_dependencia`,`formal`,`ocupacion`,`situacion_economica_id`, `tipo_situacion_laboral_id`) VALUES
+(1, 0, 0, "", 1, 2), 
+(2, 0, 0, "", 2, 2), 
+(3, 0, 0, "", 3, 2), 
+(4, 0, 0, "", 4, 2), 
+(5, 0, 0, "", 5, 2); 

@@ -68,12 +68,14 @@ class PersonaForm extends CFormModel {
          'localidad_nac' => 'Localidad',
          'nacionalidad' => 'Nacionalidad',
          'telefono' => 'Telefono Fijo',
-         'celular_prefijo' => 'Prefijo Celular',
+         'celular_prefijo' => 'Prefijo',
          'celular' => 'Celular',
          'formal' => 'De manera formal o registrada',
          'condicionesEspeciales' => 'Condiciones Especiales',
          'relacion_dependencia' => 'Modalidad de trabajo',
-         'tipo_situacion_laboral_id' => 'Situacion Laboral Actual'
+         'tipo_situacion_laboral_id' => 'Situacion Laboral Actual',
+         'ingresos_alimentos' => 'Ingresos por alimentos',
+         'ingresos_subsidio' => 'Ingresos por subsidio',
       );
    }
 

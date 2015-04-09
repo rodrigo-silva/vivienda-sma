@@ -1,45 +1,85 @@
-<?php
-   $provincias = array('Buenos Aires' => 'Buenos Aires','Capital Federal' => 'Capital Federal','Catamarca' => 'Catamarca','Chaco' => 'Chaco','Chubut' => 'Chubut','Cordoba' => 'Cordoba','Corrientes' => 'Corrientes','Entre Rios' => 'Entre Rios','Formosa' => 'Formosa','Jujuy' => 'Jujuy','La Pampa' => 'La Pampa','La Rioja' => 'La Rioja','Mendoza' => 'Mendoza','Misiones' => 'Misiones','Neuquen' => 'Neuquen','Ri Negro' => 'Ri Negro','Salta' => 'Salta','San Juan' => 'San Juan','San Luis' => 'San Luis','Santa Cruz' => 'Santa Cruz','Santa Fe' => 'Santa Fe','Santiago del Estero' => 'Santiago del Estero','Tierra del Fuego' => 'Tierra del Fuego','Tucuman' => 'Tucuman');
+<?php $provincias = array('Buenos Aires' => 'Buenos Aires','Capital Federal' => 'Capital Federal','Catamarca' => 'Catamarca','Chaco' => 'Chaco','Chubut' => 'Chubut','Cordoba' => 'Cordoba','Corrientes' => 'Corrientes','Entre Rios' => 'Entre Rios','Formosa' => 'Formosa','Jujuy' => 'Jujuy','La Pampa' => 'La Pampa','La Rioja' => 'La Rioja','Mendoza' => 'Mendoza','Misiones' => 'Misiones','Neuquen' => 'Neuquen','Ri Negro' => 'Ri Negro','Salta' => 'Salta','San Juan' => 'San Juan','San Luis' => 'San Luis','Santa Cruz' => 'Santa Cruz','Santa Fe' => 'Santa Fe','Santiago del Estero' => 'Santiago del Estero','Tierra del Fuego' => 'Tierra del Fuego','Tucuman' => 'Tucuman'); ?>
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array('layout' => TbHtml::FORM_LAYOUT_INLINE));?>
    
-   $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array('layout' => TbHtml::FORM_LAYOUT_HORIZONTAL));
-   echo '<fieldset>';
-   echo '<legend>Datos Personales</legend>';
-   echo $form->textFieldControlGroup($model, 'nombre');
-   echo $form->textFieldControlGroup($model, 'apellido');
-   echo $form->textFieldControlGroup($model, 'dni');
-   echo $form->dropDownListControlGroup($model, 'sexo', array('M'=>'Masculino', 'F'=>'Femenino'));
-   
-   echo $form->textFieldControlGroup($model, 'fecha_nac', array('readonly'=>''));
-   echo $form->dropDownListControlGroup($model, 'nacionalidad', array('Argentino/a'=>'Argentino/a', 'Extranjero/a'=>'Extranjero/a'),  array('id'=>'nacionalidad-combo'));
-   echo $form->textFieldControlGroup($model, 'pais_nac', array('groupOptions'=>array('id'=>'input-pais-nac')));
-   echo $form->dropDownListControlGroup($model, 'provincia_nac',$provincias, array('groupOptions'=>array('id'=>'input-provincias-nac')));
-   echo $form->textFieldControlGroup($model, 'localidad_nac', array('groupOptions'=>array('id'=>'input-localidad-nac')));
+   <div class="row">
+      <legend class="span">Datos Personales</legend>
+   </div>
+   <div class="well">
+      
+      <div class="row">
+         <?php echo $form->textFieldControlGroup( $model, 'nombre', array('groupOptions'=>array('class'=>'span3'))); ?>
+         <?php echo $form->textFieldControlGroup( $model, 'apellido', array('groupOptions'=>array('class'=>'span3'))); ?>
+         <?php echo $form->textFieldControlGroup($model, 'dni', array('class'=>'span2','groupOptions'=>array('class'=>'span2'))); ?>
+         <?php echo $form->dropDownListControlGroup($model, 'sexo', array('M'=>'Masculino', 'F'=>'Femenino'), array('class'=>'span2', 'groupOptions'=>array('class'=>'span2'))); ?>   
+      </div>
+      
+      <div class="row">
+         <?php echo $form->textFieldControlGroup($model, 'fecha_nac', array('readonly'=>'', 'class'=>'span2', 'groupOptions'=>array('class'=>'span2'))); ?>
+         <?php echo $form->dropDownListControlGroup($model, 'nacionalidad', array('Argentino/a'=>'Argentino/a', 'Extranjero/a'=>'Extranjero/a'),  array('id'=>'nacionalidad-combo', 'groupOptions'=>array('class'=>'span3'))); ?>
+         <?php echo $form->textFieldControlGroup($model, 'pais_nac', array('groupOptions'=>array('id'=>'input-pais-nac', 'class'=>'span3'))); ?>
+         <?php echo $form->dropDownListControlGroup($model, 'provincia_nac',$provincias, array('groupOptions'=>array('id'=>'input-provincias-nac', 'class'=>'span3'))); ?>
+         <?php echo $form->textFieldControlGroup($model, 'localidad_nac', array('groupOptions'=>array('id'=>'input-localidad-nac', 'class'=>'span2'))); ?>
+      </div>
+      
+      <div class="row">
+         <?php echo $form->textFieldControlGroup($model, 'telefono', array('prepend' => '02972', 'span'=>2,
+                                                                           'groupOptions'=>array('span'=>3))); ?>
+         <?php echo $form->textFieldControlGroup($model, 'celular_prefijo', array('span'=>1,
+                                                                                  'groupOptions'=>array('class'=>'span1 offset1'))); ?>
+         <?php echo $form->textFieldControlGroup($model, 'celular', array('prepend' => '15', 'span'=>2,
+                                                                           'groupOptions'=>array('span'=>3))); ?>
+      </div>
+   </div>
+   <div class="well">
+      <div class="row">
+         <?php echo $form->inlineCheckBoxListControlGroup($model, 'condicionesEspeciales', $model->getCondicionesEspeciales(),
+                                                                  array('groupOptions'=>array('class'=>'span'))); ?>
+      </div>
+   </div>
 
-   echo $form->textFieldControlGroup($model, 'telefono', array('prepend' => '02972', 'span'=>2));
-   echo $form->textFieldControlGroup($model, 'celular_prefijo');
-   echo $form->textFieldControlGroup($model, 'celular', array('prepend' => '15', 'span'=>2));
-   echo $form->inlineCheckBoxListControlGroup($model, 'condicionesEspeciales', $model->getCondicionesEspeciales());
-   echo '</fieldset>';
-   
-   echo '<fieldset>';
-   echo '<legend>Situacion Economica</legend>';
-   echo $form->textFieldControlGroup($model, 'ingresos_alimentos', array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end"));
-   echo $form->textFieldControlGroup($model, 'ingresos_subsidio', array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end"));
-   echo $form->dropDownListControlGroup($model, 'tipo_situacion_laboral_id', $model->getSituacionesLaborales(), array('id'=>"situacion-laboral-combo"));
-   
-   echo '<div id="detalle-ocupacion-container">'; 
-      echo $form->inlineRadioButtonListControlGroup($model, 'relacion_dependencia', array('Cuenta propista', 'Relacion de Dependencia'));
-      echo $form->inlineRadioButtonListControlGroup($model, 'formal', array('No', 'Si'));
-      echo $form->textFieldControlGroup($model, 'ingresos_laborales', array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end"));
-      echo $form->textFieldControlGroup($model, 'ocupacion');
-   echo '</div>'; 
-   echo '</fieldset>';
+   <div class="row">
+      <legend class="span">Situacion Economica</legend>
+   </div>
+   <div class="well">
+      <div class="row">
+         <?php echo $form->dropDownListControlGroup($model, 'tipo_situacion_laboral_id', $model->getSituacionesLaborales(),
+                                                    array('id'=>"situacion-laboral-combo", 'groupOptions'=>array('class'=>'span'))); ?>
+      </div>
+      <div id="detalle-ocupacion-container" class="row">
+         <?php echo $form->inlineRadioButtonListControlGroup($model, 'relacion_dependencia',
+               array('Cuenta propista', 'Relacion de Dependencia'), array('groupOptions'=>array('class'=>'span'))); ?>
+         <?php echo $form->inlineRadioButtonListControlGroup($model, 'formal', array('No', 'Si'),
+               array('groupOptions'=>array('class'=>'span'))); ?>
+         <?php echo $form->textFieldControlGroup($model, 'ingresos_laborales', 
+               array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end", 'groupOptions'=>array('class'=>'span'))); ?>
+         <?php echo $form->textFieldControlGroup($model, 'ocupacion', array('groupOptions'=>array('class'=>'span'))); ?>
+      </div>
+      
+      <div class="row">
+         <?php echo $form->textFieldControlGroup($model, 'ingresos_alimentos',
+               array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end", 'groupOptions'=>array('class'=>'span2'))); ?>
+         <?php echo $form->textFieldControlGroup($model, 'ingresos_subsidio', 
+               array('prepend' => '$', 'append' => '.00', 'span' => 1, 'style'=>"text-align:end", 'groupOptions'=>array('class'=>'span3'))); ?>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="span offset6">
+         <?php echo TbHtml::link('Cancelar', Yii::app()->createUrl("persona/admin"),
+         array('class'=>'btn btn-' .TbHtml::BUTTON_COLOR_DEFAULT));?>
+      </div>
+      <div class="span">
+         <?php echo TbHtml::submitButton('Guardar', array('color'=>TbHtml::BUTTON_COLOR_SUCCESS)); ?>
+      </div>
+      
+   </div>
 
 
-   echo TbHtml::submitButton('Guardar');
-   $this->endWidget();
+      
 
-?>
+<?php $this->endWidget();?>
+
+
 <script type="text/javascript">
    //Calendario
    jQuery('#PersonaForm_fecha_nac').datepicker({dateFormat: "yy-mm-dd", changeYear:true, yearRange:"c-100:+0",
