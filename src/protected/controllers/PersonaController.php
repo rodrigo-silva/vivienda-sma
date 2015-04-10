@@ -50,9 +50,11 @@ class PersonaController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+      $model=Persona::model()->with(array('situacionEconomica', 'condicionesEspeciales', 'domicilio', 'solicitud'))->findByPk($id);
+      if($model===null)
+         throw new CHttpException(404,'La persona no se encuentra en el sistema.');
+
+		$this->render('view',array('model'=>$model));
 	}
 
 	/**

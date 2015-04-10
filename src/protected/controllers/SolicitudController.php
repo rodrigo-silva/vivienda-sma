@@ -24,6 +24,17 @@ class SolicitudController extends Controller {
    }
 
 
+   public function actionView($id) {
+      $solicitud = Solicitud::model()->with(
+         array('domicilio', 'domicilio.viviendaActual.servicios', 'domicilio.viviendaActual.banios',
+               'condicionUso'))->findByPk($id);
+      if($solicitud===null) {
+         throw new CHttpException(404,'Esta intentando actualizar una Solicitud inexistente en el sistema');
+      }
+      $this->render('view', array('model'=>$solicitud));
+   }
+
+
    /**
     *
     */
