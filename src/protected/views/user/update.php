@@ -8,10 +8,11 @@
       <div class="row">
          <?php echo $form->textFieldControlGroup( $model, 'nombre', array('groupOptions'=>array('class'=>'span3'))); ?>
          <?php echo $form->textFieldControlGroup( $model, 'apellido', array('groupOptions'=>array('class'=>'span3'))); ?>
-         
-         <?php echo $form->dropDownListControlGroup($model, 'role',
-               array('admin'=>'Administrador', 'writer'=>'Data Entry', 'reader' => 'Consulta'),
-               array('class'=>'span2', 'groupOptions'=>array('class'=>'span2'))); ?>   
+         <?php if( Yii::app()->user->checkAccess('admin') ): ?>
+            <?php echo $form->dropDownListControlGroup($model, 'role',
+                  array('admin'=>'Administrador', 'writer'=>'Data Entry', 'reader' => 'Consulta'),
+                  array('class'=>'span2', 'groupOptions'=>array('class'=>'span2'))); ?>   
+         <?php endif?>
       </div>
 
    <div class="row">

@@ -33,22 +33,22 @@
 	</div><!-- header -->
    
    <div class="row">
-      <div class="span6">
+      <div class="span8 offset1">
       <?php
         
        $this->widget('bootstrap.widgets.TbNav', array(
             'type' => TbHtml::NAV_TYPE_TABS,
             'items' =>
                   array(
-                     array('label' => 'Personas', 'url' => '#', 'active'=> Yii::app()->controller->id == 'persona', 'items'=>array(
-                        array('label'=>'Alta Persona', 'url'=>Yii::app()->createUrl('persona/create'),
-                           'visible'=>Yii::app()->user->checkAccess('writer')),
-                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('persona')),
-                     )),
                      array('label' => 'Solicitudes', 'url' => '#','active'=> Yii::app()->controller->id == 'solicitud', 'items'=>array(
                         array('label'=>'Nueva solicitud', 'url'=>Yii::app()->createUrl('solicitud/new'),
                            'visible'=>Yii::app()->user->checkAccess('writer')),
                         array('label'=>'Listado', 'url'=>Yii::app()->createUrl('solicitud')),
+                     )),
+                     array('label' => 'Personas', 'url' => '#', 'active'=> Yii::app()->controller->id == 'persona', 'items'=>array(
+                        array('label'=>'Alta Persona', 'url'=>Yii::app()->createUrl('persona/create'),
+                           'visible'=>Yii::app()->user->checkAccess('writer')),
+                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('persona')),
                      )),
                      array('label' => 'Usuarios', 'url' => '#','active'=> Yii::app()->controller->id == 'user', 'items'=>array(
                         array('label'=>'Alta usuario', 'url'=>Yii::app()->createUrl('user/create')),
@@ -60,27 +60,18 @@
          
       </div>
   
-      <div class="span5">
+      <div class="span2">
       <?php
         
        $this->widget('bootstrap.widgets.TbNav', array(
-            'type' => TbHtml::NAV_TYPE_TABS,
+            'type' => TbHtml::NAV_TYPE_PILLS,
             'items' =>
                   array(
-                     array('label' => 'Personas', 'url' => '#', 'active'=> Yii::app()->controller->id == 'persona', 'items'=>array(
-                        array('label'=>'Alta Persona', 'url'=>Yii::app()->createUrl('persona/create'),
-                           'visible'=>Yii::app()->user->checkAccess('writer')),
-                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('persona')),
+                     array('label' => Yii::app()->user->getState('display-name'), 'url' => '#', 'items'=>array(
+                        array('label'=>'Mi cuenta', 'url'=>Yii::app()->createUrl('user/myAccount')),
+                        array('label'=>'Cambiar Password', 'url'=>Yii::app()->createUrl('user/changePassword')),
+                        array('label'=>'Logout', 'url'=>Yii::app()->createUrl('site/logout')),
                      )),
-                     array('label' => 'Solicitudes', 'url' => '#','active'=> Yii::app()->controller->id == 'solicitud', 'items'=>array(
-                        array('label'=>'Nueva solicitud', 'url'=>Yii::app()->createUrl('solicitud/new'),
-                           'visible'=>Yii::app()->user->checkAccess('writer')),
-                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('solicitud')),
-                     )),
-                     array('label' => 'Usuarios', 'url' => '#','active'=> Yii::app()->controller->id == 'user', 'items'=>array(
-                        array('label'=>'Alta usuario', 'url'=>Yii::app()->createUrl('user/create')),
-                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('user')),
-                     ), 'visible'=>Yii::app()->user->checkAccess('admin')),
                   ),
          )); 
       ?>

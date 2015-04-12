@@ -19,7 +19,8 @@ class UserIdentity extends CUserIdentity {
      
       $this->id = $record->id;
       $this->setState('roles', $record->role);
-      
+      $this->setState('username', $record->username);
+      $this->setState('display-name', "$record->nombre $record->apellido");
       return true;
    }
 

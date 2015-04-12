@@ -14,7 +14,7 @@
 
    <div class="row">
       <div class="span offset6">
-         <?php echo TbHtml::link('Cancelar', Yii::app()->createUrl("user/admin"),
+         <?php echo TbHtml::link('Cancelar', Yii::app()->homeUrl,
          array('class'=>'btn btn-' .TbHtml::BUTTON_COLOR_DEFAULT));?>
       </div>
       <div class="span">

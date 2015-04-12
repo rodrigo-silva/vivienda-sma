@@ -114,6 +114,29 @@ class UserController extends Controller {
 
    /**
     */
+   public function actionMyAccount() {
+      $request = Yii::app()->request;
+      $user = User::model()->findByPk(Yii::app()->user->id);
+      $model = new UpdateUserForm;
+      $model->attributes = $user->attributes;
+      if($request->isPostRequest) {
+         $model->attributes = $request->getPost('UpdateUserForm');
+         if( $model->validate() ) {
+            $user->attributes = $model->attributes;
+            if( $user->save() ) {
+               Yii::app()->user->setFlash('general-success', 'Usuario actualizado exitosamente.');
+            } else {
+               Yii::app()->user->setFlash('general-error', 'Ocurrio un error al salvar el usuario. Intentelo mas tarde.');
+            }
+            $this->redirect(Yii::app()->baseUrl);
+         }
+      }
+
+      $this->render('update', array('model'=>$model));
+   }
+
+   /**
+    */
    public function actionChangePassword() {
       $model = new ChangePasswordForm;
       $request = Yii::app()->request;
