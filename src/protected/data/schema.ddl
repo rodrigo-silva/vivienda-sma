@@ -214,6 +214,15 @@ CREATE TABLE tipo_resolucion (
    descripcion VARCHAR(20)
 ) ENGINE = InnoDB;
 
+CREATE TABLE user (
+   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   username VARCHAR(10),
+   password CHAR(60),
+   nombre VARCHAR(40) NOT NULL,
+   apellido VARCHAR(40) NOT NULL,
+   role VARCHAR(10),
+   UNIQUE(username)
+) ENGINE = InnoDB;
 
 
 #FOREIGN KEY'S
@@ -301,4 +310,6 @@ INSERT INTO situacion_laboral (`id`,`relacion_dependencia`,`formal`,`ocupacion`,
 (2, 0, 0, "", 2, 2), 
 (3, 0, 0, "", 3, 2), 
 (4, 0, 0, "", 4, 2), 
-(5, 0, 0, "", 5, 2); 
+(5, 0, 0, "", 5, 2);
+
+INSERT INTO user VALUES (NULL, 'rsilva', '$2y$13$9xcKBGMQNfo6qC88bErlyu0qDvdqLfnX136CLsvQeI0cLkxRufxwK', 'Rodrigo', 'Silva', 'admin'); 

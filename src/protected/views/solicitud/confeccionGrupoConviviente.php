@@ -177,7 +177,7 @@
          return;
       }
 
-      $.post('/Solicitud/_getconviviente', jQuery('#convivienteModal form').serialize())
+      $.post('/Solicitud/_getconviviente?use=s:<?php echo $solicitud->id?>', jQuery('#convivienteModal form').serialize())
          .done(findPersonaSuccessCallback)
          .fail(findPersonaErrorCallback);
    }
@@ -333,7 +333,7 @@
 
    function submit(values) {
       var form = jQuery('<form/>', {
-      action: <?php echo "'$confeccionGrupoConvivienteForm->action'" ?>,
+      action: <?php echo "'$confeccionGrupoConvivienteForm->action?use=s:$solicitud->id'" ?>,
       method: 'POST'
       });
       jQuery.each(values, function() {

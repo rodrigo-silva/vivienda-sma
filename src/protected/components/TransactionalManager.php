@@ -26,6 +26,6 @@ abstract class TransactionalManager extends CComponent{
       foreach ($models as $model) {
          $message = $message . " ". print_r($model->errors, true);
       }
-      Yii::log($message, 'error');
+      Yii::log($message, 'error', 'com.wazoo.manager');
    }
 }

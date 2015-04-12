@@ -48,7 +48,8 @@ return array(
 
 		'user'=>array(
 			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
+			// 'allowAutoLogin'=>true,
+         'class' => 'WebUser',
 		),
       'bootstrap' => array(
          'class' => 'bootstrap.components.TbApi',   
@@ -82,12 +83,18 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning, info, trace',
 				),
+            array(
+               'class'=>'CFileLogRoute',
+               'categories' => 'com.wazoo.*',
+               'levels'=>'error, warning, info, trace',
+               'logFile' => 'wazoo.log'
+            ),
 				// uncomment the following to show log messages on web pages
-				
-				// array(
-				// 	'class'=>'CWebLogRoute',
-    //            'levels'=>'error, warning, info, trace'
-				// ),
+				array(
+					'class'=>'CWebLogRoute',
+               'levels'=>'trace',
+               'categories' => 'com.wazoo.controller'
+				),
 				
 			),
 		),

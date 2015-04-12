@@ -8,7 +8,7 @@
       'fecha',
       array(
          'class'=>'TbButtonColumn',
-         'template' =>"{view}{update}{archivar}",
+         'template' => Yii::app()->user->checkAccess('writer') ? '{view}{update}{archivar}' : '{view}',
          'buttons' => array(
             'archivar' => array(
                'label' => 'Archivar',

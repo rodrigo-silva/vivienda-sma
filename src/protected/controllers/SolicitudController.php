@@ -2,16 +2,45 @@
 
 class SolicitudController extends Controller {
 
-   private static $PERSONA_KEY = 'persona-solicitud';
-   private static $DOMICILIO_KEY = 'domicilio-solicitud';
-   private static $SOLICITUD_KEY = 'solicitud';
-
    /**
     * @Override
     */
    public function init() {
       $this->defaultAction = 'admin';
       parent::init();
+   }
+
+   /**
+    * @return array action filters
+    */
+   public function filters() {
+      return array(
+         'accessControl', // perform access control for CRUD operations
+         'postOnly + delete', // we only allow deletion via POST request
+      );
+   }
+
+   /**
+    * Specifies the access control rules.
+    * This method is used by the 'accessControl' filter.
+    * @return array access control rules
+    */
+   public function accessRules()
+   {
+      return array(
+         array('allow',
+            'actions'=>array('admin','view'),
+            'roles'=>array('reader', 'writer')
+         ),
+         array('allow',
+            'actions'=>array('new', 'altaPersona', 'solicitudBase', 'grupoExistente',
+                             'confeccionGrupoConviviente', 'update', 'archivar', '_getConviviente', '_altaPersona'),
+            'roles'=>array('writer')
+         ),
+         array('deny',  // deny all users
+            'users'=>array('*'),
+         ),
+      );
    }
 
    public function actionAdmin() {
@@ -34,6 +63,130 @@ class SolicitudController extends Controller {
       $this->render('view', array('model'=>$solicitud));
    }
 
+   /**
+    * Punto de entrada para crear una solicitud. Busca la Persona para asociar como titular. Si no existe redirecciona a crearla
+    */
+   public function actionNew() {
+      $request = Yii::app()->request;
+      $form = new SolicitudFindUserForm;
+      
+      if ($request->isPostRequest) {
+         $form->attributes = $request->getPost('SolicitudFindUserForm');
+         if ($form->validate()) {
+            $persona = $this->findPersona($form);
+            if ($persona != null) {
+               if($persona->solicitud_id == null) {
+                  if($persona->grupo_conviviente_id == null) {
+                     $this->redirect(array("solicitudBase", "for"=>"p:$persona->id"));
+                  } else {
+                     $this->redirect(array('grupoExistente', "for"=>"p:$persona->id", 'at'=>sprintf("d:%d", $persona->domicilio->id)));
+                  }
+               } else {
+                  Yii::app()->user->setFlash('warning', "$persona->nombre $persona->apellido figura vinculado/a a la solicitud numero ". $persona->solicitud->numero. ". Debe desvincularse para generar una solicitud en su nombre." );
+               }
+            } else {
+               $this->redirect("altaPersona");
+            }
+         }
+      }
+     
+      $this->render('new', array('model'=> $form));
+   }
+
+   /**
+    * Crea una Persona y redirecciona para seguir con el flujo
+    */
+   public function actionAltaPersona() {
+      $request = Yii::app()->request;
+      $form = new PersonaForm("new");
+      if($request->isPostRequest) {
+         $form->attributes = $request->getPost('PersonaForm');
+         if($form->validate()) {
+            $persona = PersonaManager::savePersona($form);
+            $this->redirect(array("solicitudBase", "for"=>"p:$persona->id"));
+         }
+      }
+      $this->render('altaPersona', array('model'=>$form));
+   }
+
+   /**
+    */
+   public function actionSolicitudBase() {
+      $titular = $this->getTitularInRequest();
+
+      $request = Yii::app()->request;
+      $form = new SolicitudBaseForm('post');
+      if($request->isPostRequest) {
+         $form->attributes = $request->getPost('SolicitudBaseForm');
+         if($form->validate()) {
+            $domicilio = $this->findDomicilio($form);
+            if(is_null($domicilio)) {
+               $solicitud = SolicitudManager::saveSolicitudBase($form, $titular);
+               $this->redirect(array('confeccionGrupoConviviente', 'use'=>"s:$solicitud->id"));  
+            } else {
+               $this->redirect(array('grupoExistente', "for"=>"p:$titular->id", 'at'=>"d:$domicilio->id"));
+            }
+         }
+      }
+      
+      $this->render('solicitudBase', array('model'=>$form, 'titular'=>$titular));        
+   }
+
+   /**
+    */
+   public function actionGrupoExistente() {
+      $titular = $this->getTitularInRequest();
+      $domicilio = $this->getDomicilioInRequest();
+      
+      $request = Yii::app()->request;
+      if($request->isPostRequest) {
+         if($request->getPost('desvincular')) {
+            $titular->grupo_conviviente_id = NULL;
+            $titular->save();
+            $this->redirect(array("solicitudBase", "for"=>"p:$titular->id"));
+         } else {
+            $form = new SolicitudBaseForm('post');
+            $form->attributes = $domicilio->attributes;
+            $form->tipo_vivienda_id = 1;
+            $form->tipo_solicitud_id = 1;
+            $form->condicion_lote_id = 1;
+            $form->condicion_uso_id = 1;
+            $form->es_alquiler = 0;
+            $solicitud = SolicitudManager::saveSolicitudBase($form, $titular);
+            $this->redirect('/solicitud/update/' . $solicitud->id);
+         }
+      }
+
+      $this->render("grupoExistente", array("titular" => $titular, 'domicilio' => $domicilio));
+   }
+
+   /**
+    */
+   public function actionConfeccionGrupoConviviente() {
+      $request = Yii::app()->request;
+      $solicitud = $this->getSolicitudInRequest();
+      $form = new ConfeccionGrupoConvivienteForm;
+      
+      if ($request->isPostRequest) {
+         $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
+         SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud);
+         $this->redirect('/solicitud/admin');
+      }
+
+      $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
+      $vinculosFemeninos = VinculosUtil::getVinculosFemeninos(); 
+      $vinculosMasculinos = array_combine($vinculosMasculinos, $vinculosMasculinos);
+      $vinculosFemeninos = array_combine($vinculosFemeninos, $vinculosFemeninos);
+     
+      $this->render('confeccionGrupoConviviente',
+         array('findPersonaForm'=> new SolicitudFindUserForm,
+               'confeccionGrupoConvivienteForm' => $form,
+               'vinculosFemeninosList' => $vinculosFemeninos,
+               'vinculosMasculinosList' => $vinculosMasculinos,
+               'solicitud' => $solicitud
+         )
+      );
+   }
 
    /**
     *
@@ -41,13 +194,10 @@ class SolicitudController extends Controller {
    public function actionUpdate($id) {
       $solicitud = Solicitud::model()->with(
          array('domicilio', 'domicilio.viviendaActual.servicios', 'domicilio.viviendaActual.banios',
-               'condicionUso'))->findByPk($id);
+               'condicionUso', 'titular'))->findByPk($id);
       if($solicitud===null) {
          throw new CHttpException(404,'Esta intentando actualizar una Solicitud inexistente en el sistema');
       }
-
-      Yii::app()->user->setState(self::$PERSONA_KEY, $solicitud->titular);
-      Yii::app()->user->setState(self::$SOLICITUD_KEY, $solicitud);
 
       $request = Yii::app()->request;
       $baseForm = new SolicitudBaseForm('post');
@@ -66,7 +216,7 @@ class SolicitudController extends Controller {
          } else if(!is_null($request->getPost('ConfeccionGrupoConvivienteForm'))) {
             $grupoConvivienteForm->attributes = $request->getPost('ConfeccionGrupoConvivienteForm');
             SolicitudManager::updateGrupoConvivienteInfo($grupoConvivienteForm, $solicitud);
-            $this->redirect($request->url);
+            $this->redirect('/solicitud/admin');
          }
       } else { //GET
          $baseForm->attributes = $solicitud->attributes;
@@ -91,152 +241,26 @@ class SolicitudController extends Controller {
       );
 
    }
-   /**
-    * Punto de entrada para crear una solicitud. Busca la Persona para asociar como titular. Si no existe redirecciona a crearla
-    */
-   public function actionNew() {
-      $request = Yii::app()->request;
-      $form = new SolicitudFindUserForm;
-      
-      if ($request->isPostRequest) {
-         $form->attributes = $request->getPost('SolicitudFindUserForm');
-         if ($form->validate()) {
-            $persona = $this->findPersona($form);
-            if ($persona != null) {
-               if($persona->solicitud_id == null) {
-                  Yii::app()->user->setState(self::$PERSONA_KEY, $persona);
-                  if($persona->grupo_conviviente_id == null) {
-                     $this->redirect("solicitudBase");
-                  } else {
-                     Yii::app()->user->setState(self::$DOMICILIO_KEY, $persona->domicilio);
-                     $this->redirect('grupoExistente');
-                  }
-               } else {
-                  Yii::app()->user->setFlash('warning', "$persona->nombre $persona->apellido figura vinculado/a a la solicitud numero ". $persona->solicitud->numero. ". Debe desvincularse para generar una solicitud en su nombre." );
-               }
-            } else {
-               $this->redirect("altaPersona");
-            }
-         }
-      }
-     
-      $this->render('new', array('model'=> $form));
-   }
-   
-
-   /**
-    * Crea una Persona y redirecciona para seguir con el flujo
-    */
-   public function actionAltaPersona() {
-      $request = Yii::app()->request;
-      $form = new PersonaForm("new");
-      if($request->isPostRequest) {
-         $form->attributes = $request->getPost('PersonaForm');
-         if($form->validate()) {
-            Yii::app()->user->setState(self::$PERSONA_KEY, PersonaManager::savePersona($form));
-            $this->redirect('solicitudBase');
-         }
-      }
-      $this->render('altaPersona', array('model'=>$form));
-   }
-
-   /**
-    */
-   public function actionSolicitudBase() {
-      $titular = $this->getTitularInSession();
-
-      $request = Yii::app()->request;
-      $form = new SolicitudBaseForm('post');
-      if($request->isPostRequest) {
-         $form->attributes = $request->getPost('SolicitudBaseForm');
-         if($form->validate()) {
-            $domicilio = $this->findDomicilio($form);
-            if(is_null($domicilio)) {
-               Yii::app()->user->setState(self::$SOLICITUD_KEY, SolicitudManager::saveSolicitudBase($form, $titular));
-               Yii::app()->user->setState(self::$PERSONA_KEY, NULL);
-               $this->redirect('confeccionGrupoConviviente');  
-            } else {
-               Yii::app()->user->setState(self::$DOMICILIO_KEY, $domicilio);
-               $this->redirect('grupoExistente');
-            }
-         }
-      }
-      $this->render('solicitudBase', array('model'=>$form));        
-   }
-
-   /**
-    */
-   public function actionGrupoExistente() {
-      $request = Yii::app()->request;
-      $titular = $this->getTitularInSession();
-      if($request->isPostRequest) {
-         if($request->getPost('desvincular')) {
-            $titular->grupo_conviviente_id = NULL;
-            $titular->save();
-            $this->redirect('solicitudBase');
-         } else {
-            $form = new SolicitudBaseForm('post');
-            $form->attributes = Yii::app()->user->getState(self::$DOMICILIO_KEY)->attributes;
-            $form->tipo_vivienda_id = 1;
-            $form->tipo_solicitud_id = 1;
-            $form->condicion_lote_id = 1;
-            $form->condicion_uso_id = 1;
-            $form->es_alquiler = 0;
-            $solicitud = SolicitudManager::saveSolicitudBase($form, $titular);
-            $this->redirect('/solicitud/update/' . $solicitud->id);
-         }
-      }
-      $this->render("grupoExistente", array("titular" => $titular, 'domicilio' =>Yii::app()->user->getState(self::$DOMICILIO_KEY)));
-   }
-
-   /**
-    */
-   public function actionConfeccionGrupoConviviente() {
-      $request = Yii::app()->request;
-      $solicitud = Yii::app()->user->getState(self::$SOLICITUD_KEY);
-      $form = new ConfeccionGrupoConvivienteForm;
-      
-      if ($request->isPostRequest) {
-         $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
-         SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud);
-         Yii::app()->user->setState(self::$SOLICITUD_KEY, NULL);
-         $this->redirect('/solicitud/admin');
-      }
-
-      $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
-      $vinculosFemeninos = VinculosUtil::getVinculosFemeninos(); 
-      $vinculosMasculinos = array_combine($vinculosMasculinos, $vinculosMasculinos);
-      $vinculosFemeninos = array_combine($vinculosFemeninos, $vinculosFemeninos);
-     
-      $this->render('confeccionGrupoConviviente',
-         array('findPersonaForm'=> new SolicitudFindUserForm,
-               'confeccionGrupoConvivienteForm' => $form,
-               'vinculosFemeninosList' => $vinculosFemeninos,
-               'vinculosMasculinosList' => $vinculosMasculinos,
-               'solicitud' => $solicitud
-         )
-      );
-   }
 
    /**
     */
    public function action_getConviviente() {
       $request = Yii::app()->request;
       $form = new SolicitudFindUserForm;
-      $titular = Yii::app()->user->getState(self::$SOLICITUD_KEY)->titular;
       
       if ($request->isPostRequest) {
          $form->attributes = $request->getPost('SolicitudFindUserForm');
          if ($form->validate()) {
             $persona = $this->findPersona($form);
             if ($persona != null) {
-               if ($titular->dni == $persona->dni) {
+               $currentSolicitud = $this->getSolicitudInRequest();
+               if ($currentSolicitud->titular->dni == $persona->dni) {
                   http_response_code(400);
                   $form->addError("general", "El titular no debe agregarse a si mismo");
                } elseif (!is_null($persona->solicitud_id)){
                   Yii::app()->user->setFlash('warning', "$persona->nombre $persona->apellido figura vinculado/a a la solicitud numero ". $persona->solicitud->numero. ". Debe desvincularse para agregarse aqui." );
                } elseif (!is_null($persona->grupo_conviviente_id)) {
-                  if (Yii::app()->user->getState(self::$SOLICITUD_KEY)->grupoConviviente->domicilio->id == $persona->domicilio->id) {
+                  if ($currentSolicitud->grupoConviviente->domicilio->id == $persona->domicilio->id) {
                      header('Content-type: application/json');
                      echo CJSON::encode($persona);
                      Yii::app()->end();
@@ -321,16 +345,57 @@ class SolicitudController extends Controller {
    }
 
    /**
-    * Devuelve el titular en session. Si no esta, vuelve al punto cero con un mensaje de error.
+    * Devuelve el titular en el request. Si no esta, 400 :)
     */
-   private function getTitularInSession() {
-      $titular = Yii::app()->user->getState(self::$PERSONA_KEY);
+   private function getTitularInRequest() {
+      $request = Yii::app()->request;
+      $id = explode(":", $request->getQuery('for'));
+
+      $titular = Persona::model()->findByPk($id);
       if ($titular == null) {
-         Yii::app()->user->setFlash('sessionError', "No se encuentran datos del titular solicitante en sesion. Comience el proceso nuevamente.");
-         $this->redirect('new');
+         $url = $request->getUrl();
+         Yii::log("Se intento acceder a $url y no se encontro la persona", 'warning', 'com.wazoo.controller');
+         throw new CHttpException(400, 'La peticion no es correcta.');
       }
+      Yii::trace("Titular $titular->id", 'com.wazoo.controller');
 
       return $titular;
+   }
+
+   /**
+    * Devuelve la solicitud en el request. Si no esta, 400 :)
+    */
+   private function getSolicitudInRequest() {
+      $request = Yii::app()->request;
+      $id = explode(":", $request->getQuery('use'));
+
+      $solicitud = Solicitud::model()->findByPk($id);
+      if ($solicitud == null) {
+         $url = $request->getUrl();
+         Yii::log("Se intento acceder a $url y no se encontro la solicitud", 'warning', 'com.wazoo.controller');
+         throw new CHttpException(400, 'La peticion no es correcta.');
+      }
+      Yii::trace("Solicitud $solicitud->id", 'com.wazoo.controller');
+
+      return $solicitud;
+   }
+
+   /**
+    * Devuelve el domicilio en el request. Si no esta, 400 :)
+    */
+   private function getDomicilioInRequest() {
+      $request = Yii::app()->request;
+      $id = explode(":", $request->getQuery('at'));
+
+      $domicilio = Domicilio::model()->findByPk($id);
+      if ($domicilio == null) {
+         $url = $request->getUrl();
+         Yii::log("Se intento acceder a $url y no se encontro el domicilio", 'warning', 'com.wazoo.controller');
+         throw new CHttpException(400, 'La peticion no es correcta.');
+      }
+      Yii::trace("Domicilio $domicilio->id", 'com.wazoo.controller');
+
+      return $domicilio;
    }
 
    /**

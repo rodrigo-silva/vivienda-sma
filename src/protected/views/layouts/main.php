@@ -28,31 +28,65 @@
 
 <div class="container" id="page">
 
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+	<div class="row">
+		<div id="logo" class="span10"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
-
-<?php
-   $this->widget('bootstrap.widgets.TbNavbar', array(
-      'brandLabel' => '',
-      'display' => '',
-      'items' => array(
-         array(
-            'class' => 'bootstrap.widgets.TbNav',
-            'items' => array(
-               array('label' => 'Personas', 'url' => '#', 'active'=> Yii::app()->controller->id == 'persona', 'items'=>array(
-                  array('label'=>'Alta Persona', 'url'=>Yii::app()->createUrl('persona/create')),
-                  array('label'=>'Listado', 'url'=>Yii::app()->createUrl('persona')),
-               )),
-               array('label' => 'Solicitudes', 'url' => '#','active'=> Yii::app()->controller->id == 'solicitud', 'items'=>array(
-                  array('label'=>'Nueva solicitud', 'url'=>Yii::app()->createUrl('solicitud/new')),
-                  array('label'=>'Listado', 'url'=>Yii::app()->createUrl('solicitud')),
-               )),
-            ),
-         )
-      ),
-   )); 
-?>
+   
+   <div class="row">
+      <div class="span6">
+      <?php
+        
+       $this->widget('bootstrap.widgets.TbNav', array(
+            'type' => TbHtml::NAV_TYPE_TABS,
+            'items' =>
+                  array(
+                     array('label' => 'Personas', 'url' => '#', 'active'=> Yii::app()->controller->id == 'persona', 'items'=>array(
+                        array('label'=>'Alta Persona', 'url'=>Yii::app()->createUrl('persona/create'),
+                           'visible'=>Yii::app()->user->checkAccess('writer')),
+                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('persona')),
+                     )),
+                     array('label' => 'Solicitudes', 'url' => '#','active'=> Yii::app()->controller->id == 'solicitud', 'items'=>array(
+                        array('label'=>'Nueva solicitud', 'url'=>Yii::app()->createUrl('solicitud/new'),
+                           'visible'=>Yii::app()->user->checkAccess('writer')),
+                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('solicitud')),
+                     )),
+                     array('label' => 'Usuarios', 'url' => '#','active'=> Yii::app()->controller->id == 'user', 'items'=>array(
+                        array('label'=>'Alta usuario', 'url'=>Yii::app()->createUrl('user/create')),
+                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('user')),
+                     ), 'visible'=>Yii::app()->user->checkAccess('admin')),
+                  ),
+         )); 
+      ?>
+         
+      </div>
+  
+      <div class="span5">
+      <?php
+        
+       $this->widget('bootstrap.widgets.TbNav', array(
+            'type' => TbHtml::NAV_TYPE_TABS,
+            'items' =>
+                  array(
+                     array('label' => 'Personas', 'url' => '#', 'active'=> Yii::app()->controller->id == 'persona', 'items'=>array(
+                        array('label'=>'Alta Persona', 'url'=>Yii::app()->createUrl('persona/create'),
+                           'visible'=>Yii::app()->user->checkAccess('writer')),
+                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('persona')),
+                     )),
+                     array('label' => 'Solicitudes', 'url' => '#','active'=> Yii::app()->controller->id == 'solicitud', 'items'=>array(
+                        array('label'=>'Nueva solicitud', 'url'=>Yii::app()->createUrl('solicitud/new'),
+                           'visible'=>Yii::app()->user->checkAccess('writer')),
+                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('solicitud')),
+                     )),
+                     array('label' => 'Usuarios', 'url' => '#','active'=> Yii::app()->controller->id == 'user', 'items'=>array(
+                        array('label'=>'Alta usuario', 'url'=>Yii::app()->createUrl('user/create')),
+                        array('label'=>'Listado', 'url'=>Yii::app()->createUrl('user')),
+                     ), 'visible'=>Yii::app()->user->checkAccess('admin')),
+                  ),
+         )); 
+      ?>
+         
+      </div>
+   </div>
 
 	<?php echo $content; ?>
 

@@ -7,13 +7,13 @@ class PersonaController extends Controller
       $this->defaultAction = 'admin';
       parent::init();
    }
+   
    /**
 	 * @return array action filters
 	 */
-	public function filters()
-	{
+	public function filters() {
 		return array(
-			// 'accessControl', // perform access control for CRUD operations
+			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
@@ -26,17 +26,13 @@ class PersonaController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+			array('allow',
+            'actions'=>array('admin','view'),
+            'roles'=>array('reader', 'writer')
+         ),
+         array('allow',
+				'actions'=>array('create', 'update', 'delete'),
+            'roles'=>array('writer')
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -68,18 +64,19 @@ class PersonaController extends Controller
          $form->attributes = $request->getPost('PersonaForm');
          if($form->validate()) {
             PersonaManager::savePersona($form);
+            Yii::app()->user->setFlash('general-success', "$form->nombre $form->apellido ha sido creado.");
             $this->redirect('admin');
          }
       }
       $this->render('create', array('model'=>$form));
-	}
+   }
 
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id) {
+   /**
+    * Updates a particular model.
+    * If update is successful, the browser will be redirected to the 'admin' page.
+    * @param integer $id the ID of the model to be updated
+    */
+   public function actionUpdate($id) {
       $model=Persona::model()->with(
          array('condicionesEspeciales', 'situacionEconomica', 'situacionEconomica.situacionLaboral'))->findByPk($id);
       if($model===null)
@@ -93,6 +90,7 @@ class PersonaController extends Controller
          $form->id = $model->id;
          if($form->validate()) {
             PersonaManager::savePersona($form);
+            Yii::app()->user->setFlash('general-success', "$form->nombre $form->apellido ha sido actualizado.");
             $this->redirect("/persona/admin");
          }
       } else {
