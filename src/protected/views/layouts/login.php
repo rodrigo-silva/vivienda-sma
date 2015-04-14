@@ -14,7 +14,9 @@
 <body>
 
 <div class="container">
-
+   <div class="row">
+      <div id="logo" class="span10 offset3"><?php echo CHtml::image('/images/logo_header.png');?></div>
+   </div>
    <?php echo $content; ?>
 
 </div><!-- page -->

@@ -27,10 +27,9 @@
 <body>
 
 <div class="container" id="page">
-
 	<div class="row">
-		<div id="logo" class="span10"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
+		<div id="logo" class="span10 offset2"><?php echo CHtml::image('/images/logo_header.png');?></div>
+	</div>
    
    <div class="row">
       <div class="span8 offset1">

@@ -66,4 +66,24 @@ class VinculosUtil extends CComponent {
      return self::$vinculosFemeninos[$vinculo];  
    }
 
+   /**
+    * Resuelve el vinculo de la siguiente manera:
+    * $from es {vinculo} de $to.
+    * Caso tipico de uso para resolver parentezco con el titular, entonces from es la persona
+    * y $to es EL TITULAR.
+    */
+   public static function resolveVinculo($from, $to) {
+      $vinculos = array_map(function($el){return $el->attributes;}, $to->vinculos);
+      $index = array_search($from->id, array_column($vinculos, 'familiar_id'));
+      if (is_integer($index)) {
+         if($from->sexo == 'M') {
+            return VinculosUtil::getVinculoMasculinoRetrogrado($vinculos[$index]['vinculo']);
+         } else {
+            return VinculosUtil::getVinculoFemeninoRetrogrado($vinculos[$index]['vinculo']);
+         }
+      } else {
+         return "Sin vinculo";
+      }
+   }
+
 }
