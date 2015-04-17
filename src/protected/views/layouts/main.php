@@ -43,6 +43,7 @@
                         array('label'=>'Nueva solicitud', 'url'=>Yii::app()->createUrl('solicitud/new'),
                            'visible'=>Yii::app()->user->checkAccess('writer')),
                         array('label'=>'Listado', 'url'=>Yii::app()->createUrl('solicitud')),
+                        array('label'=>'Archivo', 'url'=>Yii::app()->createUrl('solicitudArchivo')),
                      )),
                      array('label' => 'Personas', 'url' => '#', 'active'=> Yii::app()->controller->id == 'persona', 'items'=>array(
                         array('label'=>'Alta Persona', 'url'=>Yii::app()->createUrl('persona/create'),
@@ -82,8 +83,16 @@
 
 	<div class="clear"></div>
 
-	<div id="footer" class="row">
-      <div class="span10">
+	<div id="footer">
+      <div class="row">
+         <div class="span8 offset2">
+            <hr/>
+         </div>
+      </div>
+      <div class="row">
+         <div class="span4 offset4 text-center">
+            <p><small>Municipalidad de San Martin de los Andes</small></p>
+         </div>
       </div>
 	</div><!-- footer -->
 

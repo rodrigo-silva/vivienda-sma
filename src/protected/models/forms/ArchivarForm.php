@@ -9,7 +9,7 @@ class ArchivarForm extends CFormModel {
       return array(
          array('tipo_resolucion_id, numero', 'required'),
          array('tipo_resolucion_id, comentarios, numero', 'safe'),
-         array('comentarios', 'length', 'max'=>250),
+         array('comentarios', 'length', 'max'=>500),
       );
    }
 

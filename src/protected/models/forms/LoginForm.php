@@ -5,7 +5,7 @@ class LoginForm extends CFormModel {
 
    public function rules() {
       return array(
-         array('username, login_password', 'required')
+         array('username, login_password', 'required', 'message' => 'Campo obligatorio')
       );
    }
 

@@ -6,13 +6,14 @@ class ConfeccionGrupoConvivienteForm extends CFormModel {
    public $observaciones = "";
    public $servicios = array();
    public $action = "/Solicitud/confeccionGrupoConviviente";
+   public $estado = 'Borrador';
 
    /**
     * Reglas de validacion general
     */
    public function rules() {
       return array(
-         array('banios, convivientes, observaciones, servicios', 'safe')
+         array('banios, convivientes, observaciones, servicios, estado', 'safe')
       );
    }
 }

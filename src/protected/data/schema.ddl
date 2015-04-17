@@ -182,7 +182,7 @@ CREATE TABLE solicitud_archivo (
    domicilio_id INTEGER NOT NULL,
    observaciones_vivienda VARCHAR(250),
    tipo_resolucion_id INTEGER NOT NULL,
-   comentarios VARCHAR(250),
+   comentarios VARCHAR(500),
    UNIQUE(numero)
 ) ENGINE = InnoDB;
 

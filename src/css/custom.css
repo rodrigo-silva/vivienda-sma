@@ -5,3 +5,10 @@ span.icon-remove {
 div.grid-view table tr.filters input {
    width: 90%;
 }
+
+body .modal {
+    /* new custom width */
+    width: 940px;
+    /* must be half of the width, minus scrollbar on the left (30px) */
+    margin-left: -440px;
+}

@@ -13,131 +13,193 @@
    $domicilioCompleto = $solicitud->domicilio->calle . " " . $solicitud->domicilio->altura;
 ?>
 
-
-<?php echo CHtml::tag('legend', array(), "Detalles de la vivienda en domicilio $domicilioCompleto" ); ?>
-
-<h4>Detalle servicios</h4>
 <div class="row">
-<div class="span6">
-   
-<table class="table table-striped" id="servicios-table">
-   <thead>
-      <tr>
-         <th>Servicio</th>
-         <th><?php echo TbHtml::tooltip("Disponible", "#", "Marcar los servicios que estan disponibles en el domicilio")?></th>
-         <th><?php echo TbHtml::tooltip("Posee medidor", "#", "Solo indicar si se sabe con veracidad que el servicio dispone de un medidor")?></th>
-         <th><?php echo TbHtml::tooltip("Es compartido", "#", "En el caso que pague en forma conjunta con otros vecinos")?></th>
-      </tr>
-   </thead>
-   <tbody>
-      <?php
-      $servicios = $confeccionGrupoConvivienteForm->servicios;
-      foreach ($this->getServicios() as $key => $value) {
-         $index = array_search($key, array_column($servicios, 'tipo_servicio_id'));
-         $disponible = is_integer($index) ? true : false;
-         $medidor = is_integer($index) ? $servicios[$index]['medidor'] : false;
-         $compartido = is_integer($index) ? $servicios[$index]['compartido'] : false;
-         echo "<tr>";
-            echo CHtml::tag('td', array(), $value);
-            echo CHtml::tag('td', array('class' =>'servicio-disponible', 'servicio-id'=>"$key"), TbHtml::checkBox('', $disponible));
-            echo CHtml::tag('td', array('class' =>'servicio-medidor'), TbHtml::checkBox('', $medidor));
-            echo CHtml::tag('td', array('class' =>'servicio-compartido'), TbHtml::checkBox('', $compartido));
-         echo "</tr>";
-      }?>
-   </tbody>
-</table>
-</div>
+   <legend class="span10">
+      <div class="row">
+         <div class="span8"><?php echo "Detalles de la vivienda en domicilio $domicilioCompleto" ?></div>
+         <div class="span1">
+            <?php echo TbHtml::labelTb("$titular->nombre $titular->apellido", array('color' => TbHtml::LABEL_COLOR_INFO)); ?>
+         </div>
+      </div>
+   </legend>
 </div>
 
-<h4>Detalles sanitarios</h4>
-<div id="banios-container">
-   <?php
-      foreach ($confeccionGrupoConvivienteForm->banios as $key => $value) {
-         echo '<div class="control-group form-inline">';
-            echo '<div class="controls">';
-               echo '<label for="">Detalles del ba&ntilde;o:</label>';
-                     echo TbHtml::dropDownList('interno','', array('Externo', 'Interno'), array('options'=>array($value['interno'] => array('selected'=>true))));
-                     echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo'), array('options'=>array($value['completo'] => array('selected'=>true))));
-                     echo TbHtml::checkBox('es_letrina', $value['es_letrina'], array('label'=>'Es Letrina'));
-                     if($key) echo '<span class="icon-remove"></span>';
-            echo '</div>';
-         echo '</div>';
-      }
-   ?>
+<div class="row">
+   <div class="span8 offset2">
+      <h4>Detalle servicios</h4>
+   </div>
 </div>
-<?php echo TbHtml::button('Agregar ba&ntilde;o', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'id'=>'add-banio-btn',
-      'size' => TbHtml::BUTTON_SIZE_MINI)
-   );
-?>
+<div class="row">
+   <div class="span6 offset2">
+      <table class="table table-striped" id="servicios-table">
+         <thead>
+            <tr>
+               <th>Servicio</th>
+               <th><?php echo TbHtml::tooltip("Disponible", "#", "Marcar los servicios que estan disponibles en el domicilio")?></th>
+               <th><?php echo TbHtml::tooltip("Posee medidor", "#", "Solo indicar si se sabe con veracidad que el servicio dispone de un medidor")?></th>
+               <th><?php echo TbHtml::tooltip("Es compartido", "#", "En el caso que pague en forma conjunta con otros vecinos")?></th>
+            </tr>
+         </thead>
+         <tbody>
+            <?php
+            $servicios = $confeccionGrupoConvivienteForm->servicios;
+            foreach ($this->getServicios() as $key => $value) {
+               $index = array_search($key, array_column($servicios, 'tipo_servicio_id'));
+               $disponible = is_integer($index) ? true : false;
+               $medidor = is_integer($index) ? $servicios[$index]['medidor'] : false;
+               $compartido = is_integer($index) ? $servicios[$index]['compartido'] : false;
+               echo "<tr>";
+                  echo CHtml::tag('td', array(), $value);
+                  echo CHtml::tag('td', array('class' =>'servicio-disponible', 'servicio-id'=>"$key"), TbHtml::checkBox('', $disponible));
+                  echo CHtml::tag('td', array('class' =>'servicio-medidor'), TbHtml::checkBox('', $medidor));
+                  echo CHtml::tag('td', array('class' =>'servicio-compartido'), TbHtml::checkBox('', $compartido));
+               echo "</tr>";
+            }?>
+         </tbody>
+      </table>
+   </div>
+</div>
 
-<h4>Observaciones generales</h4>
-<textarea cols="30" rows="10" id="vivienda-actual-textarea"><?php echo $confeccionGrupoConvivienteForm->observaciones ?></textarea>
+<div class="row">&nbsp;</div>
 
-<?php
-   echo CHtml::tag('legend', array(), "Grupo conviviente en domicilio $domicilioCompleto");
-?>
-<div id="advice-container"></div>
-<table class="table table-striped" id="grupo-conviviente">
-   <thead>
-      <tr>
-         <th>Nombre</th>
-         <th>Apellido</th>
-         <th>DNI</th>
-         <th>Vinculo</th>
-         <th>Es Solicitante</th>
-         <th>Cotitular</th>
-         <th></th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td><?php echo "$titular->nombre"?></td>
-         <td><?php echo "$titular->apellido"?></td>
-         <td class="dni"><?php echo "$titular->dni"?></td>
-         <td><?php echo ""?></td>
-         <td><?php echo "Si"?></td>
-         <td><?php echo "Titular"?></td>
-         <td><?php echo  ""?></td>
-      </tr>
-      <?php
-         foreach ($confeccionGrupoConvivienteForm->convivientes as $key => $value) {
-            if($value['sexo'] == 'M') {
-               $vinculos = TbHtml::dropDownList('vinculo', '', $vinculosMasculinosList, array('class'=>'vinculos-masculinos-combo', 'options'=>array($value['vinculo'] => array('selected'=>true))));
-            } else {
-               $vinculos = TbHtml::dropDownList('vinculo', '', $vinculosFemeninosList, array('class'=>'vinculos-femeninos-combo', 'options'=>array($value['vinculo'] => array('selected'=>true))));
+<div class="row">
+   <div class="span6 offset2">
+      <h4>Detalles sanitarios</h4>
+   </div>
+</div>
 
-            }
-            echo "<tr>";
-               echo CHtml::tag('td', array(), $value['nombre']);
-               echo CHtml::tag('td', array(), $value['apellido']);
-               echo CHtml::tag('td', array('class' => 'dni'), $value['dni']);
-               echo CHtml::tag('td', array(), $vinculos);
-               if($value['solicitante_foraneo']) {
-                  echo CHtml::tag('td', array(), TbHtml::tooltip('No aplica', '#', "Figura como solicitante en otra solicitud. No puede ser solicitante aqui."));
-                  echo CHtml::tag('td', array(), TbHtml::tooltip('No aplica', '#',"Figura como solicitante en otra solicitud. No puede ser cotitular."));
-                  echo CHtml::tag('td', array(), TbHtml::tooltip('', '#',"Figura como solicitante en otra solicitud. No puede ser removida del grupo.", array('class'=>'icon-lock')));
-               } else {
-                  echo CHtml::tag('td', array(), TbHtml::checkBox('', $value['solicitante']));
-                  echo CHtml::tag('td', array(), TbHtml::radioButton('cotitular', $value['cotitular']));
-                  echo CHtml::tag('td', array(), TbHtml::tag('span', array('class'=>'icon-remove')));
+<div class="row">
+   <div class="span7 offset2">
+      <div class="well">
+         <div id="banios-container">
+            <?php
+               foreach ($confeccionGrupoConvivienteForm->banios as $key => $value):?>
+                  <div class="row banio-row">
+                     <div class="span2">
+                        <?php echo TbHtml::dropDownList('interno','', array('Externo', 'Interno'),
+                              array('class'=>'span2', 'options'=>array($value['interno'] => array('selected'=>true))));?>
+                     </div>
+                     <div class="span2">
+                        <?php echo TbHtml::dropDownList('completo','', array('Incompleto', 'Completo'),
+                              array('class'=>'span2', 'options'=>array($value['completo'] => array('selected'=>true))));?>
+                     </div>
+                     <div class="span2">
+                     <?php echo TbHtml::checkBox('es_letrina', $value['es_letrina'], array('class'=>'span1', 'label'=>'Letrina', 'style'=>''));?>
+                     </div>
+                        
+                     <?php echo $key ? '<span class="icon-remove"></span>': "";?>
+                  </div>
+            <?php endforeach?>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="span2 offset7">
+      <?php echo TbHtml::button('Agregar ba&ntilde;o', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'id'=>'add-banio-btn',
+            'size' => TbHtml::BUTTON_SIZE_MINI)
+         );
+      ?>
+   </div>
+</div>
+
+<div class="row">
+   <div class="span8 offset2">
+      <h4>Observaciones generales</h4>
+   </div>
+</div>
+<div class="row">
+   <div class="span6 offset2">
+      <textarea cols="30" rows="10" id="vivienda-actual-textarea" style="width: 100%">
+         <?php echo $confeccionGrupoConvivienteForm->observaciones ?>
+      </textarea>
+   </div>
+</div>
+
+<div class="row">&nbsp;</div>
+
+<div class="row">
+   <div class="span10">
+      <legend><?php echo "Grupo conviviente en domicilio $domicilioCompleto" ?></legend>
+   </div>
+</div>
+
+<div class="row">
+   <div class="span10">
+      <div id="advice-container"></div>
+      <table class="table table-striped" id="grupo-conviviente">
+         <thead>
+            <tr>
+               <th>Nombre</th>
+               <th>Apellido</th>
+               <th>DNI</th>
+               <th>Vinculo</th>
+               <th>Es Solicitante</th>
+               <th>Cotitular</th>
+               <th></th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="success">
+               <td><?php echo "$titular->nombre"?></td>
+               <td><?php echo "$titular->apellido"?></td>
+               <td class="dni"><?php echo "$titular->dni"?></td>
+               <td><?php echo ""?></td>
+               <td><?php echo "Si"?></td>
+               <td><?php echo "Titular"?></td>
+               <td><?php echo  ""?></td>
+            </tr>
+            <?php
+               foreach ($confeccionGrupoConvivienteForm->convivientes as $key => $value) {
+                  if($value['sexo'] == 'M') {
+                     $vinculos = TbHtml::dropDownList('vinculo', '', $vinculosMasculinosList, array('class'=>'vinculos-masculinos-combo', 'options'=>array($value['vinculo'] => array('selected'=>true))));
+                  } else {
+                     $vinculos = TbHtml::dropDownList('vinculo', '', $vinculosFemeninosList, array('class'=>'vinculos-femeninos-combo', 'options'=>array($value['vinculo'] => array('selected'=>true))));
+
+                  }
+                  echo "<tr>";
+                     echo CHtml::tag('td', array(), $value['nombre']);
+                     echo CHtml::tag('td', array(), $value['apellido']);
+                     echo CHtml::tag('td', array('class' => 'dni'), $value['dni']);
+                     echo CHtml::tag('td', array(), $vinculos);
+                     if($value['solicitante_foraneo']) {
+                        echo CHtml::tag('td', array(), TbHtml::tooltip('No aplica', '#', "Figura como solicitante en otra solicitud. No puede ser solicitante aqui."));
+                        echo CHtml::tag('td', array(), TbHtml::tooltip('No aplica', '#',"Figura como solicitante en otra solicitud. No puede ser cotitular."));
+                        echo CHtml::tag('td', array(), TbHtml::tooltip('', '#',"Figura como solicitante en otra solicitud. No puede ser removida del grupo.", array('class'=>'icon-lock')));
+                     } else {
+                        echo CHtml::tag('td', array(), TbHtml::checkBox('', $value['solicitante']));
+                        echo CHtml::tag('td', array(), TbHtml::radioButton('cotitular', $value['cotitular']));
+                        echo CHtml::tag('td', array(), TbHtml::tag('span', array('class'=>'icon-remove')));
+                     }
+                  echo "</tr>";
                }
-            echo "</tr>";
-         }
-       ?>
-   </tbody>
-</table>
-<div>
-   <?php echo TbHtml::button('Agregar persona', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'id'=>'add-persona-btn',
-      'data-toggle' => 'modal',
-      'data-target' => '#convivienteModal',)
-   );?>
+             ?>
+         </tbody>
+      </table>
+   </div>
 </div>
-
-<div>
-   <?php echo TbHtml::button('Guardar en borrador', array('id'=>'submit-borrador-btn'));?>
+<div class="row">
+   <div class="span2">
+      <?php echo TbHtml::button('Agregar persona', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'id'=>'add-persona-btn',
+         'data-toggle' => 'modal',
+         'data-target' => '#convivienteModal',)
+      );?>
+         
+   </div>
 </div>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
 
-
+<div class="row">
+   <div class="offset6 span2">
+      <?php echo TbHtml::button('Guardar en borrador', array('id'=>'submit-borrador-btn'));?>
+   </div>
+   <div class="span2">
+      <?php echo TbHtml::button('Guardar y activar', array('id'=>'submit-activar-btn', 'color' => TbHtml::BUTTON_COLOR_SUCCESS));?>
+   </div>
+   
+</div>
 
 
 
@@ -147,17 +209,18 @@
    var findPersonaForm = jQuery('#convivienteModal form').clone();
    var vinculosMasculinosCombo = jQuery('.vinculos-masculinos-combo.hide');
    var vinculosFemeninosCombo = jQuery('.vinculos-femeninos-combo.hide');
-   var detalleBanio = jQuery('.control-group.form-inline').clone();
+   var detalleBanio = jQuery(jQuery('.banio-row').get(0)).clone();
 
    //init 
    jQuery('#convivienteModal form').submit(function(e){e.preventDefault();});
    jQuery('#convivienteModal form button').click(onFindPersonaClick);
    jQuery('td.servicio-disponible').click(onClickServicioDisponible);
    jQuery('#add-banio-btn').click(onAddDetalleBanio);
-   jQuery('#submit-borrador-btn').click(onSubmit);
+   jQuery('#submit-borrador-btn').click(function(){onSubmit('Borrador')});
+   jQuery('#submit-activar-btn').click(function(){onSubmit('Activa')});
 
    jQuery('#banios-container .icon-remove').click(function(){
-      jQuery(this).parents('.control-group').remove();
+      jQuery(this).parents('.banio-row').remove();
    });
 
    jQuery('#grupo-conviviente .icon-remove').click(function(){
@@ -186,14 +249,15 @@
       if(jqXHR.getResponseHeader('Content-Type') == 'application/json') {
          addConvivienteSuccessCallback(data);
       } else {
-         jQuery('#convivienteModal form').replaceWith(data);
+         jQuery('#convivienteModal .modal-body').empty().append(data);
          jQuery('#convivienteModal form').submit(function(e){e.preventDefault();});
          jQuery('#convivienteModal form button').click(onAddConvivienteButton);
+         jQuery('#convivienteModal form a.btn').remove()
       }
    }
 
    function findPersonaErrorCallback(data) {
-      jQuery('#convivienteModal form').replaceWith(data.responseText);
+      jQuery('#convivienteModal .modal-body').empty().append(data.responseText);
       jQuery('#convivienteModal form').submit(function(e){e.preventDefault();});
       jQuery('#convivienteModal form button').click(onFindPersonaClick);
    }
@@ -245,16 +309,18 @@
 
    function onAddDetalleBanio() {
       var removeButton = jQuery('<span/>', {class: "icon-remove"}).click(function(){
-         jQuery(this).parents('.control-group').remove();
+         jQuery(this).parents('.banio-row').remove();
       })
       var detalle = detalleBanio.clone();
-      detalle.find('.controls').append(removeButton)
+      detalle.append(removeButton)
       jQuery('#banios-container').append(detalle)
 
    }
 
-   function onSubmit() {
+   function onSubmit(estado) {
       var values = []
+      values.push({name: 'ConfeccionGrupoConvivienteForm[estado]', value: estado})
+
       //servicios
       var arrayIndex = 0
       jQuery('#servicios-table tbody tr').each(function(i,e) {
@@ -270,7 +336,7 @@
       });
 
       //banios
-      jQuery('#banios-container .controls').each(function(i,e) {
+      jQuery('#banios-container .banio-row').each(function(i,e) {
          var interno = jQuery(e).find('select#interno').val()
          var completo = jQuery(e).find('select#completo').val()
          var letrina = jQuery(e).find(':checkbox').prop('checked') ? 1 : 0;

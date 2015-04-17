@@ -1,7 +1,9 @@
-<div id="hero-container">
+<div id="hero-container" class=<?php echo empty($model->errors)?'""':'"hide"'?> >
    <?php
    echo TbHtml::heroUnit('Atencion!',<<<EOD
-   Usted esta a punto de archivar la solicitud numero <strong>#$model->numero</strong>. Este proceso es <strong>irreversible</strong>. Si bien la informacion sera respladada para futuras consultas, no podra ser ni modificada ni sujeto de adjudicacion.
+   Usted esta a punto de archivar la solicitud numero <strong>#$model->numero</strong>.
+   Este proceso es <strong>irreversible</strong>. Si bien la informacion sera respladada para futuras consultas,
+   no podra ser ni modificada ni sujeto de adjudicacion.
 EOD
     ,array()); ?>
    <?php echo TbHtml::link('Cancelar', Yii::app()->createUrl("solicitud/admin"),
@@ -12,7 +14,7 @@ EOD
 
 <?php
    $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array('layout' => TbHtml::FORM_LAYOUT_HORIZONTAL, 
-                                                                      'htmlOptions'=>array('class'=>'hide')));
+                                                                      'htmlOptions'=>array('class'=>empty($model->errors)?'hide':'')));
    echo '<fieldset>';
    echo '<legend>Archivar solicitud</legend>';
    echo $form->hiddenField($model, 'numero');

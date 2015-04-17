@@ -90,11 +90,11 @@ return array(
                'logFile' => 'wazoo.log'
             ),
 				// uncomment the following to show log messages on web pages
-				array(
-					'class'=>'CWebLogRoute',
-               'levels'=>'trace',
-               'categories' => 'com.wazoo.controller'
-				),
+				// array(
+				// 	'class'=>'CWebLogRoute',
+    //            'levels'=>'trace',
+    //            'categories' => 'com.wazoo.controller'
+				// ),
 				
 			),
 		),

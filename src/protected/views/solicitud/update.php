@@ -7,8 +7,7 @@ if(Yii::app()->user->hasFlash('generalError')){
 $this->widget('bootstrap.widgets.TbTabs',
                array('tabs' => array(
                      array('label' => 'Informacion Basica',
-                           'content' => $this->renderPartial('solicitudBase', array('model'=>$baseForm), true),
-                           'active' => true
+                           'content' => $this->renderPartial('solicitudBase', array('model'=>$baseForm, 'titular'=>$titular), true),
                            ),
                      array('label' => 'Grupo Conviviente y detalles de la vivienda',
                            'content' => $this->renderPartial('confeccionGrupoConviviente', array(
@@ -17,6 +16,7 @@ $this->widget('bootstrap.widgets.TbTabs',
                                                                                     'vinculosFemeninosList' => $vinculosFemeninosList,
                                                                                     'vinculosMasculinosList' => $vinculosMasculinosList,
                                                                                     'solicitud' => $solicitud), true),
+                           'active' => true
                            ),
                      )
                )

@@ -6,9 +6,15 @@
       ?>
    </div>
 </div>
+
 <div class="row">
-   <div class="span4 offset2">
-      <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array('layout' => TbHtml::FORM_LAYOUT_HORIZONTAL));?>
+   <legend class="span5 offset3">
+      Ingreso al sistema
+   </legend>   
+</div>
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array('layout' => TbHtml::FORM_LAYOUT_HORIZONTAL));?>
+<div class="row">
+   <div class="span4 offset3">
       <div class="row">
          <div class="span4">
             <?php echo $form->textFieldControlGroup( $model, 'username', array('placeholder'=> 'Ingrese usuario del sistema',)); ?>
@@ -24,6 +30,6 @@
             <?php echo TbHtml::submitButton('Ingresar')?>
          </div>
       </div>
-      <?php $this->endWidget(); ?>
    </div>
 </div>
+<?php $this->endWidget(); ?>

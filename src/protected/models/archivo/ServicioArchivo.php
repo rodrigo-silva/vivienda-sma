@@ -21,7 +21,9 @@
        * @return array relational rules.
        */
       public function relations() {
-         return array();
+         return array(
+            'tipoServicio' => array(self::BELONGS_TO, 'TipoServicio', 'tipo_servicio_id'),
+         );
       }
    
    }

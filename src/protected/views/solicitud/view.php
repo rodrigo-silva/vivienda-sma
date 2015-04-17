@@ -1,5 +1,8 @@
 <div class="row">
-   <h2 class="text-center span10"><?php echo TbHtml::tooltip("Solicitud #$model->numero", Yii::app()->createUrl('solicitud/update/' . $model->id), "Haga click para editar")?></h2>
+   <h2 class="text-center span10">
+      <?php echo TbHtml::tooltip("Solicitud #$model->numero",
+            Yii::app()->createUrl('solicitud/update/' . $model->id), "Haga click para editar")?>
+   </h2>
 </div>
 
 <div class="row">
@@ -13,7 +16,7 @@
          <dt>Estado</dt>
          <dd>
             <?php $estado = $model->estado->nombre == "Activa" ? 'label-success' : ''?> 
-            <span class="label $estado"><?php echo $model->estado->nombre ?></span>
+            <span class=<?php echo "'label $estado'"?>><?php echo $model->estado->nombre ?></span>
          </dd>
          <dt>Fecha inscripcion</dt>
          <dd><?php echo $model->fecha?></dd>
@@ -125,7 +128,7 @@
 
 <div class="row">
    <div class="span8 offset1">
-      <?php if(empty($model->domicilio->viviendaActual->servicios)): ?>
+      <?php if(empty($model->domicilio->viviendaActual->banios)): ?>
          <?php echo TbHtml::alert(TbHtml::ALERT_COLOR_ERROR, "El domicilio no posee ningun ba&ntild;o.", array('closeText'=>'')) ?>
       <?php else: ?>
          <dl class="dl-vertical">

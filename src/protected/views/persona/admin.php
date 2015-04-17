@@ -22,7 +22,7 @@
    function onDeleteClick(e) {
       if (!confirm("Desea eliminar esta persona?")){return false;}
 
-      $.post(jQuery(this).attr("href"))
+      jQuery.post(jQuery(this).attr("href"))
             .done(function(data){
                jQuery("#persona-grid").yiiGridView('update');
                var div = jQuery("<div class='alert alert-info'/>");

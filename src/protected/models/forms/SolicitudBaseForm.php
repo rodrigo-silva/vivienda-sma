@@ -72,8 +72,8 @@ class SolicitudBaseForm extends CFormModel {
          'condicion_lote_id' => 'Condicion del Lote',
          'tipo_vivienda_id' => 'Tipo de vivienda',
          'condicion_uso_id' => 'Condicion de uso de la vivienda actual',
-         'formal' => 'Alquila de manera formal',
-         'costo_superior' => 'Costo superior a la mitad de su ingreso',
+         'formal' => 'Alquila de manera:',
+         'costo_superior' => 'Costo de Alquiler supera la mitad de su ingreso',
       );
    }
 

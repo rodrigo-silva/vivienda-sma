@@ -29,7 +29,7 @@ class SolicitudController extends Controller {
    {
       return array(
          array('allow',
-            'actions'=>array('admin','view'),
+            'actions'=>array('admin','view', 'print'),
             'roles'=>array('reader', 'writer')
          ),
          array('allow',
@@ -52,7 +52,8 @@ class SolicitudController extends Controller {
       $this->render('admin',array('model'=>$model,));
    }
 
-
+   /**
+    */
    public function actionView($id) {
       $solicitud = Solicitud::model()->with(
          array('domicilio', 'domicilio.viviendaActual.servicios', 'domicilio.viviendaActual.banios',
@@ -61,6 +62,17 @@ class SolicitudController extends Controller {
          throw new CHttpException(404,'Esta intentando actualizar una Solicitud inexistente en el sistema');
       }
       $this->render('view', array('model'=>$solicitud));
+   }
+
+   public function actionPrint($id) {
+      $this->layout = 'print';
+      $solicitud = Solicitud::model()->with(
+         array('domicilio', 'domicilio.viviendaActual.servicios', 'domicilio.viviendaActual.banios',
+               'condicionUso'))->findByPk($id);
+      if($solicitud===null) {
+         throw new CHttpException(404,'Esta intentando actualizar una Solicitud inexistente en el sistema');
+      }
+      $this->render('print', array('model'=>$solicitud));
    }
 
    /**
@@ -82,12 +94,17 @@ class SolicitudController extends Controller {
                      $this->redirect(array('grupoExistente', "for"=>"p:$persona->id", 'at'=>sprintf("d:%d", $persona->domicilio->id)));
                   }
                } else {
-                  Yii::app()->user->setFlash('warning', "$persona->nombre $persona->apellido figura vinculado/a a la solicitud numero ". $persona->solicitud->numero. ". Debe desvincularse para generar una solicitud en su nombre." );
+                  Yii::app()->user->setFlash('warning', "$persona->nombre $persona->apellido figura vinculado/a a la ". 
+                        "solicitud numero ". $persona->solicitud->numero. ". Debe desvincularse para generar una solicitud en su nombre." );
                }
             } else {
+               Yii::app()->user->setFlash('general-info', "La persona no se encuentra en el sistema. " . 
+                     "Debe darla de alta para continuar.");
                $this->redirect("altaPersona");
             }
          }
+      } else {
+         Yii::app()->user->setFlash('general-info', "Primero debe buscar en sistema a quien sera el titular");
       }
      
       $this->render('new', array('model'=> $form));
@@ -103,6 +120,7 @@ class SolicitudController extends Controller {
          $form->attributes = $request->getPost('PersonaForm');
          if($form->validate()) {
             $persona = PersonaManager::savePersona($form);
+            Yii::app()->user->setFlash('general-success', "Se ha dado de alta a $persona->nombre $persona->apellido exitosamente.");
             $this->redirect(array("solicitudBase", "for"=>"p:$persona->id"));
          }
       }
@@ -236,7 +254,8 @@ class SolicitudController extends Controller {
                'confeccionGrupoConvivienteForm' => $grupoConvivienteForm,
                'vinculosFemeninosList' => $vinculosFemeninosList,
                'vinculosMasculinosList' => $vinculosMasculinos,
-               'solicitud' => $solicitud
+               'solicitud' => $solicitud,
+               'titular' => $solicitud->titular
          )
       );
 

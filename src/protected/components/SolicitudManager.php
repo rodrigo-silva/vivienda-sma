@@ -83,6 +83,8 @@ class SolicitudManager extends TransactionalManager {
     */
    public static function saveGrupoConvivienteInfo($form, $solicitud) {
       $closure = function() use($form, $solicitud) {
+         $solicitud->estado_administrativo_solicitud_id =
+               EstadoAdministrativoSolicitud::model()->findByAttributes(array('nombre'=>$form->estado))->id;
          //vivienda actual ya existe
          $viviendaActual = $solicitud->domicilio->viviendaActual;
          $viviendaActual->observaciones = $form->observaciones;
@@ -126,7 +128,6 @@ class SolicitudManager extends TransactionalManager {
             
             if($value['cotitular'] == 1) {
                $solicitud->cotitular_id = $conviviente->id;
-               $solicitud->update();
             }
             if ($value['vinculo'] != "Sin vinculo") {
                Yii::app()->db->createCommand()->insert('vinculo',
@@ -145,7 +146,10 @@ class SolicitudManager extends TransactionalManager {
                
             }
          }
-
+         $solicitud->estado_administrativo_solicitud_id =
+               EstadoAdministrativoSolicitud::model()->findByAttributes(array('nombre'=>$form->estado))->id;
+         $solicitud->update();
+         
          return $solicitud;
       };
 
@@ -157,7 +161,8 @@ class SolicitudManager extends TransactionalManager {
     */
    public static function updateGrupoConvivienteInfo($form, $solicitud) {
       $closure = function() use($form, $solicitud) {
-
+         $solicitud->estado_administrativo_solicitud_id =
+               EstadoAdministrativoSolicitud::model()->findByAttributes(array('nombre'=>$form->estado))->id;
          //vivienda actual
          $solicitud->domicilio->viviendaActual->observaciones = $form->observaciones;
          $solicitud->domicilio->viviendaActual->save();

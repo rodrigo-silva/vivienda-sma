@@ -1,11 +1,14 @@
 <div class="row">
-   <h1 class="text-center span10"><?php echo "$model->nombre $model->apellido"; ?></h1>
+   <h1 class="text-center span10">
+      <?php echo TbHtml::tooltip("$model->nombre $model->apellido",
+            Yii::app()->createUrl('persona/update/' . $model->id), "Haga click para editar")?>
+   </h1>
 </div>
 <div class="row">
    <legend class="span10">Datos personales</legend>
 </div>
 <div class="row">
-   <dl class="dl-horizontal span10">
+   <dl class="dl-horizontal span9 offset1">
       <dt>DNI</dt>
       <dd><?php echo $model->dni ?></dd>
       <dt>Edad</dt>
@@ -33,23 +36,12 @@
 <div class="row">
    <div class="span10">&nbsp;</div>
 </div>
-<?php if($model->domicilio):?>
-<div class="row">
-   <legend class="span10">Domicilio Registrado</legend>
-</div>
-<div class="row">
-   <dl class="span10 dl-horizontal">
-      <dt>Ubicado en</dt>
-      <dd><?php echo $model->domicilio->calle . ' ' . $model->domicilio->altura ?></dd>
-   </dl>
-</div>
-<?php endif?>
 
 <div class="row">
    <legend class="span10">Situacion Economica</legend>
 </div>
 <div class="row">
-   <dl class="dl-horizontal">
+   <dl class="span9 offset1 dl-horizontal">
       <dt>Situacion laboral</dt>
       <?php if($model->situacionEconomica->situacionLaboral->tipo->descripcion == 'Ocupado'): ?>
          <dd><span class="label label-success">Ocupado</span></dd>
@@ -73,43 +65,17 @@
    </dl>
 </div>
 
-<?php
-// CREATE TABLE situacion_economica (
-//    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-//    ingresos_laborales INTEGER NULL,
-//    ingresos_alimentos INTEGER NULL,
-//    ingresos_subsidio INTEGER NULL,
-//    persona_id INTEGER NOT NULL
-// ) ENGINE = InnoDB;
-
-// CREATE TABLE situacion_laboral (
-//    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-//    relacion_dependencia BIT(1),
-//    formal BIT(1),
-//    ocupacion VARCHAR(30),
-//    situacion_economica_id INTEGER NOT NULL,
-//    tipo_situacion_laboral_id INTEGER NOT NULL
-// ) ENGINE = InnoDB;
-//        'situacionEconomica' => array(self::HAS_ONE, 'SituacionEconomica', 'persona_id'),
-//        'vinculos' => array(self::HAS_MANY, 'Vinculo', 'persona_id'),
-//        'familiares' => array(self::HAS_MANY, 'Persona', array('familiar_id'=>'id'), 'through'=>'vinculos'),
-//        'condicionesEspeciales' => array(self::MANY_MANY, 'CondicionEspecial', 
-//                                         'persona_condicion_especial(persona_id, condicion_especial_id)'),
-//        'grupoConviviente' => array(self::BELONGS_TO, 'GrupoConviviente', 'grupo_conviviente_id'),
-//        'domicilio' => array(self::HAS_ONE, 'Domicilio', array('domicilio_id' => 'id'), 'through'=>'grupoConviviente'),
-//        'titularidad' => array(self::HAS_ONE, 'Solicitud', 'titular_id'),
-//        'solicitud' => array(self::BELONGS_TO, 'Solicitud', 'solicitud_id'),
-//        'cotitularidad' => array(self::HAS_ONE, 'Solicitud', 'cotitular_id'),
-//
-//   solicitud_id INTEGER NULL,
-//   #Nacimiento
-//   fecha_nac DATE NOT NULL,
-//   pais_nac VARCHAR(20) NOT NULL,
-//   provincia_nac VARCHAR(30) NULL,
-//   localidad_nac VARCHAR(50) NULL,
-//   nacionalidad VARCHAR(20),
-//   celular_prefijo INTEGER NULL,
-//   telefono_prefijo INTEGER NULL,
-//   celular INTEGER NULL,
-//   telefono INTEGER NULL,
-?>
+<?php if($model->domicilio):?>
+<div class="row">
+   <div class="span10">&nbsp;</div>
+</div>
+<div class="row">
+   <legend class="span10">Domicilio Registrado</legend>
+</div>
+<div class="row">
+   <dl class="span9 offset1 dl-horizontal">
+      <dt>Ubicado en</dt>
+      <dd><?php echo $model->domicilio->calle . ' ' . $model->domicilio->altura ?></dd>
+   </dl>
+</div>
+<?php endif?>

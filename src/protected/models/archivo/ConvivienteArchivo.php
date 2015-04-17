@@ -14,14 +14,17 @@
        */
       public function rules() {
          
-         return array();
+         return array(
+         );
       }
    
       /**
        * @return array relational rules.
        */
       public function relations() {
-         return array();
+         return array(
+            'persona' => array(self::BELONGS_TO, 'Persona', 'persona_id'),
+         );
       }
    
    }

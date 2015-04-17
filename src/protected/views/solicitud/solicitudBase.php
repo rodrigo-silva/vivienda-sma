@@ -1,36 +1,94 @@
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm');?>
+<?php echo $form->hiddenField($model, 'es_alquiler', array('id'=>'es-alquiler')); ?>
 
-<?php
-   $form = $this->beginWidget('bootstrap.widgets.TbActiveForm');
-   
-   echo '<fieldset>';
-   echo '<legend>Datos solicitud</legend>';
-   echo $form->hiddenField($model, 'es_alquiler', array('id'=>'es-alquiler'));
-   echo $form->dropDownListControlGroup($model, 'tipo_solicitud_id', $model->getTipoSolicitudes(), array('id'=>'tipo-solicitud-combo'));
-   echo $form->dropDownListControlGroup($model, 'condicion_lote_id', $model->getCondicionesLote(), 
-      array('groupOptions'=>array('id'=>'condicion-lote-combo')));
-   echo $form->dropDownListControlGroup($model, 'tipo_vivienda_id', $model->getTiposVivienda());
-   echo $form->dropDownListControlGroup($model, 'condicion_uso_id', $model->getCondicionesDeUso(), array('id'=>'condicion-uso-combo'));
-   echo '<div id="alquiler-container">';
-      echo $form->inlineRadioButtonListControlGroup($model, 'formal', array("Formal", 'Informal'));
-      echo $form->inlineRadioButtonListControlGroup($model, 'costo_superior', array('Si', 'No'));
-   echo '</div>';
-   echo '</fieldset>';
+<div class="row">
+   <legend class="span10">
+      <div class="row">
+         <div class="span8">Datos Basicos de la Solicitud</div>
+         <div class="span1">
+            <?php echo TbHtml::labelTb("$titular->nombre $titular->apellido", array('color' => TbHtml::LABEL_COLOR_INFO)); ?>
+         </div>
+      </div>
+   </legend>
+</div>
 
-   echo '<fieldset>';
-   echo '<legend>Datos del domicilio</legend>';
-   echo $form->textFieldControlGroup($model, 'calle');
-   echo $form->textFieldControlGroup($model, 'altura');
-   echo $form->textFieldControlGroup($model, 'piso');
-   echo $form->textFieldControlGroup($model, 'departamento');
-   echo $form->textFieldControlGroup($model, 'casa');
-   echo $form->textFieldControlGroup($model, 'lote');
-   echo $form->textAreaControlGroup($model, 'observaciones');
-   echo '</fieldset>';
-   
-   echo TbHtml::submitButton('Continuar');
+<div class="row">
+</div>
 
-   $this->endWidget();
-?>
+<div class="row">
+   <div class="span8 offset1">
+      <div class="well">
+         <div class="row">
+            <?php echo $form->dropDownListControlGroup($model, 'tipo_solicitud_id',
+                  $model->getTipoSolicitudes(), array('id'=>'tipo-solicitud-combo', 'groupOptions'=>array('class'=>'span3')));?>
+            <?php echo $form->dropDownListControlGroup($model, 'condicion_lote_id', $model->getCondicionesLote(), 
+               array('groupOptions'=>array('id'=>'condicion-lote-combo', 'class'=>'span3')));?>
+         </div>
+
+         <div class="row">
+            <?php echo $form->dropDownListControlGroup( $model, 'tipo_vivienda_id', $model->getTiposVivienda(),
+                  array('groupOptions'=>array('class'=>'span3')) ); ?>
+            <?php echo $form->dropDownListControlGroup($model, 'condicion_uso_id', $model->getCondicionesDeUso(),
+                  array('id'=>'condicion-uso-combo', 'groupOptions'=>array('class'=>'span3')) ); ?>
+            
+         </div>
+
+         <div class="row">
+            <div id="alquiler-container">
+               <?php echo $form->inlineRadioButtonListControlGroup( $model, 'formal', array("Formal", 'Informal'),
+                     array('groupOptions'=>array('class'=>'span3'))); ?>
+               <?php echo $form->inlineRadioButtonListControlGroup( $model, 'costo_superior', array('Si', 'No'),
+                     array('groupOptions'=>array('class'=>'span3')) ); ?>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="row">
+   <legend class="span10">Datos del domicilio de la solicitud</legend>
+</div>
+
+<div class="row">
+   <div class="span8 offset1">
+      <div class="well">
+         <div class="row">
+            <?php echo $form->textFieldControlGroup($model, 'calle', array('groupOptions'=>array('class'=>'span3')) );?>
+            <?php echo $form->textFieldControlGroup($model, 'altura', array('groupOptions'=>array('class'=>'span3')) );?>
+            
+         </div>
+
+         <div class="row">
+            <?php echo $form->textFieldControlGroup($model, 'piso', array('groupOptions'=>array('class'=>'span3')) );?>
+            <?php echo $form->textFieldControlGroup($model, 'departamento', array('groupOptions'=>array('class'=>'span3')) );?>
+         </div>
+
+         <div class="row">
+            <?php echo $form->textFieldControlGroup($model, 'casa', array('groupOptions'=>array('class'=>'span3')) );?>
+            <?php echo $form->textFieldControlGroup($model, 'lote', array('groupOptions'=>array('class'=>'span3')) );?>
+         </div>
+
+         <div class="row">
+            <?php echo $form->textAreaControlGroup($model, 'observaciones', array('groupOptions'=>array('class'=>'span3')) );?>
+         </div>
+
+         <div class="row">&nbsp;</div>
+         <div class="row">
+            <div class="span offset4">
+               <?php echo TbHtml::link('Cancelar', Yii::app()->createUrl("solicitud/admin"),
+               array('class'=>'btn'));?>
+            </div>
+            <div class="span">
+               <?php echo TbHtml::submitButton('Guardar y continuar', array('color'=>TbHtml::BUTTON_COLOR_SUCCESS)); ?>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</div>
+<?php $this->endWidget(); ?>
+
+
 
 
 <script type="text/javascript">
