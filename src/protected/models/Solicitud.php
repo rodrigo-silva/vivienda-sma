@@ -45,7 +45,7 @@ class Solicitud extends CActiveRecord
 		return array(
 			array('fecha, numero, tipo_solicitud_id, grupo_conviviente_id, titular_id', 'required'),
 			array('tipo_solicitud_id, numero, grupo_conviviente_id, titular_id, cotitular_id', 'numerical', 'integerOnly'=>true),
-         array('tipo_solicitud_id, tipo_vivienda_id, condicion_lote_id, condicion_uso_id,' .
+         array('comparte_dormitorio, tipo_solicitud_id, tipo_vivienda_id, condicion_lote_id, condicion_uso_id,' .
                 'grupo_conviviente_id, titular_id', 'safe')
 		);
 	}

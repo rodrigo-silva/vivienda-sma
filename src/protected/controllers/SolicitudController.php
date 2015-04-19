@@ -435,6 +435,12 @@ class SolicitudController extends Controller {
             'LOWER(piso)' => strtolower($baseForm->piso),
             'LOWER(departamento)' => strtolower($baseForm->departamento),
             'LOWER(casa)' => strtolower($baseForm->casa),
+            'LOWER(puerta)' => strtolower($baseForm->puerta),
+            'LOWER(cruce_calle_1)' => strtolower($baseForm->cruce_calle_1),
+            'LOWER(cruce_calle_2)' => strtolower($baseForm->cruce_calle_2),
+            'LOWER(manzana)' => strtolower($baseForm->manzana),
+            'LOWER(barrio)' => strtolower($baseForm->barrio),
+            'LOWER(estancia)' => strtolower($baseForm->estancia),
             'LOWER(lote)' => strtolower($baseForm->lote),
       ));
 

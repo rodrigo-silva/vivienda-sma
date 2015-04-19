@@ -44,6 +44,8 @@
             <dt>Costo</dt>
             <dd><?php echo $model->condicionAlquiler->costo_superior ? 'Superior al %50 de su ingreso' :  'Inferior al %50 de su ingreso' ?></dd>
          <?php endif ?>
+         <dt>Dormitorio compartido</dt>
+         <dd><?php echo $model->comparte_dormitorio ? 'Si' : 'No' ?></dd>
       </dl>
    </div>
 </div>
@@ -74,6 +76,30 @@
          <?php if($model->domicilio->casa): ?>
             <dt>Casa</dt>
             <dd><?php echo $model->domicilio->casa ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->puerta): ?>
+            <dt>Puerta</dt>
+            <dd><?php echo $model->domicilio->puerta ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->cruce_calle_1): ?>
+            <dt>Interseccion</dt>
+            <dd><?php echo $model->domicilio->cruce_calle_1 ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->cruce_calle_2): ?>
+            <dt>Interseccion</dt>
+            <dd><?php echo $model->domicilio->cruce_calle_2 ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->manzana): ?>
+            <dt>Manzana</dt>
+            <dd><?php echo $model->domicilio->manzana ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->barrio): ?>
+            <dt>Barrio</dt>
+            <dd><?php echo $model->domicilio->barrio ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->estancia): ?>
+            <dt>Estancia</dt>
+            <dd><?php echo $model->domicilio->estancia ?></dd>
          <?php endif?>
          <?php if($model->domicilio->lote): ?>
             <dt>Lote</dt>

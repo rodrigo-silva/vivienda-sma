@@ -20,6 +20,7 @@
          <div class="row">
             <?php echo $form->textFieldControlGroup($model, 'fecha_nac', array('readonly'=>'',
                   'groupOptions'=>array('class'=>'span3'))); ?>
+            <?php echo $form->textFieldControlGroup($model, 'anio_residencia', array('groupOptions'=>array('class'=>'span3'))); ?>
          </div>
          <div class="row">
             <?php echo $form->dropDownListControlGroup($model, 'nacionalidad',

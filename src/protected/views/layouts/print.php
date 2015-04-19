@@ -10,9 +10,12 @@
 
 <body>
 
-<div class="container" id="page">
-
-   <?php echo $content; ?>
+<div class="container">
+<div id="content" class="row">
+   <div class="span10 offset1">
+      <?php echo $content; ?>
+   </div>
+</div>
 
 </div><!-- page -->
 

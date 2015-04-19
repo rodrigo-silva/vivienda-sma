@@ -30,7 +30,6 @@
                   array('groupOptions'=>array('class'=>'span3')) ); ?>
             <?php echo $form->dropDownListControlGroup($model, 'condicion_uso_id', $model->getCondicionesDeUso(),
                   array('id'=>'condicion-uso-combo', 'groupOptions'=>array('class'=>'span3')) ); ?>
-            
          </div>
 
          <div class="row">
@@ -41,6 +40,12 @@
                      array('groupOptions'=>array('class'=>'span3')) ); ?>
             </div>
          </div>
+
+         <div class="row">
+            <?php echo $form->checkBoxControlGroup($model, 'comparte_dormitorio',
+                  array('groupOptions'=>array('class'=>'span3')));?>
+         </div>
+
       </div>
    </div>
 </div>
@@ -59,13 +64,28 @@
          </div>
 
          <div class="row">
+            <?php echo $form->textFieldControlGroup($model, 'cruce_calle_1', array('groupOptions'=>array('class'=>'span3')) );?>
+            <?php echo $form->textFieldControlGroup($model, 'cruce_calle_2', array('groupOptions'=>array('class'=>'span3')) );?>
+         </div>
+
+         <div class="row">
             <?php echo $form->textFieldControlGroup($model, 'piso', array('groupOptions'=>array('class'=>'span3')) );?>
             <?php echo $form->textFieldControlGroup($model, 'departamento', array('groupOptions'=>array('class'=>'span3')) );?>
          </div>
 
          <div class="row">
             <?php echo $form->textFieldControlGroup($model, 'casa', array('groupOptions'=>array('class'=>'span3')) );?>
+            <?php echo $form->textFieldControlGroup($model, 'puerta', array('groupOptions'=>array('class'=>'span3')) );?>
+         </div>
+
+         <div class="row">
+            <?php echo $form->textFieldControlGroup($model, 'manzana', array('groupOptions'=>array('class'=>'span3')) );?>
             <?php echo $form->textFieldControlGroup($model, 'lote', array('groupOptions'=>array('class'=>'span3')) );?>
+         </div>
+
+         <div class="row">
+            <?php echo $form->textFieldControlGroup($model, 'estancia', array('groupOptions'=>array('class'=>'span3')) );?>
+            <?php echo $form->textFieldControlGroup($model, 'barrio', array('groupOptions'=>array('class'=>'span3')) );?>
          </div>
 
          <div class="row">

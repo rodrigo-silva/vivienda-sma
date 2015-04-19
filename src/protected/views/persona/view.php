@@ -13,6 +13,10 @@
       <dd><?php echo $model->dni ?></dd>
       <dt>Edad</dt>
       <dd><?php echo date_diff(date_create($model->fecha_nac), date_create('today'))->y . " a&ntilde;os"; ?></dd>
+      <?php if(!is_null($model->anio_residencia)):?>
+         <dt>Residente desde:</dt>
+         <dd><?php echo $model->anio_residencia?></dd>
+      <?php endif ?>
       <dt>Pais de nacimiento</dt>
       <dd><?php echo $model->pais_nac?></dd>
       <dt>Fecha de nacimiento</dt>

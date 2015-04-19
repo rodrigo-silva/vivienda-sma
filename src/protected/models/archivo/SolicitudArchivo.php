@@ -20,7 +20,7 @@ class SolicitudArchivo extends CActiveRecord {
       
       return array(
          array('numero, fecha, tipo_solicitud_id, tipo_vivienda_id, condicion_lote_id, condicion_uso_id,'.
-               'condicion_alquiler_id, titular_id, cotitular_id,'.
+               'comparte_dormitorio, condicion_alquiler_id, titular_id, cotitular_id,'.
                'domicilio_id, observaciones_vivienda, tipo_resolucion_id, comentarios', 'safe')
       );
    }

@@ -14,6 +14,7 @@ class PersonaForm extends CFormModel {
    public $provincia_nac;
    public $localidad_nac;
    public $nacionalidad;
+   public $anio_residencia;
    
    public $celular_prefijo;
    public $telefono_prefijo = 2972;
@@ -39,7 +40,7 @@ class PersonaForm extends CFormModel {
    public function rules() {
       return array(
          array('nombre, apellido, dni, sexo, fecha_nac, pais_nac, provincia_nac, localidad_nac, nacionalidad,' .
-                'celular_prefijo, telefono_prefijo, celular, telefono,' .
+                'anio_residencia, celular_prefijo, telefono_prefijo, celular, telefono,' .
                 'ingresos_laborales, ingresos_alimentos, ingresos_subsidio, relacion_dependencia, formal, ocupacion,' .
                 'condicionesEspeciales, tipo_situacion_laboral_id', 'safe'),
          array('nombre, apellido, dni, sexo, fecha_nac, pais_nac, nacionalidad',
@@ -47,6 +48,7 @@ class PersonaForm extends CFormModel {
          array('dni, celular_prefijo, telefono_prefijo, celular, telefono,' . 
                'ingresos_laborales, ingresos_alimentos, ingresos_subsidio',
                'numerical', 'integerOnly'=>true, 'allowEmpty'=>true, 'message'=>'Utilice solo numeros.'),
+         array('anio_residencia', 'numerical', 'integerOnly'=>true, 'min'=>1900, 'allowEmpty'=>true),
          array('fecha_nac', 'date', 'format'=>'yyyy-M-d', 'message'=>'Formato invalido'),
          array('dni', 'unique', 'className' => 'Persona', 'attributeName' => 'dni', 'message' => 'DNI existente en base de datos',
                'on' => array('dniUpdate', 'new'))
@@ -67,6 +69,7 @@ class PersonaForm extends CFormModel {
          'provincia_nac' => 'Provincia',
          'localidad_nac' => 'Localidad',
          'nacionalidad' => 'Nacionalidad',
+         'anio_residencia' => 'Reside en SMA desde el a&ntilde;o',
          'telefono' => 'Telefono Fijo',
          'celular_prefijo' => 'Prefijo',
          'celular' => 'Celular',

@@ -35,6 +35,7 @@ class Persona extends CActiveRecord
          array('nombre, apellido', 'required'),
          array('apellido', 'length', 'max'=>40),
          array('dni', 'numerical', 'integerOnly'=>true),
+         array('anio_residencia', 'numerical', 'integerOnly'=>true, 'min'=>1900, 'allowEmpty'=>true),
          array('nombre', 'length', 'max'=>60),
          array('sexo', 'length', 'max'=>1),
          array('fecha_nac', 'date', 'format'=>'yyyy-M-d', 'message'=>'Formato invalido'),

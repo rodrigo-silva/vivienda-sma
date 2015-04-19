@@ -347,6 +347,12 @@ class SolicitudManager extends TransactionalManager {
             'LOWER(piso)' => strtolower($solicitudBaseForm->piso),
             'LOWER(departamento)' => strtolower($solicitudBaseForm->departamento),
             'LOWER(casa)' => strtolower($solicitudBaseForm->casa),
+            'LOWER(puerta)' => strtolower($solicitudBaseForm->puerta),
+            'LOWER(cruce_calle_1)' => strtolower($solicitudBaseForm->cruce_calle_1),
+            'LOWER(cruce_calle_2)' => strtolower($solicitudBaseForm->cruce_calle_2),
+            'LOWER(manzana)' => strtolower($solicitudBaseForm->manzana),
+            'LOWER(barrio)' => strtolower($solicitudBaseForm->barrio),
+            'LOWER(estancia)' => strtolower($solicitudBaseForm->estancia),
             'LOWER(lote)' => strtolower($solicitudBaseForm->lote),
       ));
       
