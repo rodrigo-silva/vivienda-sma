@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Registro Habitacional',
+	'name'=>'Registro Municipal de Demanda Habitacional',
    'defaultController' => 'solicitud/admin',
    'language' => 'es',
    'timeZone' => 'America/Argentina/Buenos_Aires',

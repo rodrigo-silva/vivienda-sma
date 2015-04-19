@@ -74,7 +74,7 @@ CREATE TABLE condicion_especial (
 
 CREATE TABLE solicitud (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   numero INTEGER NOT NULL,
+   numero VARCHAR(25) NOT NULL,
    fecha DATE NOT NULL,
    comparte_dormitorio BIT(1),
    tipo_solicitud_id INTEGER NOT NULL,
@@ -177,8 +177,9 @@ CREATE TABLE tipo_servicio (
 # DEL ARCHIVO ##############################################333
 CREATE TABLE solicitud_archivo (
    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   numero INTEGER NOT NULL,
+   numero VARCHAR(25) NOT NULL,
    fecha DATE NOT NULL,
+   fecha_archivado DATE NOT NULL,
    comparte_dormitorio BIT(1),
    tipo_solicitud_id INTEGER NOT NULL,
    tipo_vivienda_id INTEGER NOT NULL,
@@ -277,6 +278,9 @@ INSERT INTO condicion_lote VALUES(NULL, 'Cedido');
 
 INSERT INTO tipo_solicitud VALUES(NULL, 'Vivienda');
 INSERT INTO tipo_solicitud VALUES(NULL, 'Lote');
+INSERT INTO tipo_solicitud VALUES(NULL, 'Vivienda y Lote');
+INSERT INTO tipo_solicitud VALUES(NULL, 'Refaccion');
+INSERT INTO tipo_solicitud VALUES(NULL, 'Ampliacion');
 
 INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Borrador');
 INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Activa');

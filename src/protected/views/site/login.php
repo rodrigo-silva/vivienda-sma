@@ -1,5 +1,6 @@
+<div class="row">&nbsp;</div>
 <div class="row">
-   <div class="span4 offset2">
+   <div class="span5 offset3">
       <?php if(Yii::app()->user->hasFlash('loginError')){
             echo TbHtml::alert(TbHtml::ALERT_COLOR_ERROR, Yii::app()->user->getFlash('loginError'));
          }

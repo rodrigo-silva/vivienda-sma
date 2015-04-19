@@ -23,6 +23,7 @@
  */
 class Solicitud extends CActiveRecord
 {
+   public $titular_search;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -44,8 +45,8 @@ class Solicitud extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('fecha, numero, tipo_solicitud_id, grupo_conviviente_id, titular_id', 'required'),
-			array('tipo_solicitud_id, numero, grupo_conviviente_id, titular_id, cotitular_id', 'numerical', 'integerOnly'=>true),
-         array('comparte_dormitorio, tipo_solicitud_id, tipo_vivienda_id, condicion_lote_id, condicion_uso_id,' .
+			array('tipo_solicitud_id, grupo_conviviente_id, titular_id, cotitular_id', 'numerical', 'integerOnly'=>true),
+         array('titular_search, comparte_dormitorio, tipo_solicitud_id, tipo_vivienda_id, condicion_lote_id, condicion_uso_id,' .
                 'grupo_conviviente_id, titular_id', 'safe')
 		);
 	}
@@ -105,12 +106,23 @@ class Solicitud extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
+      $criteria->with = array('titular');
 		$criteria->compare('numero',$this->numero, true);
-		$criteria->compare('fecha',$this->fecha, true);
+      $criteria->compare('fecha',$this->fecha, true);
+      $criteria->compare('titular.nombre',$this->titular_search, true, 'OR');
+		$criteria->compare('titular.apellido',$this->titular_search, true, 'OR');
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+         'sort'=>array(
+         'attributes'=>array(
+            'author_search'=>array(
+               'asc'=>'titular.nombre',
+               'desc'=>'titular.nombre DESC',
+               ),
+            '*',
+            ),
+         ),
 		));
 	}
 

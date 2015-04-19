@@ -20,7 +20,7 @@
       <div class="well">
          <div class="row">
             <?php echo $form->dropDownListControlGroup($model, 'tipo_solicitud_id',
-                  $model->getTipoSolicitudes(), array('id'=>'tipo-solicitud-combo', 'groupOptions'=>array('class'=>'span3')));?>
+                  $model->getTipoSolicitudes($titular), array('id'=>'tipo-solicitud-combo', 'groupOptions'=>array('class'=>'span3')));?>
             <?php echo $form->dropDownListControlGroup($model, 'condicion_lote_id', $model->getCondicionesLote(), 
                array('groupOptions'=>array('id'=>'condicion-lote-combo', 'class'=>'span3')));?>
          </div>

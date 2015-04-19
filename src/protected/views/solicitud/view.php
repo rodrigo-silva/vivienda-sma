@@ -1,6 +1,6 @@
 <div class="row">
    <h2 class="text-center span10">
-      <?php echo TbHtml::tooltip("Solicitud #$model->numero",
+      <?php echo TbHtml::tooltip("Solicitud $model->numero",
             Yii::app()->createUrl('solicitud/update/' . $model->id), "Haga click para editar")?>
    </h2>
 </div>
@@ -55,10 +55,7 @@
    <legend class="span10">Informacion del domicilio</legend>
 </div>
 <div class="row">
-   <div class="span3 offset1">
-      <h4><?php echo $model->domicilio->calle ?> <?php echo $model->domicilio->altura ?></h4>
-   </div>
-   <div class="span5">
+   <div class="span4">
       <dl class="dl-horizontal">
          <dt>Calle</dt>
          <dd><?php echo $model->domicilio->calle ?></dd>
@@ -81,6 +78,11 @@
             <dt>Puerta</dt>
             <dd><?php echo $model->domicilio->puerta ?></dd>
          <?php endif?>
+      </dl>
+   </div>
+
+   <div class="span5">
+      <dl class="dl-horizontal">
          <?php if($model->domicilio->cruce_calle_1): ?>
             <dt>Interseccion</dt>
             <dd><?php echo $model->domicilio->cruce_calle_1 ?></dd>

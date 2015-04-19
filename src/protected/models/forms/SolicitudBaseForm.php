@@ -33,8 +33,19 @@ class SolicitudBaseForm extends CFormModel {
    
    /**
     */
-   public function getTipoSolicitudes() {
-      return CHtml::listData(TipoSolicitud::model()->findAll(), 'id', 'nombre');
+   public function getTipoSolicitudes($titular) {
+      $archivo = SolicitudArchivo::model()->with(array('titular', 'resolucion'))->find(
+            'titular.id=:idTit AND resolucion.descripcion=:desc', array('idTit'=>$titular->id, ':desc'=>'Adjudicado') );
+
+      if( empty($archivo) ) {
+         return CHtml::listData(TipoSolicitud::model()->findAll(), 'id', 'nombre');
+      } else {
+         Yii::app()->user->setFlash("general-warning", "El titular tiene una adjudicacion previa, por consiguiente solo puede solicitar ". 
+               "Refaccion o Ampliacion.");
+         $criteria = new CDbCriteria();
+         $criteria->addInCondition("nombre", array("Refaccion", "Ampliacion"));
+         return CHtml::listData(TipoSolicitud::model()->findAll($criteria), 'id', 'nombre');
+      }
    }
    
    /**

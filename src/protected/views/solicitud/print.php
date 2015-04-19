@@ -1,5 +1,17 @@
 <div class="row">
-   <h2 class="text-center span10"><?php echo "Solicitud #$model->numero" ?></h2>
+   <h2 class="text-center span10"><?php echo "Solicitud $model->numero" ?></h2>
+</div>
+<div class="row">
+   <row class="well span10">
+      <strong><?php echo $model->titular->nombre . ' ' . $model->titular->apellido . ' DNI ' . $model->titular->dni .','?></strong>
+      <?php echo <<<EOD
+      a partir de la fecha ha quedado inscripto al <strong>Registro Municipal de Demanda Habitacional</strong> como titular
+      de grupo en calidad de aspirante. Recuerde que los datos consignados revisten caracter de <strong><u>Declaracion Jurada</u></strong>
+      y gozan de estricta confidencialidad. La verificacion y posterior re-verificacion de los datos contenidos en esta solicitud
+      puede ser realizada en cualquier momento por la municipalidad.
+EOD
+?>
+   </row>
 </div>
 
 <div class="row">

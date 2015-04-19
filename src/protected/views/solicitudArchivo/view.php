@@ -30,6 +30,8 @@
          </dd>
          <dt>Fecha inscripcion</dt>
          <dd><?php echo $model->fecha?></dd>
+         <dt>Fecha archivada</dt>
+         <dd><strong><?php echo $model->fecha_archivado?></strong></dd>
          <dt>Titular</dt>
          <dd><?php echo $model->titular->nombre . ' ' . $model->titular->apellido ?></dd>
          <dt>Cotitular</dt>
@@ -63,10 +65,7 @@
    <legend class="span10">Informacion del domicilio</legend>
 </div>
 <div class="row">
-   <div class="span3 offset1">
-      <h4><?php echo $model->domicilio->calle ?> <?php echo $model->domicilio->altura ?></h4>
-   </div>
-   <div class="span5">
+   <div class="span4">
       <dl class="dl-horizontal">
          <dt>Calle</dt>
          <dd><?php echo $model->domicilio->calle ?></dd>
@@ -85,12 +84,42 @@
             <dt>Casa</dt>
             <dd><?php echo $model->domicilio->casa ?></dd>
          <?php endif?>
+         <?php if($model->domicilio->puerta): ?>
+            <dt>Puerta</dt>
+            <dd><?php echo $model->domicilio->puerta ?></dd>
+         <?php endif?>
+      </dl>
+   </div>
+
+   <div class="span5">
+      <dl class="dl-horizontal">
+         <?php if($model->domicilio->cruce_calle_1): ?>
+            <dt>Interseccion</dt>
+            <dd><?php echo $model->domicilio->cruce_calle_1 ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->cruce_calle_2): ?>
+            <dt>Interseccion</dt>
+            <dd><?php echo $model->domicilio->cruce_calle_2 ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->manzana): ?>
+            <dt>Manzana</dt>
+            <dd><?php echo $model->domicilio->manzana ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->barrio): ?>
+            <dt>Barrio</dt>
+            <dd><?php echo $model->domicilio->barrio ?></dd>
+         <?php endif?>
+         <?php if($model->domicilio->estancia): ?>
+            <dt>Estancia</dt>
+            <dd><?php echo $model->domicilio->estancia ?></dd>
+         <?php endif?>
          <?php if($model->domicilio->lote): ?>
             <dt>Lote</dt>
             <dd><?php echo $model->domicilio->lote ?></dd>
          <?php endif?>
       </dl>
    </div>
+
 </div>
 <?php if($model->domicilio->observaciones): ?>
 <div class="row">

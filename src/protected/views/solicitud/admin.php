@@ -5,7 +5,7 @@
    'filter'=>$model,
    'columns'=>array(
       'numero',
-      array('name'=>'titular', 'value'=>'$data->titular->nombre . " " . $data->titular->apellido'),
+      array('name'=>'titular_search', 'header' => 'Titular', 'value'=>'$data->titular->nombre . " " . $data->titular->apellido'),
       array('name'=>'fecha', 'value'=>'date("d-m-Y", strtotime($data->fecha))', 'filter'=>false),
       array('name'=>'estado', 'value'=>'$data->estado->nombre', 'filter'=>false),
       array(

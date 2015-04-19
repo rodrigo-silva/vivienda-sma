@@ -28,8 +28,12 @@ class SolicitudManager extends TransactionalManager {
                throw new CHttpException(400, "Error de datos en la solicitud");
             }
          }
+         //generacion del numero
+         $refTitular = str_pad(strrev($titular->id), 6, "0", STR_PAD_LEFT);
+         $anio = date("y");
+         $instant = str_pad( (time() - strtotime(date('Y-m-d'))), 6, STR_PAD_LEFT);
+         $solicitud->numero = $refTitular . $instant .  $anio;
 
-         $solicitud->numero = date("y") . strrev($titular->id) . (time() - strtotime(date('Y-m-d')));
          if($solicitud->save()) {
             $titular->grupo_conviviente_id = $domicilio->grupoConviviente->id;
             $titular->solicitud_id = $solicitud->id;
@@ -260,6 +264,7 @@ class SolicitudManager extends TransactionalManager {
          $archivo->attributes = $original->attributes;
          $archivo->domicilio_id = $original->domicilio->id;
          $archivo->observaciones_vivienda = $original->domicilio->viviendaActual->observaciones;
+         $archivo->fecha_archivado = date('Y-m-d');
          $archivo->attributes = (array)$archivarForm;
          if(!$archivo->save()) {
             TransactionalManager::logModelErrors(array($archivo));
