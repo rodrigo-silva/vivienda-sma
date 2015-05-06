@@ -21,7 +21,7 @@ class SolicitudBaseForm extends CFormModel {
    public $cruce_calle_2;
    public $manzana;
    public $barrio;
-   public $estancia;
+   public $edificio;
    public $lote;
    public $observaciones;
 
@@ -71,7 +71,7 @@ class SolicitudBaseForm extends CFormModel {
    public function rules() {
       return array(
          array('calle, altura, piso, departamento, casa,' .
-               'puerta, cruce_calle_1, cruce_calle_2, manzana, barrio, estancia, '.
+               'puerta, cruce_calle_1, cruce_calle_2, manzana, barrio, edificio, '.
                'lote, observaciones,comparte_dormitorio, tipo_solicitud_id, condicion_lote_id,'.
                'tipo_vivienda_id, condicion_uso_id, formal, costo_superior, es_alquiler', 'safe', 'on'=>'post'),
       );
@@ -89,7 +89,7 @@ class SolicitudBaseForm extends CFormModel {
          'cruce_calle_2' => 'Interseccion con calle',
          'manzana' => 'Manzana',
          'barrio' => 'Barrio',
-         'estancia' => 'Estancia',
+         'edificio' => 'Edificio',
          'lote' => 'Numero de lote',
          'observaciones' => 'Observaciones generales',
          'comparte_dormitorio' => 'La pareja comparte dormitorio con otro familiar',
@@ -127,7 +127,7 @@ class SolicitudBaseForm extends CFormModel {
                   $this->cruce_calle_2 == null &&
                   $this->manzana == null &&
                   $this->barrio == null &&
-                  $this->estancia == null &&
+                  $this->edificio == null &&
                   $this->lote == null) {
             Yii::app()->user->setFlash('general-error', "Indique al menos un campo de los datos de domicilio.");
          return false;

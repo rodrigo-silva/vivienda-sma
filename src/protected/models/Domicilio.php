@@ -31,7 +31,7 @@ class Domicilio extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('calle, cruce_calle_1, cruce_calle_2, barrio, estancia', 'length', 'max'=>40),
+			array('calle, cruce_calle_1, cruce_calle_2, barrio, edificio', 'length', 'max'=>40),
 			array('altura', 'length', 'max'=>10),
 			array('piso, departamento, casa, lote, puerta, manzana', 'length', 'max'=>3),
 			array('observaciones', 'length', 'max'=>250),

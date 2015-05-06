@@ -1,7 +1,12 @@
 <div class="row">
    <h2 class="text-center span10">
-      <?php echo TbHtml::tooltip("Solicitud $model->numero",
-            Yii::app()->createUrl('solicitud/update/' . $model->id), "Haga click para editar")?>
+      <?php if( Yii::app()->user->checkAccess('writer') ) {
+         echo TbHtml::tooltip("Solicitud $model->numero",
+               Yii::app()->createUrl('solicitud/update/' . $model->id), "Haga click para editar");
+      } else {
+         echo "Solicitud $model->numero";
+      }
+      ?>
    </h2>
 </div>
 
@@ -99,9 +104,9 @@
             <dt>Barrio</dt>
             <dd><?php echo $model->domicilio->barrio ?></dd>
          <?php endif?>
-         <?php if($model->domicilio->estancia): ?>
-            <dt>Estancia</dt>
-            <dd><?php echo $model->domicilio->estancia ?></dd>
+         <?php if($model->domicilio->edificio): ?>
+            <dt>Edificio</dt>
+            <dd><?php echo $model->domicilio->edificio ?></dd>
          <?php endif?>
          <?php if($model->domicilio->lote): ?>
             <dt>Lote</dt>
@@ -210,3 +215,32 @@
       </table>
    </div>
 </div>
+
+<?php if ( !empty($eventos) ): ?>
+<div class="row">
+   <legend class="span10">Historial de eventos creados</legend>
+</div>
+
+<div class="row">
+   <div class="offset1 span8">
+      <table class="table">
+         <thead>
+            <tr>
+               <th><div class="text-center">Fecha</div></th>
+               <th><div class="text-center">Usuario</div></th>
+               <th><div class="">Detalle</div></th>
+            </tr>
+         </thead>
+         <tbody>
+            <?php foreach($eventos as $evento):?>
+               <tr>
+                  <td><div class="text-center"><?php echo $evento->fecha ?></div></td>
+                  <td><div class="text-center"><?php echo $evento->username ?></div></td>
+                  <td><div class=""><?php echo $evento->detalle ?></div></td>
+               </tr>
+            <?php endforeach?>
+         </tbody>
+      </table>
+   </div>
+</div>
+<?php endif ?>

@@ -84,7 +84,7 @@
          </div>
 
          <div class="row">
-            <?php echo $form->textFieldControlGroup($model, 'estancia', array('groupOptions'=>array('class'=>'span3')) );?>
+            <?php echo $form->textFieldControlGroup($model, 'edificio', array('groupOptions'=>array('class'=>'span3')) );?>
             <?php echo $form->textFieldControlGroup($model, 'barrio', array('groupOptions'=>array('class'=>'span3')) );?>
          </div>
 

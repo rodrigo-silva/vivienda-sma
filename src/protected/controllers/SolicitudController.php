@@ -29,7 +29,7 @@ class SolicitudController extends Controller {
    {
       return array(
          array('allow',
-            'actions'=>array('admin','view', 'print'),
+            'actions'=>array('admin','view', 'print', 'filtro', 'event'),
             'roles'=>array('reader', 'writer')
          ),
          array('allow',
@@ -61,7 +61,9 @@ class SolicitudController extends Controller {
       if($solicitud===null) {
          throw new CHttpException(404,'Esta intentando actualizar una Solicitud inexistente en el sistema');
       }
-      $this->render('view', array('model'=>$solicitud));
+      $eventos=Event::model()->findAllByAttributes( array('numero_solicitud'=>$solicitud->numero) );
+
+      $this->render('view', array('model'=>$solicitud, 'eventos'=>$eventos));
    }
 
    public function actionPrint($id) {
@@ -171,7 +173,7 @@ class SolicitudController extends Controller {
             $form->condicion_uso_id = 1;
             $form->es_alquiler = 0;
             $solicitud = SolicitudManager::saveSolicitudBase($form, $titular);
-            $this->redirect('/solicitud/update/' . $solicitud->id);
+            $this->redirect(Yii::app()->createUrl('solicitud/update') . '/' . $solicitud->id);
          }
       }
 
@@ -187,8 +189,9 @@ class SolicitudController extends Controller {
       
       if ($request->isPostRequest) {
          $form->attributes = $request->getPost("ConfeccionGrupoConvivienteForm");
-         SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud);
-         $this->redirect('/solicitud/admin');
+         $solicitud = SolicitudManager::saveGrupoConvivienteInfo($form, $solicitud);
+         Yii::app()->user->setFlash('general-success', "Solicitud creada exitosamente.");
+         $this->redirect( Yii::app()->createUrl('solicitud/' . $solicitud->id) );
       }
 
       $vinculosMasculinos = VinculosUtil::getVinculosMasculinos(); 
@@ -234,7 +237,7 @@ class SolicitudController extends Controller {
          } else if(!is_null($request->getPost('ConfeccionGrupoConvivienteForm'))) {
             $grupoConvivienteForm->attributes = $request->getPost('ConfeccionGrupoConvivienteForm');
             SolicitudManager::updateGrupoConvivienteInfo($grupoConvivienteForm, $solicitud);
-            $this->redirect('/solicitud/admin');
+            $this->redirect( Yii::app()->createUrl('solicitud/admin') );
          }
       } else { //GET
          $baseForm->attributes = $solicitud->attributes;
@@ -294,7 +297,7 @@ class SolicitudController extends Controller {
                   Yii::app()->end();
                }
             } else {
-               $this->redirect("_altaPersona");
+               $this->redirect( Yii::app()->createUrl("solicitud/_altaPersona") );
             }
          } else {
             http_response_code(400);
@@ -334,11 +337,46 @@ class SolicitudController extends Controller {
          $model->attributes = $request->getPost('ArchivarForm');
          if($model->validate()) {
             SolicitudManager::archivarSolicitud($model);
-            $this->redirect("/solicitud/admin");
+            $this->redirect( Yii::app()->createUrl("solicitud/admin") );
          }
       }
 
       $this->render("archivar", array('model'=>$model));
+   }
+
+   /**
+   */
+   public function actionFiltro() {
+      $form = new FiltroForm;
+      $form->attributes = Yii::app()->request->getQuery('FiltroForm');
+
+      $criteria = $this->createFiltroCriteria($form);
+
+      $dataProvider = new CActiveDataProvider('Solicitud', 
+         array('pagination' => array('pageSize' => 20,),
+               'criteria' => $criteria,
+         )
+      );
+      $this->render('filtro', array('dataProvider'=>$dataProvider, 'form'=>$form));
+   }
+
+   /**
+    */
+   public function actionEvent($id) {
+      $request = Yii::app()->request;
+      if( $request->isPostRequest ) {
+         $event = new Event;
+         $event->username = Yii::app()->user->getState('username');
+         $event->fecha = date('Y-m-d');
+         $event->numero_solicitud = $id;
+         $event->detalle = $request->getPost('detalle');
+         if ( $event->save() ) { //no importa tanto validar, si detalle esta en blanco que no haga nada y listo. Es trivial
+            Yii::app()->user->setFlash('general-success', "Se ha guardado el evento.");
+         }
+         $this->redirect( Yii::app()->createUrl('solicitud/admin') );
+      }
+
+      $this->render('event');
    }
 
 
@@ -440,7 +478,7 @@ class SolicitudController extends Controller {
             'LOWER(cruce_calle_2)' => strtolower($baseForm->cruce_calle_2),
             'LOWER(manzana)' => strtolower($baseForm->manzana),
             'LOWER(barrio)' => strtolower($baseForm->barrio),
-            'LOWER(estancia)' => strtolower($baseForm->estancia),
+            'LOWER(edificio)' => strtolower($baseForm->edificio),
             'LOWER(lote)' => strtolower($baseForm->lote),
       ));
 
@@ -493,5 +531,32 @@ class SolicitudController extends Controller {
 
       $form->convivientes = $convivientes;
    }
+
+   /**
+    *
+    */
+   private function createFiltroCriteria($form) {
+      $criteria=new CDbCriteria;
+      $criteria->together = true;
+      $criteria->with = array('solicitantes', 'solicitantes.condicionesEspeciales');
+
+      if( !empty($form->condiciones) ) {
+         $criteria->addInCondition('condicionesEspeciales.id', array_values($form->condiciones), 'OR');
+      }
+
+      if( $form->adulto ) {
+         $fechaAdulto = date('Y-m-d', strtotime('65 years ago'));
+         $criteria->addCondition("solicitantes.fecha_nac < '$fechaAdulto'", 'OR');
+      }
+
+      if( $form->menor ) {
+         $fechaMenor = date('Y-m-d', strtotime('18 years ago'));
+         $criteria->addCondition("solicitantes.fecha_nac > '$fechaMenor'", 'OR');
+      }
+
+      return $criteria;
+   }
+
+
 }
 ?>

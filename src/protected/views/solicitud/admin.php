@@ -10,7 +10,7 @@
       array('name'=>'estado', 'value'=>'$data->estado->nombre', 'filter'=>false),
       array(
          'class'=>'TbButtonColumn',
-         'template' => Yii::app()->user->checkAccess('writer') ? '{view}{update}{archivar}{print}' : '{view}{print}',
+         'template' => Yii::app()->user->checkAccess('writer') ? '{view}{update}{archivar}{print}{event}' : '{view}{print}{event}',
          'buttons' => array(
             'archivar' => array(
                'label' => 'Archivar',
@@ -22,7 +22,12 @@
                'icon' => TbHtml::ICON_PRINT,
                'url' => '"/solicitud/print/" . $data->id',
                'click' => 'js:print'
-            )
+            ),
+            'event' => array(
+               'label' => 'Evento',
+               'icon' => TbHtml::ICON_COMMENT,
+               'url' => '"/solicitud/event/".$data->numero'
+            ),
          )
       ),
    ),

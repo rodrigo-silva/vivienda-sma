@@ -59,7 +59,7 @@ class Solicitud extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'solicitantes' => array(self::MANY_MANY, 'Persona', 'grupo_solicitante(solicitud_id, persona_id)'),
+			'solicitantes' => array(self::HAS_MANY, 'Persona', 'solicitud_id'),
 			'tipoSolicitud' => array(self::BELONGS_TO, 'TipoSolicitud', 'tipo_solicitud_id'),
          'condicionUso' => array(self::BELONGS_TO, 'CondicionUso', 'condicion_uso_id'),
          'condicionAlquiler' => array(self::BELONGS_TO, 'CondicionAlquiler', 'condicion_alquiler_id'),

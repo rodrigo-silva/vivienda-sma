@@ -51,6 +51,8 @@ class SolicitudArchivoController extends Controller {
       if($solicitud===null) {
          throw new CHttpException(404,'Esta intentando actualizar una Solicitud inexistente en el sistema');
       }
-      $this->render('view', array('model'=>$solicitud));
+      $eventos=Event::model()->findAllByAttributes( array('numero_solicitud'=>$solicitud->numero) );
+
+      $this->render('view', array('model'=>$solicitud, 'eventos'=>$eventos));
    }
 }

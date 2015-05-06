@@ -1,7 +1,12 @@
 <div class="row">
    <h1 class="text-center span10">
-      <?php echo TbHtml::tooltip("$model->nombre $model->apellido",
-            Yii::app()->createUrl('persona/update/' . $model->id), "Haga click para editar")?>
+      <?php if( Yii::app()->user->checkAccess('writer') ) {
+         echo TbHtml::tooltip("$model->nombre $model->apellido",
+            Yii::app()->createUrl('persona/update/' . $model->id), "Haga click para editar");
+      } else {
+         echo "$model->nombre $model->apellido";
+      }
+      ?>
    </h1>
 </div>
 <div class="row">

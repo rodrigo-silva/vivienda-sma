@@ -28,7 +28,7 @@
 
 <div class="container" id="page">
 	<div class="row">
-		<div id="logo" class="span9 offset2"><?php echo CHtml::image('/images/logo_header_top.png');?></div>
+		<div id="logo" class="span9 offset2"><?php echo CHtml::image(Yii::app()->request->baseUrl . '/images/logo_header_top.png');?></div>
 	</div>
    <div class="row">
       &nbsp;
@@ -47,6 +47,7 @@
                            'visible'=>Yii::app()->user->checkAccess('writer')),
                         array('label'=>'Listado', 'url'=>Yii::app()->createUrl('solicitud')),
                         array('label'=>'Archivo', 'url'=>Yii::app()->createUrl('solicitudArchivo')),
+                        array('label'=>'Filtro', 'url'=>Yii::app()->createUrl('solicitud/filtro')),
                      )),
                      array('label' => 'Personas', 'url' => '#', 'active'=> Yii::app()->controller->id == 'persona', 'items'=>array(
                         array('label'=>'Alta Persona', 'url'=>Yii::app()->createUrl('persona/create'),
