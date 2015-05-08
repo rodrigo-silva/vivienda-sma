@@ -34,6 +34,7 @@ class ImportController extends Controller
          }
          $baseForm = new SolicitudBaseForm('post');
          $baseForm->attributes = $records[$i-1]['attributes'];
+         $baseForm->fecha = $records[$i-1]['attributes']['fecha'];
 
          //buscas domicilio en i-1. Si existe agregas a las personas en la list de convivientes
          $domicilio = $this->findDomicilio($baseForm);

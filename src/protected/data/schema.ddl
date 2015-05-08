@@ -279,17 +279,20 @@ ALTER TABLE solicitud_archivo ADD FOREIGN KEY (tipo_resolucion_id) REFERENCES ti
 ALTER TABLE banio_archivo ADD FOREIGN KEY (solicitud_archivo_id) REFERENCES solicitud_archivo(id) ON DELETE RESTRICT ON UPDATE NO ACTION;
 
 INSERT INTO condicion_especial VALUES(NULL, 'Ex combatiente');
-INSERT INTO condicion_especial VALUES(NULL, 'Invalidez Motora');
-INSERT INTO condicion_especial VALUES(NULL, 'Mental');
-INSERT INTO condicion_especial VALUES(NULL, 'Psicologica');
+INSERT INTO condicion_especial VALUES(NULL, 'Comunidad Mapuche');
+INSERT INTO condicion_especial VALUES(NULL, 'Discapacidad Motora');
+INSERT INTO condicion_especial VALUES(NULL, 'Discapacidad Visual');
+INSERT INTO condicion_especial VALUES(NULL, 'Discapacidad Visceral');
+INSERT INTO condicion_especial VALUES(NULL, 'Discapacidad Auditiva');
+INSERT INTO condicion_especial VALUES(NULL, 'Discapacidad Mental');
 
-INSERT INTO condicion_lote VALUES(1, 'Permiso comunidad');
+INSERT INTO condicion_lote VALUES(1, 'Con Permiso comunidad');
 INSERT INTO condicion_lote VALUES(2, 'Boleto compra-venta');
-INSERT INTO condicion_lote VALUES(3, 'Tramite escritura');
-INSERT INTO condicion_lote VALUES(4, 'Cesion de boleto');
+INSERT INTO condicion_lote VALUES(3, 'Tramite de escritura');
+INSERT INTO condicion_lote VALUES(4, 'Cesion de derechos');
 INSERT INTO condicion_lote VALUES(5, 'Escritura');
-INSERT INTO condicion_lote VALUES(6, 'Lote social');
-INSERT INTO condicion_lote VALUES(NULL, 'Cedido');
+INSERT INTO condicion_lote VALUES(6, 'Adjudicatario de Lote social');
+INSERT INTO condicion_lote VALUES(NULL, 'Cedido con o sin autorizacion formal');
 
 INSERT INTO tipo_solicitud VALUES(1, 'Vivienda');
 INSERT INTO tipo_solicitud VALUES(2, 'Lote');
@@ -302,7 +305,7 @@ INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Activa');
 INSERT INTO estado_administrativo_solicitud VALUES(NULL, 'Archivada');
 
 INSERT INTO tipo_vivienda VALUES(1, 'Casa o Cabaña');
-INSERT INTO tipo_vivienda VALUES(2, 'Casilla o carpa');
+INSERT INTO tipo_vivienda VALUES(2, 'Casilla o rancho');
 INSERT INTO tipo_vivienda VALUES(3, 'Pension o Pieza');
 
 INSERT INTO condicion_uso VALUES(1, 'Ocupada');
@@ -311,6 +314,8 @@ INSERT INTO condicion_uso VALUES(3, 'Propia en zona de riesgo');
 INSERT INTO condicion_uso VALUES(4, 'Cedida');
 INSERT INTO condicion_uso VALUES(5, 'Alquilada');
 INSERT INTO condicion_uso VALUES(6, 'Prestada');
+INSERT INTO condicion_uso VALUES(7, 'Propia');
+
 
 INSERT INTO tipo_situacion_laboral VALUES (1, 'Ocupado');
 INSERT INTO tipo_situacion_laboral VALUES (2, 'Desocupado');
@@ -326,6 +331,59 @@ INSERT INTO tipo_resolucion VALUES (NULL, 'Adjudicado');
 INSERT INTO tipo_resolucion VALUES (NULL, 'Rechazado');
 INSERT INTO tipo_resolucion VALUES (NULL, 'Invalida');
 INSERT INTO tipo_resolucion VALUES (NULL, 'Caducada');
+
+
+INSERT INTO user VALUES (NULL, 'rsilva', '$2y$13$9xcKBGMQNfo6qC88bErlyu0qDvdqLfnX136CLsvQeI0cLkxRufxwK', 'Rodrigo', 'Silva', 'admin'); 
+
+CREATE TABLE import(
+   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   dniTitular INTEGER NULL,
+
+   #pipol
+   sexo CHAR(1) NOT NULL,
+   apellido VARCHAR(40) NOT NULL,
+   nombre VARCHAR(60) NOT NULL,
+   dni INTEGER NULL,
+   fecha_nac DATE NOT NULL,
+   anio_residencia INTEGER NULL,
+   telefono INTEGER NULL,
+   celular_prefijo INTEGER NULL,
+   celular INTEGER NULL,
+   tipo_situacion_laboral_id INTEGER NOT NULL,
+   relacion_dependencia CHAR(1),
+   ingresos_laborales INTEGER NULL,
+   nacionalidad VARCHAR(20),
+   pais_nac VARCHAR(20) NOT NULL,
+   provincia_nac VARCHAR(30) NULL,
+   localidad_nac VARCHAR(50) NULL,
+
+   #Solicitud
+   fecha DATE NOT NULL,
+
+   calle VARCHAR(40) NULL,
+   altura VARCHAR(10) NULL,
+   barrio VARCHAR(40) NULL,
+   cruce_calle_1 VARCHAR(40) NULL,
+   cruce_calle_2 VARCHAR(40) NULL,
+   piso VARCHAR(3) NULL,
+   departamento VARCHAR(3) NULL,
+   casa VARCHAR(3) NULL,
+   puerta VARCHAR(3) NULL,
+   lote VARCHAR(3) NULL,
+   manzana VARCHAR(3) NULL,
+   edificio VARCHAR(20) NULL,
+
+   tipo_solicitud_id INTEGER NOT NULL,
+   condicion_lote_id INTEGER NULL,
+   tipo_vivienda_id INTEGER NOT NULL,
+   condicion_uso_id INTEGER NOT NULL,
+   es_alquiler CHAR(1),
+   formal CHAR(1),
+   costo_superior CHAR(1),
+   comparte_dormitorio CHAR(1),
+
+   UNIQUE(dni)
+) ENGINE = InnoDB;
 
 INSERT INTO `persona` (`id`, `nombre`, `apellido`, `dni`, `sexo`, `grupo_conviviente_id`, `solicitud_id`, `fecha_nac`, `pais_nac`, `provincia_nac`, `localidad_nac`, `nacionalidad`, `celular_prefijo`, `telefono_prefijo`, `celular`, `telefono`) VALUES
 (1, 'Rodrigo', 'Silva', 28985263, 'M', NULL, NULL, '1985-04-01', 'Argentina', 'Buenos Aires', '', 'Argentino/a', NULL, 2972, NULL, NULL),

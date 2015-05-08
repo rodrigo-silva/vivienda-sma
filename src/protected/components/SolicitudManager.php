@@ -31,7 +31,7 @@ class SolicitudManager extends TransactionalManager {
          
          //generacion del numero
          $numero = 1000 + Solicitud::model()->count() + SolicitudArchivo::model()->count();
-         $solicitud->numero = str_pad( $numero, 8, STR_PAD_LEFT);
+         $solicitud->numero = str_pad($numero, 8, "0", STR_PAD_LEFT);
 
          if($solicitud->save()) {
             $titular->grupo_conviviente_id = $domicilio->grupoConviviente->id;

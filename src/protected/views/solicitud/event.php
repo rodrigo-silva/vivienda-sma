@@ -10,7 +10,7 @@
       <div class="row">
          <div class="span7 offset1">
             <?php echo TbHtml::alert(TbHtml::ALERT_COLOR_WARNING,
-            "Utilize texto SIN FORMATO, es decir, de una explicacion coloquial de lo sucedido."); ?>
+            "Utilize texto SIN FORMATO, es decir, de una explicacion coloquial de lo sucedido. Se guardara con fecha de hoy."); ?>
          </div>
       </div>
       <div class="row">
