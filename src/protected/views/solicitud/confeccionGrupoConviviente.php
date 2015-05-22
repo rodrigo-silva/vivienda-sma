@@ -44,7 +44,12 @@
             <?php
             $servicios = $confeccionGrupoConvivienteForm->servicios;
             foreach ($this->getServicios() as $key => $value) {
-               $index = array_search($key, array_column($servicios, 'tipo_servicio_id'));
+               $tipoServicioId = array();
+               foreach ($servicios as $servicio) {
+                  array_push($tipoServicioId, $servicio['tipo_servicio_id']);
+               }
+
+               $index = array_search($key, $tipoServicioId);
                $disponible = is_integer($index) ? true : false;
                $medidor = is_integer($index) ? $servicios[$index]['medidor'] : false;
                $compartido = is_integer($index) ? $servicios[$index]['compartido'] : false;

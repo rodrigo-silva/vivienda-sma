@@ -7,7 +7,7 @@
    <div class="offset2">
       <?php echo TbHtml::beginFormTb(TbHtml::FORM_LAYOUT_VERTICAL, Yii::app()->createUrl('solicitud/filtro'), 'get'); ?>
       <div class="row">
-         <div class="span5">
+         <div class="span2">
             <?php echo TbHtml::activeInlineCheckBoxList($form, 'condiciones', CHtml::listData(CondicionEspecial::model()->findAll(), 'id', 'nombre') ); ?>
          </div>
       </div>

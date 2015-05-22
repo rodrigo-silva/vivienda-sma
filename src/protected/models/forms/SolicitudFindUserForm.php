@@ -30,7 +30,7 @@
 
       /**
        */
-      public function validate() {
+      public function validate($attributes=null, $clearErrors=true) {
          if(parent::validate()) {
             return $this->validateFieldPrescenceCombination();
          } else {
