@@ -99,8 +99,10 @@ class Persona extends CActiveRecord
       $criteria=new CDbCriteria;
 
       $criteria->compare('id',$this->id);
-      $criteria->compare('nombre',$this->nombre,true);
-      $criteria->compare('apellido',$this->apellido,true);
+      $criteria->compare('nombre',$this->nombre,true, 'OR');
+      $criteria->compare('LOWER(nombre)',$this->nombre,true, 'OR');
+      $criteria->compare('apellido',$this->apellido,true, 'OR');
+      $criteria->compare('LOWER(apellido)',$this->apellido,true, 'OR');
       $criteria->compare('dni',$this->dni);
       $criteria->compare('sexo',$this->sexo,true);
 

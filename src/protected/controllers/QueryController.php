@@ -2,11 +2,11 @@
 class QueryController extends Controller
 {
 
-   public function query() {
-      echo "hola";
+   public function actionQuery() {
+      Yii::app()->db->createCommand("INSERT INTO tipo_vivienda VALUES (NULL, 'Monoambiente')")->execute();
       return;
    }
-   
+
    public function actionImport() {
       return;
       set_time_limit(0);

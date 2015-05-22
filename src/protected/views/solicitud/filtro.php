@@ -7,10 +7,13 @@
    <div class="offset2">
       <?php echo TbHtml::beginFormTb(TbHtml::FORM_LAYOUT_VERTICAL, Yii::app()->createUrl('solicitud/filtro'), 'get'); ?>
       <div class="row">
-         <div class="span2">
-            <?php echo TbHtml::activeInlineCheckBoxList($form, 'condiciones', CHtml::listData(CondicionEspecial::model()->findAll(), 'id', 'nombre') ); ?>
+         <div class="span7">
+            <?php echo TbHtml::activeInlineCheckBoxList($form, 'condiciones', 
+                  CHtml::listData(CondicionEspecial::model()->findAll(), 'id', 'nombre'), array("labelOptions" => 
+                     array("style"=>"margin-left:10px;")) ); ?>
          </div>
       </div>
+
       <div class="row">
          <div class="span5">
             <?php echo TbHtml::activeCheckBox($form, 'adulto', array('label' => 'Adulto Mayor')); ?>

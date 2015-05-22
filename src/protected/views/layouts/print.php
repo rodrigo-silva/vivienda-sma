@@ -11,6 +11,9 @@
 <body>
 
 <div class="container">
+<div class="row">
+   <div id="logo" class="span9 offset2"><?php echo CHtml::image(Yii::app()->request->baseUrl . '/images/logo_header_top.png');?></div>
+</div>
 <div id="content" class="row">
    <div class="span10 offset1">
       <?php echo $content; ?>

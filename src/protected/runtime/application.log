@@ -297,3 +297,62 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/favicon.ico
 ---
+2015/05/22 15:34:57 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'habitacional.personas' doesn't exist. La sentencia SQL ejecutada fue: SELECT * FROM Personas.
+2015/05/22 15:34:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'habitacional.personas' doesn't exist' in D:\Development\Projects\vivienda\framework\db\CDbCommand.php:358
+Stack trace:
+#0 D:\Development\Projects\vivienda\src\protected\controllers\QueryController.php(6): CDbCommand->execute()
+#1 D:\Development\Projects\vivienda\framework\web\actions\CInlineAction.php(49): QueryController->actionQuery()
+#2 D:\Development\Projects\vivienda\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 D:\Development\Projects\vivienda\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 D:\Development\Projects\vivienda\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(282): CController->run('query')
+#6 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController('query/query')
+#7 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#8 D:\Development\Projects\vivienda\src\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/query/query
+---
+2015/05/22 15:43:01 [error] [php] array_slice() expects parameter 2 to be long, string given (D:\Development\Projects\vivienda\src\protected\views\solicitud\filtro.php:12)
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CBaseController.php(95): SolicitudController->renderInternal()
+#1 D:\Development\Projects\vivienda\framework\web\CController.php(869): SolicitudController->renderFile()
+#2 D:\Development\Projects\vivienda\framework\web\CController.php(782): SolicitudController->renderPartial()
+#3 D:\Development\Projects\vivienda\src\protected\controllers\SolicitudController.php(360): SolicitudController->render()
+#4 D:\Development\Projects\vivienda\framework\web\actions\CInlineAction.php(49): SolicitudController->actionFiltro()
+#5 D:\Development\Projects\vivienda\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 D:\Development\Projects\vivienda\framework\web\filters\CFilterChain.php(133): SolicitudController->runAction()
+#7 D:\Development\Projects\vivienda\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 D:\Development\Projects\vivienda\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 D:\Development\Projects\vivienda\framework\web\filters\CInlineFilter.php(58): SolicitudController->filterAccessControl()
+#10 D:\Development\Projects\vivienda\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 D:\Development\Projects\vivienda\framework\web\CController.php(291): CFilterChain->run()
+#12 D:\Development\Projects\vivienda\framework\web\CController.php(265): SolicitudController->runActionWithFilters()
+#13 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(282): SolicitudController->run()
+#14 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 D:\Development\Projects\vivienda\src\index.php(13): CWebApplication->run()
+REQUEST_URI=/solicitud/filtro?FiltroForm%5Bcondiciones%5D=&FiltroForm%5Bcondiciones%5D%5B%5D=1&FiltroForm%5Bcondiciones%5D%5B%5D=2&FiltroForm%5Bcondiciones%5D%5B%5D=3&FiltroForm%5Badulto%5D=0&FiltroForm%5Bmenor%5D=0&yt0=
+2015/05/22 15:58:10 [error] [php] Array to string conversion (D:\Development\Projects\vivienda\src\protected\extensions\bootstrap\helpers\TbHtml.php:1644)
+Stack trace:
+#0 D:\Development\Projects\vivienda\src\protected\extensions\bootstrap\helpers\TbHtml.php(1746): checkBoxList()
+#1 D:\Development\Projects\vivienda\src\protected\extensions\bootstrap\helpers\TbHtml.php(1760): activeCheckBoxList()
+#2 D:\Development\Projects\vivienda\src\protected\views\solicitud\filtro.php(21): activeInlineCheckBoxList()
+#3 D:\Development\Projects\vivienda\framework\web\CBaseController.php(126): require()
+#4 D:\Development\Projects\vivienda\framework\web\CBaseController.php(95): SolicitudController->renderInternal()
+#5 D:\Development\Projects\vivienda\framework\web\CController.php(869): SolicitudController->renderFile()
+#6 D:\Development\Projects\vivienda\framework\web\CController.php(782): SolicitudController->renderPartial()
+#7 D:\Development\Projects\vivienda\src\protected\controllers\SolicitudController.php(360): SolicitudController->render()
+#8 D:\Development\Projects\vivienda\framework\web\actions\CInlineAction.php(49): SolicitudController->actionFiltro()
+#9 D:\Development\Projects\vivienda\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 D:\Development\Projects\vivienda\framework\web\filters\CFilterChain.php(133): SolicitudController->runAction()
+#11 D:\Development\Projects\vivienda\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 D:\Development\Projects\vivienda\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#13 D:\Development\Projects\vivienda\framework\web\filters\CInlineFilter.php(58): SolicitudController->filterAccessControl()
+#14 D:\Development\Projects\vivienda\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#15 D:\Development\Projects\vivienda\framework\web\CController.php(291): CFilterChain->run()
+#16 D:\Development\Projects\vivienda\framework\web\CController.php(265): SolicitudController->runActionWithFilters()
+#17 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(282): SolicitudController->run()
+#18 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 D:\Development\Projects\vivienda\src\index.php(13): CWebApplication->run()
+REQUEST_URI=/solicitud/filtro?FiltroForm%5Bcondiciones%5D=&FiltroForm%5Badulto%5D=&FiltroForm%5Badulto%5D%5B%5D=label&FiltroForm%5Bmenor%5D=0&yt0=

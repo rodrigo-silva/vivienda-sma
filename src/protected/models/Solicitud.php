@@ -109,8 +109,10 @@ class Solicitud extends CActiveRecord
       $criteria->with = array('titular');
 		$criteria->compare('numero',$this->numero, true);
       $criteria->compare('fecha',$this->fecha, true);
+      $criteria->compare('LOWER(titular.nombre)',$this->titular_search, true, 'OR');
       $criteria->compare('titular.nombre',$this->titular_search, true, 'OR');
-		$criteria->compare('titular.apellido',$this->titular_search, true, 'OR');
+      $criteria->compare('titular.apellido',$this->titular_search, true, 'OR');
+		$criteria->compare('LOWER(titular.apellido)',$this->titular_search, true, 'OR');
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
