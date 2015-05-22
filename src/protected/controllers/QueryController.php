@@ -1,7 +1,12 @@
 <?php
-class ImportController extends Controller
+class QueryController extends Controller
 {
 
+   public function query() {
+      echo "hola";
+      return;
+   }
+   
    public function actionImport() {
       return;
       set_time_limit(0);
