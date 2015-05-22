@@ -3,6 +3,7 @@ class ImportController extends Controller
 {
 
    public function actionImport() {
+      return;
       set_time_limit(0);
       $i = 0; //puntero donde estoy
       $c = new CDbCriteria;

@@ -74,7 +74,11 @@ class VinculosUtil extends CComponent {
     */
    public static function resolveVinculo($from, $to) {
       $vinculos = array_map(function($el){return $el->attributes;}, $to->vinculos);
-      $index = array_search($from->id, array_column($vinculos, 'familiar_id'));
+      $familiarIds = array();
+      foreach ($vinculos as $vinculo) {
+         array_push($familiarIds, $vinculo['familiar_id']);
+      }
+      $index = array_search($from->id, $familiarIds);
       if (is_integer($index)) {
          if($from->sexo == 'M') {
             return VinculosUtil::getVinculoMasculinoRetrogrado($vinculos[$index]['vinculo']);

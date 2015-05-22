@@ -76,27 +76,27 @@ return array(
 			'errorAction'=>'site/error',
 		),
 
-		// 'log'=>array(
-		// 	'class'=>'CLogRouter',
-		// 	'routes'=>array(
-		// 		array(
-		// 			'class'=>'CFileLogRoute',
-		// 			'levels'=>'error, warning, info, trace',
-		// 		),
-  //           array(
-  //              'class'=>'CFileLogRoute',
-  //              'categories' => 'com.wazoo.*',
-  //              'levels'=>'error, warning, info, trace',
-  //              'logFile' => 'wazoo.log'
-  //           ),
-		// 		// uncomment the following to show log messages on web pages
-		// 		// array(
-		// 		// 	'class'=>'CWebLogRoute',
-  //   //            'levels'=>'trace',
-		// 		// ),
+		'log'=>array(
+			'class'=>'CLogRouter',
+			'routes'=>array(
+				array(
+					'class'=>'CFileLogRoute',
+					'levels'=>'error, warning, info, trace',
+				),
+            array(
+               'class'=>'CFileLogRoute',
+               'categories' => 'com.wazoo.*',
+               'levels'=>'error, warning, info, trace',
+               'logFile' => 'wazoo.log'
+            ),
+				// uncomment the following to show log messages on web pages
+				// array(
+				// 	'class'=>'CWebLogRoute',
+    //            'levels'=>'trace',
+				// ),
 				
-		// 	),
-		// ),
+			),
+		),
 
 	),
 

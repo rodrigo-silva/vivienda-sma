@@ -515,7 +515,11 @@ class SolicitudController extends Controller {
          }
 
          $unConviviente["cotitular"] = !is_null($solicitud->cotitular) && $value->dni == $solicitud->cotitular->dni ? 1 : 0;
-         $index = array_search($value->id, array_column($vinculos, 'familiar_id'));
+         $familiarIds = array();
+         foreach ($vinculos as $vinculo) {
+            array_push($familiarIds, $vinculo['familiar_id']);
+         }
+         $index = array_search($value->id, $familiarIds);
          if (is_integer($index)) {
             if($value->sexo == 'M') {
                $unConviviente["vinculo"] = VinculosUtil::getVinculoMasculinoRetrogrado($vinculos[$index]['vinculo']);
