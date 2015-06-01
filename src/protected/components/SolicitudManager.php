@@ -57,7 +57,7 @@ class SolicitudManager extends TransactionalManager {
          $solicitud->attributes = (array)$solicitudBaseForm;
          $solicitud->domicilio->attributes = (array)$solicitudBaseForm;
 
-         if($solicitudBaseForm->es_alquiler == 'true') {
+         if($solicitudBaseForm->es_alquiler) {
             $condicionAlquiler = new CondicionAlquiler;
             $condicionAlquiler->attributes = (array)$solicitudBaseForm;
             if($condicionAlquiler->save()) {

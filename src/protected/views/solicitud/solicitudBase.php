@@ -34,9 +34,9 @@
 
          <div class="row">
             <div id="alquiler-container">
-               <?php echo $form->inlineRadioButtonListControlGroup( $model, 'formal', array("Formal", 'Informal'),
+               <?php echo $form->inlineRadioButtonListControlGroup( $model, 'formal', array('Informal', 'Formal'),
                      array('groupOptions'=>array('class'=>'span3'))); ?>
-               <?php echo $form->inlineRadioButtonListControlGroup( $model, 'costo_superior', array('Si', 'No'),
+               <?php echo $form->inlineRadioButtonListControlGroup( $model, 'costo_superior', array('No', 'Si'),
                      array('groupOptions'=>array('class'=>'span3')) ); ?>
             </div>
          </div>

@@ -356,3 +356,34 @@ Stack trace:
 #19 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
 #20 D:\Development\Projects\vivienda\src\index.php(13): CWebApplication->run()
 REQUEST_URI=/solicitud/filtro?FiltroForm%5Bcondiciones%5D=&FiltroForm%5Badulto%5D=&FiltroForm%5Badulto%5D%5B%5D=label&FiltroForm%5Bmenor%5D=0&yt0=
+2015/06/01 15:21:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "favicon.ico"' in D:\Development\Projects\vivienda\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 D:\Development\Projects\vivienda\src\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/06/01 15:21:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "favicon.ico"' in D:\Development\Projects\vivienda\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 D:\Development\Projects\vivienda\src\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/06/01 15:27:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "solicitud3812"' in D:\Development\Projects\vivienda\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController('solicitud3812')
+#1 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 D:\Development\Projects\vivienda\src\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/solicitud3812
+---
+2015/06/01 15:55:37 [info] [com.wazoo.manager] saraza
+2015/06/01 15:59:19 [info] [com.wazoo.manager] 1
+2015/06/01 16:00:03 [info] [com.wazoo.manager] 1
+2015/06/01 16:00:10 [info] [com.wazoo.manager] 1
+2015/06/01 16:00:17 [info] [com.wazoo.manager] 1
+2015/06/01 16:01:44 [info] [com.wazoo.manager] 1
+2015/06/01 16:01:48 [info] [com.wazoo.manager] 1
