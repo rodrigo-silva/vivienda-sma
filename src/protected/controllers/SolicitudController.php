@@ -237,8 +237,9 @@ class SolicitudController extends Controller {
          } else if(!is_null($request->getPost('ConfeccionGrupoConvivienteForm'))) {
             $grupoConvivienteForm->attributes = $request->getPost('ConfeccionGrupoConvivienteForm');
             SolicitudManager::updateGrupoConvivienteInfo($grupoConvivienteForm, $solicitud);
-            $this->redirect( Yii::app()->createUrl('solicitud/admin') );
          }
+         $this->redirect(Yii::app()->createUrl('solicitud/view') . '/' . $id);
+
       } else { //GET
          $baseForm->attributes = $solicitud->attributes;
          $baseForm->attributes = $solicitud->domicilio->attributes;

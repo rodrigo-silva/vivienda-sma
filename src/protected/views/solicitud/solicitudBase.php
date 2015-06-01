@@ -99,7 +99,7 @@
                array('class'=>'btn'));?>
             </div>
             <div class="span">
-               <?php echo TbHtml::submitButton('Guardar y continuar', array('color'=>TbHtml::BUTTON_COLOR_SUCCESS)); ?>
+               <?php echo TbHtml::submitButton('Guardar', array('color'=>TbHtml::BUTTON_COLOR_SUCCESS)); ?>
             </div>
          </div>
 
