@@ -91,7 +91,7 @@ class PersonaController extends Controller
          if($form->validate()) {
             PersonaManager::savePersona($form);
             Yii::app()->user->setFlash('general-success', "$form->nombre $form->apellido ha sido actualizado.");
-            $this->redirect(Yii::app()->createUrl("persona/admin"));
+            $this->redirect(Yii::app()->createUrl("persona/view") . '/' . $id);
          }
       } else {
          $form = new PersonaForm;
