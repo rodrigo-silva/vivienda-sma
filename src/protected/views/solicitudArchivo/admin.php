@@ -6,9 +6,10 @@
    'columns'=>array(
       'numero',
       'fecha',
+      array('name'=>'estado_search', 'header' => 'Resolucion', 'value'=>'$data->resolucion->descripcion'),
       array(
          'class'=>'TbButtonColumn',
-         'template' => '{view}',
+         'template' => '{view}{update}'
       ),
    ),
 )); ?>

@@ -1,5 +1,6 @@
 <?php
 class SolicitudArchivo extends CActiveRecord {
+   public $estado_search;
    
    public function tableName() {
       return 'solicitud_archivo';
@@ -21,7 +22,7 @@ class SolicitudArchivo extends CActiveRecord {
       return array(
          array('numero, fecha, tipo_solicitud_id, tipo_vivienda_id, condicion_lote_id, condicion_uso_id,'.
                'comparte_dormitorio, condicion_alquiler_id, titular_id, cotitular_id,'.
-               'domicilio_id, observaciones_vivienda, tipo_resolucion_id, comentarios', 'safe')
+               'domicilio_id, observaciones_vivienda, tipo_resolucion_id, comentarios, estado_search', 'safe')
       );
    }
 
@@ -49,9 +50,11 @@ class SolicitudArchivo extends CActiveRecord {
    public function search() {
 
       $criteria=new CDbCriteria;
-
+      $criteria->with = array('resolucion');
       $criteria->compare('numero',$this->numero, true);
       $criteria->compare('fecha',$this->fecha, true);
+      $criteria->compare('LOWER(resolucion.descripcion)',$this->estado_search, true, 'OR');
+
 
       return new CActiveDataProvider($this, array(
          'criteria'=>$criteria,
