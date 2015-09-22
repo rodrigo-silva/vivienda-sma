@@ -3,11 +3,17 @@ class QueryController extends Controller
 {
 
    public function actionQuery() {
-      Yii::app()->db->createCommand("INSERT INTO tipo_vivienda VALUES (NULL, 'Monoambiente')")->execute();
+      //Yii::app()->db->createCommand("UPDATE solicitud_archivo SET tipo_resolucion_id='3' WHERE numero='00002661'")->execute();
+      //CVarDumper::dump(Persona::model()->with('domicilio')->find('dni=:dni', array(':dni' =>"35608102")), 10, true);
+       // CVarDumper::dump(SolicitudArchivo::model()->with('domicilio')->findByAttributes(array('numero'=>'00002117')), 10, true);
+      CVarDumper::dump(Persona::model()->with('domicilio')->findAll('grupo_conviviente_id=:grupo_conviviente_id', array(':grupo_conviviente_id' =>2194)), 10, true);
+
+      //CVarDumper::dump(Domicilio::model()->with('grupoConviviente')->findAllByAttributes(array('barrio' =>"Buenos Aires Chico")), 10, true);
+      //CVarDumper::dump(TipoResolucion::model()->findAll(), 10, true);
       return;
    }
 
-   public function actionImport() {
+   public function import() {
       return;
       set_time_limit(0);
       $i = 0; //puntero donde estoy

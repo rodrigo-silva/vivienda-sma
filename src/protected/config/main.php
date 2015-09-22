@@ -89,11 +89,11 @@ return array(
                'levels'=>'error, warning, info, trace',
                'logFile' => 'wazoo.log'
             ),
-				// uncomment the following to show log messages on web pages
-				// array(
-				// 	'class'=>'CWebLogRoute',
-    //            'levels'=>'trace',
-				// ),
+				//uncomment the following to show log messages on web pages
+				array(
+					'class'=>'CWebLogRoute',
+               'levels'=>'info',
+				),
 				
 			),
 		),

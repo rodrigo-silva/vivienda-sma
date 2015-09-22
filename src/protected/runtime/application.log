@@ -387,3 +387,77 @@ REQUEST_URI=/solicitud3812
 2015/06/01 16:00:17 [info] [com.wazoo.manager] 1
 2015/06/01 16:01:44 [info] [com.wazoo.manager] 1
 2015/06/01 16:01:48 [info] [com.wazoo.manager] 1
+2015/06/05 10:53:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "favicon.ico"' in D:\Development\Projects\vivienda\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 D:\Development\Projects\vivienda\src\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/06/05 10:53:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "favicon.ico"' in D:\Development\Projects\vivienda\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 D:\Development\Projects\vivienda\src\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/30 02:18:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "favicon.ico"' in D:\Development\Projects\vivienda\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 D:\Development\Projects\vivienda\src\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/30 02:18:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "favicon.ico"' in D:\Development\Projects\vivienda\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 D:\Development\Projects\vivienda\src\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/08/30 02:20:11 [error] [php] Trying to get property of non-object (D:\Development\Projects\vivienda\src\protected\views\solicitud\view.php:40)
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CController.php(869): SolicitudController->renderFile()
+#1 D:\Development\Projects\vivienda\framework\web\CController.php(782): SolicitudController->renderPartial()
+#2 D:\Development\Projects\vivienda\src\protected\controllers\SolicitudController.php(66): SolicitudController->render()
+#3 unknown(0): SolicitudController->actionView()
+#4 D:\Development\Projects\vivienda\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 D:\Development\Projects\vivienda\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 D:\Development\Projects\vivienda\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 D:\Development\Projects\vivienda\framework\web\filters\CFilterChain.php(133): SolicitudController->runAction()
+#8 D:\Development\Projects\vivienda\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 D:\Development\Projects\vivienda\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 D:\Development\Projects\vivienda\framework\web\filters\CInlineFilter.php(58): SolicitudController->filterAccessControl()
+#11 D:\Development\Projects\vivienda\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 D:\Development\Projects\vivienda\framework\web\CController.php(291): CFilterChain->run()
+#13 D:\Development\Projects\vivienda\framework\web\CController.php(265): SolicitudController->runActionWithFilters()
+#14 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(282): SolicitudController->run()
+#15 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 D:\Development\Projects\vivienda\src\index.php(13): CWebApplication->run()
+REQUEST_URI=/solicitud/2615
+2015/08/30 02:20:59 [error] [php] Trying to get property of non-object (D:\Development\Projects\vivienda\src\protected\views\solicitud\view.php:40)
+Stack trace:
+#0 D:\Development\Projects\vivienda\framework\web\CController.php(869): SolicitudController->renderFile()
+#1 D:\Development\Projects\vivienda\framework\web\CController.php(782): SolicitudController->renderPartial()
+#2 D:\Development\Projects\vivienda\src\protected\controllers\SolicitudController.php(66): SolicitudController->render()
+#3 unknown(0): SolicitudController->actionView()
+#4 D:\Development\Projects\vivienda\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 D:\Development\Projects\vivienda\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 D:\Development\Projects\vivienda\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 D:\Development\Projects\vivienda\framework\web\filters\CFilterChain.php(133): SolicitudController->runAction()
+#8 D:\Development\Projects\vivienda\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 D:\Development\Projects\vivienda\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 D:\Development\Projects\vivienda\framework\web\filters\CInlineFilter.php(58): SolicitudController->filterAccessControl()
+#11 D:\Development\Projects\vivienda\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 D:\Development\Projects\vivienda\framework\web\CController.php(291): CFilterChain->run()
+#13 D:\Development\Projects\vivienda\framework\web\CController.php(265): SolicitudController->runActionWithFilters()
+#14 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(282): SolicitudController->run()
+#15 D:\Development\Projects\vivienda\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 D:\Development\Projects\vivienda\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 D:\Development\Projects\vivienda\src\index.php(13): CWebApplication->run()
+REQUEST_URI=/solicitud/2615

@@ -1,0 +1,506 @@
+ array
+(
+    0 => SolicitudArchivo#1
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '1'
+            'numero' => '00003025'
+            'fecha' => '2015-06-01'
+            'fecha_archivado' => '2015-06-01'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '1'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '1'
+            'condicion_alquiler_id' => null
+            'titular_id' => '10837'
+            'cotitular_id' => null
+            'domicilio_id' => '2713'
+            'observaciones_vivienda' => '               '
+            'tipo_resolucion_id' => '3'
+            'comentarios' => 'QUEDA COMPRENDIDA EN SOLICITUD DE SU MADRE YA QUE ES MENOR DE EDAD'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '1'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    1 => SolicitudArchivo#2
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '2'
+            'numero' => '00003030'
+            'fecha' => '2015-06-01'
+            'fecha_archivado' => '2015-06-02'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '3'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '5'
+            'condicion_alquiler_id' => '2066'
+            'titular_id' => '10858'
+            'cotitular_id' => null
+            'domicilio_id' => '3379'
+            'observaciones_vivienda' => '               '
+            'tipo_resolucion_id' => '4'
+            'comentarios' => 'El Sr. LÃ³pez falleciÃ³ en febrero 2015.'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '2'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    2 => SolicitudArchivo#3
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '3'
+            'numero' => '00001351'
+            'fecha' => '2013-06-07'
+            'fecha_archivado' => '2015-06-04'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '3'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '5'
+            'condicion_alquiler_id' => '2085'
+            'titular_id' => '6078'
+            'cotitular_id' => null
+            'domicilio_id' => '1939'
+            'observaciones_vivienda' => '               '
+            'tipo_resolucion_id' => '4'
+            'comentarios' => 'GRUPO FAMILIAR QUE FORMABA PARTE DE LA SOLICITUD 1351 NO COMPARTEN A LA FECHA NI DOMICILIO NI DEMANDA CONJUNTA DE SOLUCION HABITACIONAL, LOS SRES. RUEDA Y GUILLAUMET REFIEREN QUE EL RESTO DE LOS INTEGRANTES DE LA SOLICITUD 1351 PODRIAN SER PROPIETARIOS DEL LOTE DE LA PROPIEDAD QUE ELLOS ALQUILABAN.'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '3'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    3 => SolicitudArchivo#4
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '4'
+            'numero' => '00003039'
+            'fecha' => '2015-06-04'
+            'fecha_archivado' => '2015-06-04'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '1'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '1'
+            'condicion_alquiler_id' => null
+            'titular_id' => '6078'
+            'cotitular_id' => null
+            'domicilio_id' => '1939'
+            'observaciones_vivienda' => '               '
+            'tipo_resolucion_id' => '4'
+            'comentarios' => 'LA SOLICITUD 3039 CORRESPOSDE A LA 1351'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '4'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    4 => SolicitudArchivo#5
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '5'
+            'numero' => '00002765'
+            'fecha' => '2013-06-05'
+            'fecha_archivado' => '2015-06-04'
+            'comparte_dormitorio' => '1'
+            'tipo_solicitud_id' => '3'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '6'
+            'condicion_alquiler_id' => null
+            'titular_id' => '10206'
+            'cotitular_id' => null
+            'domicilio_id' => '2757'
+            'observaciones_vivienda' => '               '
+            'tipo_resolucion_id' => '4'
+            'comentarios' => 'LA SOLICITUD 2765 COMPARTE DIRECCION  CON OTRAS PERSONAS MAS NO LA SOLICITUD'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '5'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    5 => SolicitudArchivo#6
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '6'
+            'numero' => '00002117'
+            'fecha' => '2013-06-03'
+            'fecha_archivado' => '2015-06-04'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '3'
+            'tipo_vivienda_id' => '2'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '1'
+            'condicion_alquiler_id' => null
+            'titular_id' => '8456'
+            'cotitular_id' => null
+            'domicilio_id' => '2194'
+            'observaciones_vivienda' => '                                             '
+            'tipo_resolucion_id' => '4'
+            'comentarios' => 'LA SOLICITUD 2117 SE CORRESPONDE A PERSONAS VARIAS QUE COMPARTE DOMICILIO, POR LO CUAL LA FAMILIA PURRAN /GOMEZ GENERAN UNA NUEVA SOLICITUD'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '6'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    6 => SolicitudArchivo#7
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '7'
+            'numero' => '00002661'
+            'fecha' => '2013-06-03'
+            'fecha_archivado' => '2015-06-16'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '2'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => null
+            'condicion_uso_id' => '6'
+            'condicion_alquiler_id' => null
+            'titular_id' => '9941'
+            'cotitular_id' => null
+            'domicilio_id' => '2158'
+            'observaciones_vivienda' => '                                                                           '
+            'tipo_resolucion_id' => '1'
+            'comentarios' => 'LA FAMILIA RAIÃ‘ANCO -CASTILLO SE ENCUENTRA EN LA SOLICITUD 1584 POR COMPARTIR DIRECCION, SE DESESTIMA LA SOLICITUD 2661'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '7'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    7 => SolicitudArchivo#8
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '8'
+            'numero' => '00001584'
+            'fecha' => '2013-06-03'
+            'fecha_archivado' => '2015-06-16'
+            'comparte_dormitorio' => '1'
+            'tipo_solicitud_id' => '3'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => null
+            'condicion_uso_id' => '5'
+            'condicion_alquiler_id' => '1371'
+            'titular_id' => '6822'
+            'cotitular_id' => null
+            'domicilio_id' => '2158'
+            'observaciones_vivienda' => '                                                                                          '
+            'tipo_resolucion_id' => '4'
+            'comentarios' => 'FAMILIARES CONVIVIENTES REFIEREN TRASLADO DE LA SRA. VARGAS A LA LOCALIDAD CHOELE CHOEL. INTENTAREMOS RATIFICAR O RECTIFICAR TAL INFORMACION.'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '8'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    8 => SolicitudArchivo#9
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '9'
+            'numero' => '00003065'
+            'fecha' => '2015-06-16'
+            'fecha_archivado' => '2015-08-25'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '4'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '1'
+            'condicion_alquiler_id' => null
+            'titular_id' => '9941'
+            'cotitular_id' => null
+            'domicilio_id' => '3412'
+            'observaciones_vivienda' => null
+            'tipo_resolucion_id' => '4'
+            'comentarios' => 'FAMILIA INSCRIPTA EN VARIAS SOLICITUDES. NECESIDAD DE AGRUPAR A RAIÃ‘ANCO MICAELA, CASTILLO JOSE Y CASTILLO DANTE.'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '9'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    9 => SolicitudArchivo#10
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '10'
+            'numero' => '00002911'
+            'fecha' => '2013-06-03'
+            'fecha_archivado' => '2015-08-25'
+            'comparte_dormitorio' => '1'
+            'tipo_solicitud_id' => '3'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '5'
+            'condicion_alquiler_id' => '2160'
+            'titular_id' => '10539'
+            'cotitular_id' => null
+            'domicilio_id' => '3035'
+            'observaciones_vivienda' => '                                                            '
+            'tipo_resolucion_id' => '3'
+            'comentarios' => 'APARECEN VINCULADOS A LA SOLICITUD 2585.'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '10'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    10 => SolicitudArchivo#11
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '11'
+            'numero' => '00003157'
+            'fecha' => '2015-08-25'
+            'fecha_archivado' => '2015-08-25'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '3'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '6'
+            'condicion_alquiler_id' => null
+            'titular_id' => '9942'
+            'cotitular_id' => null
+            'domicilio_id' => '3505'
+            'observaciones_vivienda' => '               '
+            'tipo_resolucion_id' => '3'
+            'comentarios' => 'Vinculada a solicitudes mÃºltiples (1584 - 3157)'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '11'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    11 => SolicitudArchivo#12
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '12'
+            'numero' => '00003161'
+            'fecha' => '2015-08-25'
+            'fecha_archivado' => '2015-08-25'
+            'comparte_dormitorio' => null
+            'tipo_solicitud_id' => '1'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '1'
+            'condicion_alquiler_id' => null
+            'titular_id' => '9941'
+            'cotitular_id' => null
+            'domicilio_id' => '3412'
+            'observaciones_vivienda' => null
+            'tipo_resolucion_id' => '3'
+            'comentarios' => 'Vinculada a solicitudes mÃºltiples 2661-3860-3065-3160'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '12'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    12 => SolicitudArchivo#13
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'estado_administrativo_solicitud_id' => '3'
+            'id' => '13'
+            'numero' => '00001562'
+            'fecha' => '2013-06-04'
+            'fecha_archivado' => '2015-08-27'
+            'comparte_dormitorio' => '0'
+            'tipo_solicitud_id' => '3'
+            'tipo_vivienda_id' => '1'
+            'condicion_lote_id' => '1'
+            'condicion_uso_id' => '6'
+            'condicion_alquiler_id' => null
+            'titular_id' => '6746'
+            'cotitular_id' => null
+            'domicilio_id' => '2137'
+            'observaciones_vivienda' => ''
+            'tipo_resolucion_id' => '3'
+            'comentarios' => 'LA SE SOLICITUD ESTA VINCULADA O OTRAS SOLICITUDES'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '13'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+) array
+(
+    0 => TipoResolucion#1
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'id' => '1'
+            'descripcion' => 'Adjudicado'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '1'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    1 => TipoResolucion#2
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'id' => '2'
+            'descripcion' => 'Rechazado'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '2'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    2 => TipoResolucion#3
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'id' => '3'
+            'descripcion' => 'Invalida'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '3'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+    3 => TipoResolucion#4
+    (
+        [CActiveRecord:_new] => false
+        [CActiveRecord:_attributes] => array
+        (
+            'id' => '4'
+            'descripcion' => 'Caducada'
+        )
+        [CActiveRecord:_related] => array()
+        [CActiveRecord:_c] => null
+        [CActiveRecord:_pk] => '4'
+        [CActiveRecord:_alias] => 't'
+        [CModel:_errors] => array()
+        [CModel:_validators] => null
+        [CModel:_scenario] => 'update'
+        [CComponent:_e] => null
+        [CComponent:_m] => null
+    )
+) 
